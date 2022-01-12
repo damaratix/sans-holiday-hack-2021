@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. In this case, we have to [**use exiftool**](prech2)
     * Location: **Santa's Castle Courtyard**
     * Reference <span style="color:red">**ELf**</span>: **Piney Sappington**
-2. **Challange:** this is the actual challenge, [**Where is Caramel Santaigo?**](ch2)
+2. **Challenge:** this is the actual challenge, [**Where is Caramel Santaigo?**](ch2)
     * Location: **Santa's Castle Courtyard**
     * Reference <span style="color:red">**ELf**</span>: **Tangle Coalbox**
 

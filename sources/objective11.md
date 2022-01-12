@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. We need to analyze an executable file with [**Strace Ltrace Retrace**](prech11)
     * Location: **Kitchen**
     * Reference <span style="color:red">**ELf**</span>: **Tinsel Upatree**
-2. **Challange:** this is the actual challenge, [**.pcap file analysis**](ch10).
+2. **Challenge:** this is the actual challenge, [**.pcap file analysis**](ch10).
     * Location: **Kitchen**
     * Reference <span style="color:red">**ELf**</span>: **Tinsel Upatree**
 

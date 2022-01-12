@@ -5,7 +5,7 @@
 
 This objective consists of:
 1. **Prechallenge:** Well...not actually. Not this time! - See [Objective 6](obj6)
-2. **Challange:** this is the actual challenge, [**Printer Exploitation**](ch7)
+2. **Challenge:** this is the actual challenge, [**Printer Exploitation**](ch7)
     * Location: **Jack's Office**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>:**Ruby Cyster**
 

@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. This time we have to bypass some [**Yara Rules**](prech9)
     * Location: **Santa's Castle Entry**
     * Reference <span style="color:red">**ELf**</span>: **Fitzy Shortstack**
-2. **Challange:** this is the actual challenge, [**Splunk!**](ch9)
+2. **Challenge:** this is the actual challenge, [**Splunk!**](ch9)
     * Location: **Santa's Castle Great Room**
     * Reference <span style="color:red">**ELf**</span>: **Angel Candysalt**
 

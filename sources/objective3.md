@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. For this one, we have to [**learn to use grep**](prech3)
     * Location: **North Pole, in front/right of Frost Tower**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Greasy GopherGuts**
-2. **Challange:** this is the actual challenge, [**Frost Tower door Defrosting**](ch3)
+2. **Challenge:** this is the actual challenge, [**Frost Tower door Defrosting**](ch3)
     * Location: **North Pole, in front/left of Jack's Tower**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Grimy McTrollkins**
 

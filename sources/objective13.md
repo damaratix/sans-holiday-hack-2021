@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. In this case, we have to [**fix the Frostavator**](prech13)
     * Location: **FrostTower Lobby**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Grody Goiterson**
-2. **Challange:** this is the actual challenge, [**FPGA Programming**](ch13)
+2. **Challenge:** this is the actual challenge, [**FPGA Programming**](ch13)
     * Location: **FrostTower Rooftop**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Crunchy Squishter**
 

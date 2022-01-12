@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. We have to play with some [**Fail2Ban rules**](prech8)
     * Location: **Santa's Office**
     * Reference <span style="color:red">**ELf**</span>: **Eve Snowshoes**
-2. **Challange:** this is the actual challenge, [**Kerberoasting on an Open Fire**](ch8)
+2. **Challenge:** this is the actual challenge, [**Kerberoasting on an Open Fire**](ch8)
     * Location: **Santa's Office**
     * Reference <span style="color:red">**ELf**</span>: **Eve Snowshoes**
 

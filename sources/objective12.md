@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. We have to code an elf in a  [**Python Game!**](prech12)
     * Location: **Santa's Dining Room**
     * Reference <span style="color:red">**ELf**</span>: **Ribb Bonbowford**
-2. **Challange:** this is the actual challenge, [**SQL Injection**](ch12)
+2. **Challenge:** this is the actual challenge, [**SQL Injection**](ch12)
     * Location: **Jack's Studio**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Ingreta Tude**
 

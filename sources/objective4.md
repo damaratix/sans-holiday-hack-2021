@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. Looks like we have to win a match at [**Logic Munchers**](prech4)
     * Location: **North Pole, in front/left of Santa's Castle**
     * Reference <span style="color:red">**ELf**</span>: **Noel Boetie**
-2. **Challange:** this is the actual challenge, [**Jack's Slot Machines Investigation**](ch4)
+2. **Challenge:** this is the actual challenge, [**Jack's Slot Machines Investigation**](ch4)
     * Location: **Frost Tower Lobby**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Hubris Selfington**
 

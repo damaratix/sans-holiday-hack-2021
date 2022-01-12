@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. This time we have to complete a fun game called [**Holiday Hero**](prech6)
     * Location: **Santa's Castle Rooftop (NetWars)**
     * Reference <span style="color:red">**ELf**</span>: **Chimney Scissorsticks**
-2. **Challange:** this is the actual challenge, [**Shellcode Primer**](ch6)
+2. **Challenge:** this is the actual challenge, [**Shellcode Primer**](ch6)
     * Location: **Jack's Office**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Ruby Cyster**
 

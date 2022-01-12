@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. We have to do some [**IMDS Exploration**](prech10)
     * Location: **Jack's *Executive* Restroom**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Noxious O. D'or**
-2. **Challange:** this is the actual challenge, [**Apply at Frost Tower**](ch10)
+2. **Challenge:** this is the actual challenge, [**Apply at Frost Tower**](ch10)
     * Location: **Jack's *Executive* Restroom**
     * Reference <strike>ELf</strike> <span style="color:green">**Troll!**</span>: **Noxious O. D'or**
 

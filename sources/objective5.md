@@ -7,7 +7,7 @@ This objective consists of:
 1. **Prechallenge:** this gives us hints to complete the actual challenge. Today it is [**IPv6 Sandbox**](prech5)
     * Location: **Santa's Talks Lobby**
     * Reference <span style="color:red">**ELf**</span>: **Jewel Loggins**
-2. **Challange:** this is the actual objective, [**Rubber Ducky**](ch5)
+2. **Challenge:** this is the actual objective, [**Rubber Ducky**](ch5)
     * Location: **Speaker UNPreparadness Room (Talks Lobby, at the right)**
     * Reference <span style="color:red">**ELf**</span>: **Morcel Nougat**
 
