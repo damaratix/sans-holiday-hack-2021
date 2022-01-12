@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YARA Analysis &#8212; SANS Xmas Challenge 2021</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Splunk" href="challenge9.html" />
+    <link rel="prev" title="9. Splunk!" href="objective9.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">SANS Xmas Challenge 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Christmas Challenge 2021 Report
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="objective1.html">
+   1. The Beginning
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective2.html">
+   2. Caramel Santaigo
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge2.html">
+     Exif Metadata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge2.html">
+     Track the Elf!
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective3.html">
+   3. Thaw Frost Tower’s Entrance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge3.html">
+     Grepping for Gold
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge3.html">
+     WiFi &amp; Door Defrost
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective4.html">
+   4. Slot Machine Investigation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge4.html">
+     Logic Munchers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge4.html">
+     Slot Machine Hijack
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective5.html">
+   5. Strange USB Device
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge5.html">
+     IPv6 Sandbox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge5.html">
+     Rubber Ducky
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective6.html">
+   6. Shellcode Primer
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge6.html">
+     Holiday Hero
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge6.html">
+     Assembly x86
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective7.html">
+   7. Printer Exploitation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge7.html">
+     Printer Exploitation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective8.html">
+   8. Kerberoasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge8.html">
+     HoHo… No (Fail2Ban)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge8.html">
+     Windows AD Exploit
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="objective9.html">
+   9. Splunk!
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     YARA Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge9.html">
+     Splunk
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective10.html">
+   10. Now Hiring!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge10.html">
+     IMDS Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge10.html">
+     Frost Tower Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective11.html">
+   11. Customer Complaint Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge11.html">
+     Strace Ltrace Retrace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge11.html">
+     Wireshark
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective12.html">
+   12. Frost Tower Website Checkup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge12.html">
+     Python Game
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge12.html">
+     SQL Injection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective13.html">
+   13. FPGA Programming
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge13.html">
+     FPGA Programming - Prechallenge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge13.html">
+     FPGA Programming - Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/prechallenge9.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mantra">
+   Mantra
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vi-as-hex-editor">
+   Vi as Hex editor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-file-size">
+   Change file size
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="yara-analysis">
+<span id="prech9"></span><h1>YARA Analysis<a class="headerlink" href="#yara-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Location: Entry</p>
+<p>Fitzy Shortstack asks for help with YARA rules trying to prevent malware attacks inside the network.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>YARA rules are used to classify and identify malware samples by creating descriptions of malware families based on textual or binary patterns.</p>
+<p>You define the rules in a json file in which you specify <code class="docutils literal notranslate"><span class="pre">strings</span></code> (aka: patterns)
+that will match <code class="docutils literal notranslate"><span class="pre">conditions</span></code>  that help in successfully identifying a piece of malware
+in an executable.</p>
+<p><a class="reference external" href="https://yara.readthedocs.io/en/v3.4.0/writingrules.html">https://yara.readthedocs.io/en/v3.4.0/writingrules.html</a></p>
+</div>
+<p><img alt="YaraRule Cranberry" src="_images/yara.png" /></p>
+<p>what’s available here?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@8b0922e50660:~$ ls -l 
+total 24
+-rwxr-xr-x 1 snowball2 snowball2 16688 Nov 24 15:51 the_critical_elf_app
+drwxr-xr-x 1 root      root       4096 Dec  2 14:25 yara_rules
+</pre></div>
+</div>
+<p>and there are the configuration file for YARA in <code class="docutils literal notranslate"><span class="pre">yara_rule/rules.yar</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@8b0922e50660:~$ ls -l yara_rules/ 
+total 4000
+-rwxr-xr-x 1 root root 4094217 Nov 23 15:48 rules.yar
+</pre></div>
+</div>
+<div class="section" id="mantra">
+<h2>Mantra<a class="headerlink" href="#mantra" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-remember admonition">
+<p class="admonition-title">Remember!</p>
+<p>“anytime you see URL as an input, test for SSRF” Dr. Petabyte in SSFR challenge 10<br/>
+“always run the strings command on a binary first!” is the 2nd mantra to remember for binary files!</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@14f0cb20a8a0:~$ strings &quot;the_critical_elf_app&quot; 
+candycane
+naughty string
+This is critical for the execution of this program!!
+HolidayHackChallenge{NotReallyAFlag}
+dastardly string
+:*3$&quot;
+candy_grabber
+jack_frost_function
+this_is_one_merry_vari
+....... (cutted)
+</pre></div>
+</div>
+<p>the strings command shows what string are readable in an binary file. It could be a really useful tool in many cases.</p>
+<p>Ok, it seems we have gathered some infos so let’s run the app and see what happen</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@98fa20601b54:~$ ./the_critical_elf_app 
+yara_rule_135 ./the_critical_elf_app
+</pre></div>
+</div>
+<p>it seems rule_135 have some bad matching in file <code class="docutils literal notranslate"><span class="pre">yara_rules/rules.yar</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rule yara_rule_135 {
+   meta:
+      description = &quot;binaries - file Sugar_in_the_machinery&quot;
+      author = &quot;Sparkle Redberry&quot;
+      reference = &quot;North Pole Malware Research Lab&quot;
+      date = &quot;1955-04-21&quot;
+      hash = &quot;19ecaadb2159b566c39c999b0f860b4d8fc2824eb648e275f57a6dbceaf9b488&quot;
+   strings:
+      $s = &quot;candycane&quot;
+   condition:
+      $s
+}
+</pre></div>
+</div>
+<p>oh …. actually our executable <strong>has a string “candycane”</strong> inside the executable!<br />
+Yara is complaining for this one.
+We cannot modify YARA configuration file because we are not root but we can do something in the binary file of our app</p>
+</div>
+<div class="section" id="vi-as-hex-editor">
+<h2>Vi as Hex editor<a class="headerlink" href="#vi-as-hex-editor" title="Permalink to this headline">¶</a></h2>
+<p>we can use vi with the switch -b (open file in binary mode) and then we could use xxd to edit some bytes directly in there.</p>
+<p>Open vi in binary mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@edcb119ed5b5:~$ vi -b the_critical_elf_app
+</pre></div>
+</div>
+<p>inside the vi editor screen type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:%!xxd ( convert the file to more readable format .. hexdec )
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Be careful to write in the left-hand side of the display, that is in the hex directly because changes in the right part, the readable one, are ignored !!!</p>
+</div>
+<p><img alt="YaraViHex" src="_images/yara-vi-hex.png" /></p>
+<p>we postion our cursor on row 00002000 and change the far right byte: 41 (‘a’) in: 61(‘A’)
+in this way our string is <strong>candycAne</strong> and YARA doesn’t complaint anymore …. (about it).</p>
+<p>save end exit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ESC
+:%!xxd -r 
+:wq
+</pre></div>
+</div>
+<p>we can verify if we really have changed the string, by using the <code class="docutils literal notranslate"><span class="pre">strings</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@b12dde445fbc:~$ strings the_critical_elf_app | grep candy
+candycAne
+candy_grabber
+(cutted)
+</pre></div>
+</div>
+<p>Relaunch .. and bang again !</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@edcb119ed5b5:~$ ./the_critical_elf_app 
+yara_rule_1056 ./the_critical_elf_app
+</pre></div>
+</div>
+<p>Let’s see the new condition ..</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rule yara_rule_1056 {
+   meta:
+        description = &quot;binaries - file frosty.exe&quot;
+        author = &quot;Sparkle Redberry&quot;
+        reference = &quot;North Pole Malware Research Lab&quot;
+        date = &quot;1955-04-21&quot;
+        hash = &quot;b9b95f671e3d54318b3fd4db1ba3b813325fcef462070da163193d7acb5fcd03&quot;
+    strings:
+        $s1 = {6c 6962 632e 736f 2e36}     //it’s =  libc.so.6
+        $hs2 = {726f 6772 616d 2121}       //it’s =  rogram!!
+    condition:
+        all of them
+}
+</pre></div>
+</div>
+<p>we have both strings but it is sufficient to change only of them and for sure we do not touch the link to libc.so !!!!!
+So we repeat the previous steps an we change just the string <strong>rogram!!</strong> to <strong>rogrAm!!</strong> as seen before
+just edit line 00002050 changing just 1 byte from ‘41’ to ‘61’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>00002050: 6973 2070 726f 6772 416d 2021 0000 0000  is program!!....
+in
+00002050: 6973 2070 726f 6772 616d 2021 0000 0000  is progrAm!!....
+</pre></div>
+</div>
+<p>Relaunch .. and bang again !</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@edcb119ed5b5:~$ ./the_critical_elf_app 
+yara_rule_1732 ./the_critical_elf_app
+</pre></div>
+</div>
+</div>
+<div class="section" id="change-file-size">
+<h2>Change file size<a class="headerlink" href="#change-file-size" title="Permalink to this headline">¶</a></h2>
+<p>this time seems more serious stuff</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rule yara_rule_1732 {
+   meta:
+      description = &quot;binaries - alwayz_winter.exe&quot;
+      author = &quot;Santa&quot;
+      reference = &quot;North Pole Malware Research Lab&quot;
+      date = &quot;1955-04-22&quot;
+      hash = &quot;c1e31a539898aab18f483d9e7b3c698ea45799e78bddc919a7dbebb1b40193a8&quot;
+   strings:
+      $s1 = &quot;This is critical for the execution of this program!!&quot; fullword ascii
+      $s2 = &quot;__frame_dummy_init_array_entry&quot; fullword ascii
+      $s3 = &quot;.note.gnu.property&quot; fullword ascii
+      $s4 = &quot;.eh_frame_hdr&quot; fullword ascii
+      $s5 = &quot;__FRAME_END__&quot; fullword ascii
+      $s6 = &quot;__GNU_EH_FRAME_HDR&quot; fullword ascii
+      $s7 = &quot;frame_dummy&quot; fullword ascii
+      $s8 = &quot;.note.gnu.build-id&quot; fullword ascii
+      $s9 = &quot;completed.8060&quot; fullword ascii
+      $s10 = &quot;_IO_stdin_used&quot; fullword ascii
+      $s11 = &quot;.note.ABI-tag&quot; fullword ascii
+      $s12 = &quot;naughty string&quot; fullword ascii
+      $s13 = &quot;dastardly string&quot; fullword ascii
+      $s14 = &quot;__do_global_dtors_aux_fini_array_entry&quot; fullword ascii
+      $s15 = &quot;__libc_start_main@@GLIBC_2.2.5&quot; fullword ascii
+      $s16 = &quot;GLIBC_2.2.5&quot; fullword ascii
+      $s17 = &quot;its_a_holly_jolly_variable&quot; fullword ascii
+      $s18 = &quot;__cxa_finalize&quot; fullword ascii
+      $s19 = &quot;HolidayHackChallenge{NotReallyAFlag}&quot; fullword ascii
+      $s20 = &quot;__libc_csu_init&quot; fullword ascii
+   condition:
+      uint32(1) == 0x02464c45 and filesize &lt; 50KB and
+      10 of them
+}
+</pre></div>
+</div>
+<p>There are 3 conditions in a logic AND so is it sufficient that only one of them returns false to escape the check.
+Let’s review the three conditions:</p>
+<ol class="simple">
+<li><p>Checks the header of the file for ELF extension (0x02464c45). ELF is an acronym for Executable and Linkable Format, is a common standard file extension used for executable,
+object code, core dumps and shared libraries
+<br/><strong>NO</strong> (we can’t do anything here)</p></li>
+<li><p>Filesize<br/> <strong>YES</strong> (we can do something here)</p></li>
+<li><p>String modified <br/><strong>NO</strong> (avoid this crazy way)</p></li>
+</ol>
+<p>we can use the <code class="docutils literal notranslate"><span class="pre">truncate</span></code> command to change the size of a file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@7e2bf07f6a1f:~$ truncate -s +50K the_critical_elf_app 
+</pre></div>
+</div>
+<p>and finally</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@7e2bf07f6a1f:~$ ./the_critical_elf_app 
+Machine Running.. 
+Toy Levels: Very Merry, Terry
+Naughty/Nice Blockchain Assessment: Untampered
+Candy Sweetness Gauge: Exceedingly Sugarlicious
+Elf Jolliness Quotient: 4a6f6c6c7920456e6f7567682c204f76657274696d6520417070726f766564
+</pre></div>
+</div>
+<p>Done!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="objective9.html" title="previous page">9. Splunk!</a>
+    <a class='right-next' id="next-link" href="challenge9.html" title="next page">Splunk</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani & Max<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

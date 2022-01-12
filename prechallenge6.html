@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Holiday Hero &#8212; SANS Xmas Challenge 2021</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assembly x86" href="challenge6.html" />
+    <link rel="prev" title="6. Shellcode Primer" href="objective6.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">SANS Xmas Challenge 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Christmas Challenge 2021 Report
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="objective1.html">
+   1. The Beginning
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective2.html">
+   2. Caramel Santaigo
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge2.html">
+     Exif Metadata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge2.html">
+     Track the Elf!
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective3.html">
+   3. Thaw Frost Tower’s Entrance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge3.html">
+     Grepping for Gold
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge3.html">
+     WiFi &amp; Door Defrost
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective4.html">
+   4. Slot Machine Investigation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge4.html">
+     Logic Munchers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge4.html">
+     Slot Machine Hijack
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective5.html">
+   5. Strange USB Device
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge5.html">
+     IPv6 Sandbox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge5.html">
+     Rubber Ducky
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="objective6.html">
+   6. Shellcode Primer
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Holiday Hero
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge6.html">
+     Assembly x86
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective7.html">
+   7. Printer Exploitation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge7.html">
+     Printer Exploitation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective8.html">
+   8. Kerberoasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge8.html">
+     HoHo… No (Fail2Ban)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge8.html">
+     Windows AD Exploit
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective9.html">
+   9. Splunk!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge9.html">
+     YARA Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge9.html">
+     Splunk
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective10.html">
+   10. Now Hiring!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge10.html">
+     IMDS Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge10.html">
+     Frost Tower Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective11.html">
+   11. Customer Complaint Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge11.html">
+     Strace Ltrace Retrace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge11.html">
+     Wireshark
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective12.html">
+   12. Frost Tower Website Checkup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge12.html">
+     Python Game
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge12.html">
+     SQL Injection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective13.html">
+   13. FPGA Programming
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge13.html">
+     FPGA Programming - Prechallenge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge13.html">
+     FPGA Programming - Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/prechallenge6.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-first-parameter">
+   The First Parameter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-second-parameter">
+   The Second Parameter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-hand-using-the-tools-available-in-the-browser">
+     1. By hand using the Tools available in the Browser
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#automatically-by-using-burp-suite">
+     2. Automatically by using Burp Suite
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="holiday-hero">
+<span id="prech6"></span><h1>Holiday Hero<a class="headerlink" href="#holiday-hero" title="Permalink to this headline">¶</a></h1>
+<p>Location: (Netwar)</p>
+<p>Chimeny Scissor challenged us in playing with the Holiday Hero terminal. <br/>
+He said that playing with that we could full up Santa’s sleigh!<br />
+True or not, we accepted the challenge of course and it turned out it was a game to play with 2 players and getting you
+crazy in coordinating in order to win it.
+<br/><br/>
+Ooook, .. no worry, time to find the way for bypassing the 2 players requirement. <br>
+Chimeny suggested that it was possible to play in single mode just by changing 2 parameters, client-side parameters, this means
+that we have all it was needed inside our browser :). <br>
+<br>
+Chimney added that one of the 2 is sent to the server. <br>
+<br/>
+The challenge is located at: <a class="reference external" href="https://hero.kringlecastle.com">https://hero.kringlecastle.com</a>.
+In order to study the logic of the game, we choose to play directly on the server. <br>
+Actually, the game is served by the “hero” server and just embedded inside the page of 2021.kringelcon.com by using a
+simple HTML iframe.
+This will arise some weird behaviour lately, but let’s see the logic of the game.
+<br/>
+<br/></p>
+<div class="section" id="the-first-parameter">
+<h2>The First Parameter<a class="headerlink" href="#the-first-parameter" title="Permalink to this headline">¶</a></h2>
+<p>Reading at the HTTP Requests and Responses sent from our browser and the server, we saw a particular endpoint</p>
+<div class="highlight-Http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/discoverc?roomid=c_5682048266</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">2</span>
+
+HTTP/2 200 OK
+Server: nginx/1.21.4
+Date: Sun, 19 Dec 2021 02:34:45 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 23
+Set-Cookie: HOHOHO=%7B%22single_player%22%3Afalse%7D; Path=/; Max-Age=2592000; Secure; SameSite=None
+Via: 1.1 google
+Alt-Svc: clear
+
+{&quot;is_valid_room&quot;:false}
+</pre></div>
+</div>
+<br/>
+<p>This endpoint is called when you create the room to play (in which to invite the second player). <br>
+Of course first thing to do is to set the value to “true” and see what happen in the game.</p>
+<p>We are interested at the value of the HOHOHO Cookie.
+You can change it directly in your Browser looking in the “Inspect” Panel and searching for Storage -&gt; Cookie. <br>
+Apparently … nothing happens but let’s keep it and notice that this should be the parameter Chimeny Scissor talked about saying that there were rumors about 2 parameters, 1 of them sent to the server. <br>
+Browser to work with session … send and receive Cookie at every requests they do.
+<br/></p>
+<p><img alt="before the script change" src="_images/sleigh-before.png" /></p>
+<br />
+<br/>
+Let's look for second parameter !
+</div>
+<div class="section" id="the-second-parameter">
+<h2>The Second Parameter<a class="headerlink" href="#the-second-parameter" title="Permalink to this headline">¶</a></h2>
+<p>Diving into the javascript files, needed to play the game in the broswer, we found another curious variable: “single_player_mode” in
+<br/></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="s1">&#39;https://hero.kringlecastle.com/assets/js/holidayhero.min.js&#39;</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;User-Agent: Your Kringle Fan :)&#39;</span> 
+</pre></div>
+</div>
+<br/>
+Just by changing its value in the console view of the Inspect Panel  will raise the single player mode (to note: we're playing in https://hero.kringlecastle.com). 
+<br/>
+yes .. ok .. BUT we have to play inside the iframe located in 2021.kringlecon.com to have the challenge completed and get other hints under our user session
+and it turned out that doing the same easy trick in the javascript console .. nothing happen!!
+<br/>Do you remember that we are playing inside an iframe? This means that we are isolated from the main window and the javascript console. 
+<br/><br />
+So, we have just two way to change it: <br/> 
+<div class="section" id="by-hand-using-the-tools-available-in-the-browser">
+<h3>1. By hand using the Tools available in the Browser<a class="headerlink" href="#by-hand-using-the-tools-available-in-the-browser" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Every web browser differs a little from the others. <br>
+We had no issues at all completing this challenge via browser using <strong>Chrome</strong>, while we couldn’t find a way to do the same thing with <strong>Firefox</strong>. <br></p>
+</div>
+<p>As I said, with the browser’s built-in console we can edit the <code class="docutils literal notranslate"><span class="pre">single_player_mode</span></code> variable. <br>
+Press F12 to enter dev tools. Then go to <strong>Console</strong> section. <br> <br>
+<strong>Since we are playing in a frame inside KringleCon website, we <ins>have to change to target of the console</ins>. Select <em>hero.kringlecastle.com</em></strong>.</p>
+<p><img alt="chromedev" src="_images/prech6_chromedev.png" /></p>
+<p>Now go to the bottom input field, and write:</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nx">single_player_mode</span> <span class="o">=</span> <span class="kc">true</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">single_player_mode</span></code> variable is now set to true.</p>
+<br/>
+</div>
+<div class="section" id="automatically-by-using-burp-suite">
+<h3>2. Automatically by using Burp Suite<a class="headerlink" href="#automatically-by-using-burp-suite" title="Permalink to this headline">¶</a></h3>
+<p>we can do all it needs automatically by using an interceptor HTTP Proxy that modifies the script on the fly injecting the correct value.</p>
+<p>Easy enough isn’t it? … yep, but we have a constraint here: <br/>
+because just by setting <code class="docutils literal notranslate"><span class="pre">single_player_mode=!1</span> <span class="pre">(bool:false)</span></code>  ⇒ <code class="docutils literal notranslate"><span class="pre">single_player_mode=!0</span> <span class="pre">(bool:</span> <span class="pre">true)</span></code><br />
+will raise an error in console log because the script, while loading, needs single_player_mode=false in order to correctly initialize the game and all its vars.<br/>
+<br/>
+We have to find the correct place where to inject what we want to obtain.
+<br />
+By analyzing the file js it appears a function that evaluates if it’s required to enable the single player mode (and that’s just what we are looking for).
+(line 77-78 javascript deminified)
+<br /></p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nx">spi</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">single_player_mode</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">spi</span><span class="p">),</span> <span class="nx">player2_label</span><span class="p">.</span><span class="nx">showMessage</span><span class="p">(</span><span class="s2">&quot;P2: COMPUTER (On)&quot;</span><span class="p">),</span> <span class="nx">player2_power_button</span><span class="p">.</span><span class="nx">anims</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span><span class="s2">&quot;power_on&quot;</span><span class="p">),</span> <span class="nx">toastmessage</span><span class="p">.</span><span class="nx">showMessage</span><span class="p">(</span><span class="s2">&quot;Player 2 (COMPUTER) has joined!&quot;</span><span class="p">),</span> <span class="nx">player2_power_button</span><span class="p">.</span><span class="nx">anims</span><span class="p">.</span><span class="nx">pause</span><span class="p">())</span>
+<span class="p">},</span> <span class="mf">100</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>So, we found the constraint just here. <br>
+Actually, that function requires all the game elements fully loaded otherwise it raises an exception and the game will break.
+(note: player2_label and toastmessage are objects with methods and they need to be initialized BEFORE to use them).
+<br/>
+<br/>
+We want to enable single_player_mode in an ASYNC way, that is: after all elements have been initialized in the document.<br />
+Best thing to do is to use the setTimeout function (run only once) after a minimum time frame of 50 seconds to be sure everything has been loaded.</p>
+<p>By using Burp Proxy we can tell it to modify (on the fly) a particular string in the response body to somewhat more useful for us, for example, let’s try:</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nx">spi</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>into:</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;here we go!&quot;</span><span class="p">);</span><span class="nx">single_player_mode</span><span class="o">=!</span><span class="mf">0</span><span class="p">},</span><span class="mf">50000</span><span class="p">);</span><span class="nx">spi</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="after the change" src="_images/sleigh-after.png" />
+<br/>
+<br /></p>
+<p>Done!</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="objective6.html" title="previous page">6. Shellcode Primer</a>
+    <a class='right-next' id="next-link" href="challenge6.html" title="next page">Assembly x86</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani & Max<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

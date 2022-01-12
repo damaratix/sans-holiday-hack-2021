@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track the Elf! &#8212; SANS Xmas Challenge 2021</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Thaw Frost Tower’s Entrance" href="objective3.html" />
+    <link rel="prev" title="Exif Metadata" href="prechallenge2.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">SANS Xmas Challenge 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Christmas Challenge 2021 Report
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="objective1.html">
+   1. The Beginning
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="objective2.html">
+   2. Caramel Santaigo
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge2.html">
+     Exif Metadata
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Track the Elf!
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective3.html">
+   3. Thaw Frost Tower’s Entrance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge3.html">
+     Grepping for Gold
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge3.html">
+     WiFi &amp; Door Defrost
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective4.html">
+   4. Slot Machine Investigation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge4.html">
+     Logic Munchers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge4.html">
+     Slot Machine Hijack
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective5.html">
+   5. Strange USB Device
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge5.html">
+     IPv6 Sandbox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge5.html">
+     Rubber Ducky
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective6.html">
+   6. Shellcode Primer
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge6.html">
+     Holiday Hero
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge6.html">
+     Assembly x86
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective7.html">
+   7. Printer Exploitation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge7.html">
+     Printer Exploitation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective8.html">
+   8. Kerberoasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge8.html">
+     HoHo… No (Fail2Ban)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge8.html">
+     Windows AD Exploit
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective9.html">
+   9. Splunk!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge9.html">
+     YARA Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge9.html">
+     Splunk
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective10.html">
+   10. Now Hiring!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge10.html">
+     IMDS Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge10.html">
+     Frost Tower Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective11.html">
+   11. Customer Complaint Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge11.html">
+     Strace Ltrace Retrace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge11.html">
+     Wireshark
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective12.html">
+   12. Frost Tower Website Checkup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge12.html">
+     Python Game
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge12.html">
+     SQL Injection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective13.html">
+   13. FPGA Programming
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge13.html">
+     FPGA Programming - Prechallenge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge13.html">
+     FPGA Programming - Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/challenge2.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-in-the-world-is-caramel-santaigo">
+   Where in the world is Caramel Santaigo?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-standard-method">
+   The Standard Method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-alternative-method">
+   The… “Alternative” Method!
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="track-the-elf">
+<span id="ch2"></span><h1>Track the Elf!<a class="headerlink" href="#track-the-elf" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="where-in-the-world-is-caramel-santaigo">
+<h2>Where in the world is Caramel Santaigo?<a class="headerlink" href="#where-in-the-world-is-caramel-santaigo" title="Permalink to this headline">¶</a></h2>
+<br>
+To start this challenge go to Santa's Courtyard and speak with Tangle Coalbox. <br> 
+Click on the Cranberry and press the green button "start game". You will see the first location of the game, Santa's Castle.
+<br>
+<br>
+<p><img alt="Image1" src="_images/ch2_1.png" /></p>
+</div>
+<div class="section" id="the-standard-method">
+<h2>The Standard Method<a class="headerlink" href="#the-standard-method" title="Permalink to this headline">¶</a></h2>
+<p>Your objective is to try to follow the elf’s moves and find it. When you find him/her, you will have to guess the name. <br></p>
+<p>During the game you are going to find some hints, which you can insert into the <em>InterRink</em> and receive it’s name in exchange.
+The game is pretty simple, there are 3 options:</p>
+<ol class="simple">
+<li><p>Investigate <br>
+You can use this button to get <strong>3</strong> hints from the game, which contains informations about the elf’s location and/or the elf’s name</p></li>
+<li><p>Visit InterRink <br>
+In this form you can input the information you got about the elf, and it returns the name of the elf who most corrisponds to the description.</p></li>
+<li><p>Depart by Sleigh <br>
+Using this button you can move on to the next stage of the game. It will show you three possibile destinations, and you have to guess which one is the most likely the elf went to.</p></li>
+</ol>
+<p>For example, you could get hints like these:</p>
+<blockquote>
+<div><p>They were excited that their phone was going to work on the 1500 MHz LTE band <br></p>
+</div></blockquote>
+<blockquote>
+<div><p>They were dressed for 6.0°C and partly cloudy conditions. The elf mentioned something about Stack Overflow and
+Rust. <br></p>
+</div></blockquote>
+<blockquote>
+<div><p>They said, if asked, they would describe their next location as “only milder vanilla.”</p>
+</div></blockquote>
+<p>Now that we have these hints, we can work on them. For example, Hint #1 can be solved with a quick search. <br>
+Turns out that <em>LTE 1500MHz</em> is used in Japan. <a class="reference external" href="https://en.wikipedia.org/wiki/LTE_frequency_bands">Wikipedia Link</a><br>
+<br>
+And this is enough for the location. If we click on Depart by sleigh, these three locations are available:</p>
+<ul class="simple">
+<li><p>Tokyo, Japan</p></li>
+<li><p>Vienna, Austria</p></li>
+<li><p>Montréal, Canada</p></li>
+</ul>
+<p>Well…only Tokyo is in Japan, so that’s the place we were looking for! <br>
+<br>
+And this goes on for a while. There are other types of hints you could receive form the game, like, for example, some geo coordinates. A tool that can help you understand this other types of data is <a class="reference external" href="https://osintframework.com/"><strong>OSINT Framework</strong></a>.</p>
+<p>In some cases the elf will give you a photo, which contains geolocalization data in the metadatas. We can use <code class="docutils literal notranslate"><span class="pre">exiftool</span></code> to view it.</p>
+<ul class="simple">
+<li><p>If you don’t have it, download end install exiftool. Linux is recommended (<code class="docutils literal notranslate"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">exiftool</span></code>)</p></li>
+<li><p>Download the image of the elf on you computer</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">exiftool</span> <span class="pre">&lt;image</span> <span class="pre">name&gt;</span></code></p></li>
+</ul>
+<p>There you have all the ‘hidden’ data the image contains. In the bottom part you will see some GPS info, which you can use to track the elf.</p>
+<br>
+<p>Mh? This sounds a bit too long and <em>not suitable for an hacking challenge</em>? Well, in this case, let’s welcome</p>
+</div>
+<div class="section" id="the-alternative-method">
+<h2>The… “Alternative” Method!<a class="headerlink" href="#the-alternative-method" title="Permalink to this headline">¶</a></h2>
+<br>
+<p>Let’s play a bit with the web browser and see if we can find where the game stores the session/savegame.</p>
+<ol class="simple">
+<li><p>Open <strong>Developer Tools</strong> by pressing <strong>F12</strong> or with <strong>Right click -&gt; Inspect Element</strong></p></li>
+<li><p>Move to <strong>Storage</strong> tab.</p></li>
+<li><p>Expand <strong>Cookies</strong> and see what’s in there.</p></li>
+</ol>
+<p>We have an entry for <em>caramel.kringlecastle.com</em>, which is the domain where this game is hosted from.
+By clicking on it you will find a cookie named <strong>“Cookiepella”</strong>, and it’s corrisponding value is a strange long string..Mh.</p>
+<br>
+If you completed the Pre-challenge Cranberry you will se an hint in your badge:
+<br> 
+<blockquote>
+<div><p><em>While Flask cookies can’t generally be forged without the secret, they can often be decoded and read.</em> (https://gist.github.com/chriselgee/b9f1861dd9b99a8c1ed30066b25ff80b)</p>
+</div></blockquote>
+<p>In Chris Elgee’s short guide he manages to decode a string very similar to the one we found in the cookie.
+Let’s follow his procedure. You can use pyhton3 commands if you have access to a python installation, or <a class="reference external" href="https://gchq.github.io/CyberChef/">CyberChef</a>. <br>
+For CyberChef follow these steps:</p>
+<ol class="simple">
+<li><p>Enter the cookie in the input field</p></li>
+<li><p>Apply <code class="docutils literal notranslate"><span class="pre">From</span> <span class="pre">Base64</span></code> with alphabet <code class="docutils literal notranslate"><span class="pre">URL</span> <span class="pre">Safe</span></code></p></li>
+<li><p>Apply <code class="docutils literal notranslate"><span class="pre">Zlib</span> <span class="pre">inflate</span></code> and click bake.</p></li>
+</ol>
+<p>You will now see in the output field our decoded cookie, which contains all the data we need to cheat :) <br>
+<em>(this is an example, yours will be different!)</em></p>
+<blockquote>
+<div><p>{“elf”:”*<mark>Jingle Ringford</mark>”,”elfHints”:[“The elf mentioned something about Stack Overflow and Golang.”,”The elf got really heated about using spaces for indents.”,”They kept checking their Snapchat app.”,”Oh, I noticed they had a Star Wars themed phone case.”,”hard”],”location”:”Santa’s Castle”,”options”:[[“Reykjav\u00edk, Iceland”,”Copenhagen, Denmark”,”Prague, Czech Republic”],[“Prague, Czech Republic”,”Reykjav\u00edk, Iceland”,”Antwerp, Belgium”],[“Prague, Czech Republic”,”New York, USA”,”Antwerp, Belgium”],[“Placeholder”,”London, England”,”Montr\u00e9al, Canada”]],”randomSeed”:657,”route”:[<mark>”Reykjav\u00edk, Iceland”,”Antwerp, Belgium”,”New York, USA”,”Placeholder”</mark>],”victoryToken”:”{ hash:”9ba6eca18fbb1cb3177f99dbb9f0051607fac4e71f3171cfffa7e7e70caa25dd”, resourceId: “dcc818d4-30b5-4978-ab01-f76a986465e4”}”}</p>
+</div></blockquote>
+<p>And there you go, you have all the information you need to complete the game.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="prechallenge2.html" title="previous page">Exif Metadata</a>
+    <a class='right-next' id="next-link" href="objective3.html" title="next page">3. Thaw Frost Tower’s Entrance</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani & Max<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

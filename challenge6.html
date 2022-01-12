@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assembly x86 &#8212; SANS Xmas Challenge 2021</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Printer Exploitation" href="objective7.html" />
+    <link rel="prev" title="Holiday Hero" href="prechallenge6.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">SANS Xmas Challenge 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Christmas Challenge 2021 Report
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="objective1.html">
+   1. The Beginning
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective2.html">
+   2. Caramel Santaigo
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge2.html">
+     Exif Metadata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge2.html">
+     Track the Elf!
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective3.html">
+   3. Thaw Frost Tower’s Entrance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge3.html">
+     Grepping for Gold
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge3.html">
+     WiFi &amp; Door Defrost
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective4.html">
+   4. Slot Machine Investigation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge4.html">
+     Logic Munchers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge4.html">
+     Slot Machine Hijack
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective5.html">
+   5. Strange USB Device
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge5.html">
+     IPv6 Sandbox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge5.html">
+     Rubber Ducky
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="objective6.html">
+   6. Shellcode Primer
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge6.html">
+     Holiday Hero
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Assembly x86
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective7.html">
+   7. Printer Exploitation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge7.html">
+     Printer Exploitation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective8.html">
+   8. Kerberoasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge8.html">
+     HoHo… No (Fail2Ban)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge8.html">
+     Windows AD Exploit
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective9.html">
+   9. Splunk!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge9.html">
+     YARA Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge9.html">
+     Splunk
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective10.html">
+   10. Now Hiring!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge10.html">
+     IMDS Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge10.html">
+     Frost Tower Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective11.html">
+   11. Customer Complaint Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge11.html">
+     Strace Ltrace Retrace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge11.html">
+     Wireshark
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective12.html">
+   12. Frost Tower Website Checkup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge12.html">
+     Python Game
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge12.html">
+     SQL Injection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective13.html">
+   13. FPGA Programming
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge13.html">
+     FPGA Programming - Prechallenge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge13.html">
+     FPGA Programming - Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/challenge6.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-1-introduction">
+   Level 1 - Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-2-loops">
+   Level 2 - Loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-3-the-actual-start">
+   Level 3 - The Actual Start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-4-return-a-value">
+   Level 4 - Return a Value
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-5-syscalls">
+   Level 5 - Syscalls
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-6-crash-on-puropse">
+   Level 6 - Crash on Puropse
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-7-get-rip">
+   Level 7 - Get RIP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-8-hello-world">
+   Level 8 - Hello World
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-9-bigger-hello-world">
+   Level 9 - Bigger Hello World
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-10-open-a-file">
+   Level 10 - Open a File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-11-a-full-program">
+   Level 11 - A Full Program
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="assembly-x86">
+<span id="ch6"></span><h1>Assembly x86<a class="headerlink" href="#assembly-x86" title="Permalink to this headline">¶</a></h1>
+<p>You can access this game at <a class="reference external" href="https://tracer.kringlecastle.com/">https://tracer.kringlecastle.com/</a>. <br>
+The first thing you are going to see is an introduction page. After having read it, we can proceed to Level 1. Just so you know, there are 11 levels.
+<br>
+<br>
+The debugger is <ins>really</ins> useful to understand the code in this case, so please use it!</p>
+<div class="section" id="level-1-introduction">
+<h2>Level 1 - Introduction<a class="headerlink" href="#level-1-introduction" title="Permalink to this headline">¶</a></h2>
+<p>This level is actually already completed. It is here so we can understand the basics of <code class="docutils literal notranslate"><span class="pre">Assembly</span> <span class="pre">x86</span></code></p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">mov</span> <span class="pre">RegisterName,</span> <span class="pre">Value</span></code> to set a value into a register. Registers have specific names that we will see in the next levels. <a class="reference internal" href="#ch6-lvl4"><span class="std std-ref">(Level 4)</span></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">push</span> <span class="pre">Value</span></code> to send a value at the top of the stack. <br>
+Use <code class="docutils literal notranslate"><span class="pre">pop</span> <span class="pre">RegisterName</span></code> to set the register to the value at the top of the stack. <br>
+<br>
+You can see the contents of the stack for each instruction in the <strong>debugger</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">rax</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">push</span> <span class="mi">10</span>
+<span class="n">pop</span> <span class="n">rax</span> <span class="p">;</span> <span class="n">rax</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">ret</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-2-loops">
+<h2>Level 2 - Loops<a class="headerlink" href="#level-2-loops" title="Permalink to this headline">¶</a></h2>
+<p>This level is again already completed. It introduces <code class="docutils literal notranslate"><span class="pre">loops</span></code>. <br>
+It is already pretty well-described, so we’ll pass over.</p>
+</div>
+<div class="section" id="level-3-the-actual-start">
+<h2>Level 3 - The Actual Start<a class="headerlink" href="#level-3-the-actual-start" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have seen some examples, it’s time to write a <strike>few lines</strike> line of code.
+We have to <code class="docutils literal notranslate"><span class="pre">ret</span></code>urn</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span>
+</pre></div>
+</div>
+<p>That’s it!</p>
+</div>
+<div class="section" id="level-4-return-a-value">
+<span id="ch6-lvl4"></span><h2>Level 4 - Return a Value<a class="headerlink" href="#level-4-return-a-value" title="Permalink to this headline">¶</a></h2>
+<p>We have to return a value (<code class="docutils literal notranslate"><span class="pre">1337</span></code>). <br>
+To do that, we set <code class="docutils literal notranslate"><span class="pre">rax</span></code> to <code class="docutils literal notranslate"><span class="pre">1337</span></code>. Usually, <code class="docutils literal notranslate"><span class="pre">ret</span></code> will return the value contained in <code class="docutils literal notranslate"><span class="pre">rax</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">1337</span>
+<span class="n">ret</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-5-syscalls">
+<h2>Level 5 - Syscalls<a class="headerlink" href="#level-5-syscalls" title="Permalink to this headline">¶</a></h2>
+<p>This time we have to perform a syscall to end this process. The exit code for <code class="docutils literal notranslate"><span class="pre">sys_exit</span></code> is 99, so we have to set <code class="docutils literal notranslate"><span class="pre">rdi</span></code> to <code class="docutils literal notranslate"><span class="pre">99</span></code>, like the <a class="reference external" href="https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/"><strong>Table</strong></a> says.</p>
+<p><img alt="Syscall99" src="_images/ch6_syscall_60.png" /></p>
+<ul class="simple">
+<li><p><strong>rax</strong> = 60 (sys_call number)</p></li>
+<li><p><strong>rdi</strong> = 99 (Given by exercise; we can specify the error code it outputs).</p></li>
+</ul>
+<p>Here you go.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">60</span> <span class="p">;</span> <span class="nb">set</span> <span class="n">rax</span> <span class="n">to</span> <span class="mi">60</span>
+<span class="n">mov</span> <span class="n">rdi</span><span class="p">,</span> <span class="mi">99</span> <span class="p">;</span> <span class="nb">set</span> <span class="n">rdi</span> <span class="n">to</span> <span class="mi">99</span>
+<span class="n">syscall</span> <span class="p">;</span> <span class="n">perform</span> <span class="n">the</span> <span class="n">syscall</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-6-crash-on-puropse">
+<h2>Level 6 - Crash on Puropse<a class="headerlink" href="#level-6-crash-on-puropse" title="Permalink to this headline">¶</a></h2>
+<p>Here we learn how to make the program crash. Well…who knows? It might be useful somehow.</p>
+</div>
+<div class="section" id="level-7-get-rip">
+<h2>Level 7 - Get RIP<a class="headerlink" href="#level-7-get-rip" title="Permalink to this headline">¶</a></h2>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">call</span></code> function to skip certain parts of code, and the return address of the memory cell is stored on top of the stack. it can then be used to access certain values that can’t normally be reached.</p>
+<p>This is the solution.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="n">Remember</span><span class="p">,</span> <span class="n">this</span> <span class="n">call</span> <span class="n">pushes</span> <span class="n">the</span> <span class="k">return</span> <span class="n">address</span> <span class="n">to</span> <span class="n">the</span> <span class="n">stack</span>
+<span class="n">call</span> <span class="n">place_below_the_nop</span>
+
+<span class="p">;</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">where</span> <span class="n">the</span> <span class="n">function</span> <span class="o">*</span><span class="n">thinks</span><span class="o">*</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">supposed</span> <span class="n">to</span> <span class="k">return</span>
+<span class="n">nop</span>
+
+<span class="p">;</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="s1">&#39;label&#39;</span> <span class="o">-</span> <span class="k">as</span> <span class="n">far</span> <span class="k">as</span> <span class="n">the</span> <span class="n">call</span> <span class="n">knows</span><span class="p">,</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">start</span> <span class="n">of</span> <span class="n">a</span> <span class="n">function</span>
+<span class="n">place_below_the_nop</span><span class="p">:</span>
+
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Pop</span> <span class="n">the</span> <span class="n">top</span> <span class="n">of</span> <span class="n">the</span> <span class="n">stack</span> <span class="n">into</span> <span class="n">rax</span>
+<span class="n">pop</span> <span class="n">rax</span>
+
+<span class="p">;</span> <span class="n">Return</span> <span class="kn">from</span> <span class="nn">our</span> <span class="n">code</span><span class="p">,</span> <span class="k">as</span> <span class="ow">in</span> <span class="n">previous</span> <span class="n">levels</span>
+<span class="n">ret</span>
+</pre></div>
+</div>
+<p>When we <code class="docutils literal notranslate"><span class="pre">call</span> <span class="pre">place_below_the_nop</span></code>, the program skips directly to <code class="docutils literal notranslate"><span class="pre">place_below_the_nop:</span></code>. It skips <code class="docutils literal notranslate"><span class="pre">nop</span></code> and puts the return address at the top of the stack. By using <code class="docutils literal notranslate"><span class="pre">pop</span></code> we can put the address into rax, and return it!</p>
+</div>
+<div class="section" id="level-8-hello-world">
+<h2>Level 8 - Hello World<a class="headerlink" href="#level-8-hello-world" title="Permalink to this headline">¶</a></h2>
+<p>We have to apply what we learned in the previous level.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>; This would be a good place for a call
+call test
+
+db &#39;Hello World&#39;,0
+; This is the literal string &#39;Hello World&#39;, null terminated, as code. Except
+; it&#39;ll crash if it actually tries to run, so we&#39;d better jump over it!
+test:
+
+; This would be a good place for a label and a pop
+pop rax
+
+; This would be a good place for a re... oh wait, it&#39;s already here. Hooray!
+ret
+</pre></div>
+</div>
+<p>We use <code class="docutils literal notranslate"><span class="pre">call</span> <span class="pre">test</span></code> (or whatever name you want!) to skip below <code class="docutils literal notranslate"><span class="pre">db</span> <span class="pre">'Hello</span> <span class="pre">World',0</span></code>, which can’t be executed. When the call happens, the memory address of the string is put at the top of the stack, an by using <code class="docutils literal notranslate"><span class="pre">pop</span></code> and setting <code class="docutils literal notranslate"><span class="pre">rax</span></code> to it, we can return the string!</p>
+</div>
+<div class="section" id="level-9-bigger-hello-world">
+<h2>Level 9 - Bigger Hello World<a class="headerlink" href="#level-9-bigger-hello-world" title="Permalink to this headline">¶</a></h2>
+<p>We have to do the same thing we did in the last level, but instead of returning the string, we need to print it in <code class="docutils literal notranslate"><span class="pre">stdout</span></code>, using the syscall <code class="docutils literal notranslate"><span class="pre">sys_write</span></code>. Let’s see it in the syscall table.</p>
+<p><img alt="syscall1" src="_images/ch6_syscall_1.png" /></p>
+<ul class="simple">
+<li><p><strong>rax</strong> = 1 (sys_call number)</p></li>
+<li><p><strong>rdi</strong> = 1 (file descriptor number, given to us by the exercise, because <code class="docutils literal notranslate"><span class="pre">stdout</span></code> has file descriptor 1)</p></li>
+<li><p><strong>rsi</strong> = string address, so we have to <code class="docutils literal notranslate"><span class="pre">pop</span> <span class="pre">rsi</span></code></p></li>
+<li><p><strong>rdx</strong> = 16 (string lenght in bytes. Just count the characters!)</p></li>
+</ul>
+<p>Ok, now let’s import that in the code!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Get</span> <span class="n">a</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">this</span> <span class="n">string</span> <span class="n">into</span> <span class="n">the</span> <span class="n">correct</span> <span class="n">register</span>
+<span class="n">call</span> <span class="n">test</span>
+
+<span class="n">db</span> <span class="s1">&#39;Hello World!&#39;</span><span class="p">,</span><span class="mi">0</span>
+
+<span class="n">test</span><span class="p">:</span>
+
+<span class="p">;</span> <span class="n">Set</span> <span class="n">up</span> <span class="n">a</span> <span class="n">call</span> <span class="n">to</span> <span class="n">sys_write</span>
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Set</span> <span class="n">rax</span> <span class="n">to</span> <span class="n">the</span> <span class="n">correct</span> <span class="n">syscall</span> <span class="n">number</span> <span class="k">for</span> <span class="n">sys_write</span>
+<span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">1</span>
+
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Set</span> <span class="n">rdi</span> <span class="n">to</span> <span class="n">the</span> <span class="n">first</span> <span class="n">argument</span> <span class="p">(</span><span class="n">the</span> <span class="n">file</span> <span class="n">descriptor</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mov</span> <span class="n">rdi</span><span class="p">,</span> <span class="mi">1</span>
+
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Set</span> <span class="n">rsi</span> <span class="n">to</span> <span class="n">the</span> <span class="n">second</span> <span class="n">argument</span> <span class="p">(</span><span class="n">buf</span> <span class="o">-</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="s2">&quot;Hello World&quot;</span> <span class="n">string</span><span class="p">)</span>
+<span class="n">pop</span> <span class="n">rsi</span>
+
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Set</span> <span class="n">rdx</span> <span class="n">to</span> <span class="n">the</span> <span class="n">third</span> <span class="n">argument</span> <span class="p">(</span><span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">string</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">bytes</span><span class="p">)</span>
+<span class="n">mov</span> <span class="n">rdx</span><span class="p">,</span> <span class="mi">12</span>
+
+<span class="p">;</span> <span class="n">Perform</span> <span class="n">the</span> <span class="n">syscall</span>
+<span class="n">syscall</span>
+
+<span class="p">;</span> <span class="n">Return</span> <span class="n">cleanly</span>
+<span class="n">ret</span>
+</pre></div>
+</div>
+<p>It works!</p>
+</div>
+<div class="section" id="level-10-open-a-file">
+<h2>Level 10 - Open a File<a class="headerlink" href="#level-10-open-a-file" title="Permalink to this headline">¶</a></h2>
+<p>Here we learn about a new syscall, <code class="docutils literal notranslate"><span class="pre">sys_open</span></code>. Let’s get the table reference to it.</p>
+<p><img alt="syscall2" src="_images/ch6_syscall_2.png" /></p>
+<ul class="simple">
+<li><p><strong>rax</strong> = 2 (sys_call number)</p></li>
+<li><p><strong>rdi</strong> = file address, so we have to <code class="docutils literal notranslate"><span class="pre">pop</span> <span class="pre">rdi</span></code></p></li>
+<li><p><strong>rsi</strong> = 0 (Flags)(Given by exercise)</p></li>
+<li><p><strong>rdx</strong> = 0 (Mode)(Given by exercise)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>; TODO: Get a reference to this string into the correct register
+call skip
+db &#39;/etc/passwd&#39;,0
+skip:
+
+; Set up a call to sys_open
+; TODO: Set rax to the correct syscall number
+mov rax, 2
+
+; TODO: Set rdi to the first argument (the filename)
+pop rdi
+
+; TODO: Set rsi to the second argument (flags - 0 is fine)
+mov rsi, 0
+; TODO: Set rdx to the third argument (mode - 0 is also fine)
+mov rdx, 0 
+
+; Perform the syscall
+syscall
+
+; syscall sets rax to the file handle, so to return the file handle we don&#39;t
+; need to do anything else!
+ret
+</pre></div>
+</div>
+<p>Ok. We have now a handle to the opened file!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Like the comment in the code says, <code class="docutils literal notranslate"><span class="pre">sys_open</span></code> returns the file handle in <code class="docutils literal notranslate"><span class="pre">rax</span></code>. We will need this later!</p>
+</div>
+</div>
+<div class="section" id="level-11-a-full-program">
+<h2>Level 11 - A Full Program<a class="headerlink" href="#level-11-a-full-program" title="Permalink to this headline">¶</a></h2>
+<p>This is the final step, “the grand finale”. We have to assemble what we learned from past levels to <code class="docutils literal notranslate"><span class="pre">open</span></code> a file, <code class="docutils literal notranslate"><span class="pre">read</span></code> it and <code class="docutils literal notranslate"><span class="pre">write</span></code> it’s contents to <code class="docutils literal notranslate"><span class="pre">stdout</span></code>. <br></p>
+<p>Let’s get the <code class="docutils literal notranslate"><span class="pre">sys_read</span></code> entry in the syscall table.</p>
+<p><img alt="syscall0" src="_images/ch6_syscall_0.png" /></p>
+<ul class="simple">
+<li><p><strong>rdi</strong> = file handle (<code class="docutils literal notranslate"><span class="pre">rax</span></code>)</p></li>
+<li><p><strong>rax</strong> = 0 (sys_call number)</p></li>
+<li><p><strong>rsi</strong> = <code class="docutils literal notranslate"><span class="pre">rsp</span></code> (buffer; will be used by <code class="docutils literal notranslate"><span class="pre">sys_write</span></code> to print them)</p></li>
+<li><p><strong>rdx</strong> = 400 (contents lenght; we put a big value to avoid overflows!)</p></li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p><code class="docutils literal notranslate"><span class="pre">sys_read</span></code> must be called only after calling <code class="docutils literal notranslate"><span class="pre">sys_read</span></code>. <code class="docutils literal notranslate"><span class="pre">sys_read</span></code> returns the file handle in <code class="docutils literal notranslate"><span class="pre">rax</span></code>. <br>
+This means <strong>we have to set rdi to rax <ins>before</ins> setting rax to 0!</strong> <br>
+<br>
+<strong>Remember:</strong> you can’t read a file if you haven’t opened it :)</p>
+</div>
+<p>And now it’s time to setup <code class="docutils literal notranslate"><span class="pre">sys_write</span></code>, to print our flag</p>
+<ul class="simple">
+<li><p><strong>rax</strong> = 1 (sys_call number)</p></li>
+<li><p><strong>rdi</strong> = 1 (file descriptor, <code class="docutils literal notranslate"><span class="pre">stdout</span></code>)</p></li>
+<li><p><strong>rsi</strong> = <code class="docutils literal notranslate"><span class="pre">rsp</span></code> (where the call reads from. It is avoidable since <code class="docutils literal notranslate"><span class="pre">rsi</span></code> is already equal to <code class="docutils literal notranslate"><span class="pre">rsp</span></code>)</p></li>
+<li><p><strong>rdx</strong> = 400 (buffer; we still put a big number to avoid overflows)</p></li>
+</ul>
+<p>And then the last syscall, <code class="docutils literal notranslate"><span class="pre">sys_exit</span></code></p>
+<ul class="simple">
+<li><p><strong>rax</strong> = 60 (sys_call number)</p></li>
+<li><p><strong>rsi</strong> = 0 (error code; no specific value necessary, but since there are no errors, we shout put that equal to <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
+</ul>
+<p>We can now bake all of our syscalls in the final code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Get</span> <span class="n">a</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">this</span>
+<span class="n">call</span> <span class="n">skip</span>
+
+<span class="n">db</span> <span class="s1">&#39;/var/northpolesecrets.txt&#39;</span><span class="p">,</span><span class="mi">0</span>
+
+<span class="n">skip</span><span class="p">:</span>
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Call</span> <span class="n">sys_open</span>
+<span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="n">pop</span> <span class="n">rdi</span>
+
+<span class="n">mov</span> <span class="n">rsi</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="n">mov</span> <span class="n">rdx</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="n">syscall</span>
+
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Call</span> <span class="n">sys_read</span> <span class="n">on</span> <span class="n">the</span> <span class="n">file</span> <span class="n">handle</span> <span class="ow">and</span> <span class="n">read</span> <span class="n">it</span> <span class="n">into</span> <span class="n">rsp</span>
+<span class="n">mov</span> <span class="n">rdi</span><span class="p">,</span> <span class="n">rax</span>
+
+<span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="n">mov</span> <span class="n">rsi</span><span class="p">,</span> <span class="n">rsp</span>
+
+<span class="n">mov</span> <span class="n">rdx</span><span class="p">,</span> <span class="mi">400</span>
+
+<span class="n">syscall</span>
+
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Call</span> <span class="n">sys_write</span> <span class="n">to</span> <span class="n">write</span> <span class="n">the</span> <span class="n">contents</span> <span class="kn">from</span> <span class="nn">rsp</span> <span class="n">to</span> <span class="n">stdout</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">1</span>
+
+<span class="n">mov</span> <span class="n">rdi</span><span class="p">,</span> <span class="mi">1</span>
+
+<span class="p">;</span><span class="n">mov</span> <span class="n">rsi</span><span class="p">,</span> <span class="n">rsp</span> <span class="p">;</span> <span class="n">avoidable</span>
+
+<span class="n">mov</span> <span class="n">rdx</span><span class="p">,</span> <span class="mi">400</span>
+
+<span class="n">syscall</span>
+
+<span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Call</span> <span class="n">sys_exit</span>
+<span class="n">mov</span> <span class="n">rax</span><span class="p">,</span> <span class="mi">60</span>
+
+<span class="n">mov</span> <span class="n">rsi</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="n">syscall</span>
+</pre></div>
+</div>
+<p>And if we execute and open the debug window, in the upper-left corner we see the standard output:</p>
+<blockquote>
+<div><p><em>Secret to KringleCon success: all of our speakers and organizers, providing the gift of cyber security knowledge, free to the community</em>.</p>
+</div></blockquote>
+<p>so… the magical phrase is <strong>cyber security knowledge</strong>. <br>
+<br>
+That’s all. Thank you for reading!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="prechallenge6.html" title="previous page">Holiday Hero</a>
+    <a class='right-next' id="next-link" href="objective7.html" title="next page">7. Printer Exploitation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani & Max<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,736 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMDS Exploration &#8212; SANS Xmas Challenge 2021</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frost Tower Challenge" href="challenge10.html" />
+    <link rel="prev" title="10. Now Hiring!" href="objective10.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">SANS Xmas Challenge 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Christmas Challenge 2021 Report
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="objective1.html">
+   1. The Beginning
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective2.html">
+   2. Caramel Santaigo
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge2.html">
+     Exif Metadata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge2.html">
+     Track the Elf!
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective3.html">
+   3. Thaw Frost Tower’s Entrance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge3.html">
+     Grepping for Gold
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge3.html">
+     WiFi &amp; Door Defrost
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective4.html">
+   4. Slot Machine Investigation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge4.html">
+     Logic Munchers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge4.html">
+     Slot Machine Hijack
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective5.html">
+   5. Strange USB Device
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge5.html">
+     IPv6 Sandbox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge5.html">
+     Rubber Ducky
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective6.html">
+   6. Shellcode Primer
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge6.html">
+     Holiday Hero
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge6.html">
+     Assembly x86
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective7.html">
+   7. Printer Exploitation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge7.html">
+     Printer Exploitation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective8.html">
+   8. Kerberoasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge8.html">
+     HoHo… No (Fail2Ban)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge8.html">
+     Windows AD Exploit
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective9.html">
+   9. Splunk!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge9.html">
+     YARA Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge9.html">
+     Splunk
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="objective10.html">
+   10. Now Hiring!
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     IMDS Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge10.html">
+     Frost Tower Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective11.html">
+   11. Customer Complaint Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge11.html">
+     Strace Ltrace Retrace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge11.html">
+     Wireshark
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective12.html">
+   12. Frost Tower Website Checkup
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge12.html">
+     Python Game
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge12.html">
+     SQL Injection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective13.html">
+   13. FPGA Programming
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge13.html">
+     FPGA Programming - Prechallenge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge13.html">
+     FPGA Programming - Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/prechallenge10.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#short-recap">
+   Short recap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imds1">
+   IMDS1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#latest">
+     latest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic">
+     dynamic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#meta-data">
+     meta-data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#meta-data-security-credentials">
+     meta-data security credentials
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imds2">
+   IMDS2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-token">
+     get token
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-token">
+     use token
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="imds-exploration">
+<span id="prech10"></span><h1>IMDS Exploration<a class="headerlink" href="#imds-exploration" title="Permalink to this headline">¶</a></h1>
+<p>Location: Frost Tower  (Door defrosting)</p>
+<p>well … this time we land directly in the “executive restroom” where the name of the Troll doesn’t really seems a joke … !
+Anyway, in order to obtain some further hints for the next SSRF challenge we have to play a little bit with the cranberry
+in this beatiful location.</p>
+<p>Well, …. Ok. It’s the time to learn something about the IMDS
+you can find some useful info at <br/> <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The instance metadata service (IMDS) is an on-instance component that code on the instance uses to securely access instance metadata</p>
+<p>The examples in this section use the IPv4 address of the instance metadata service: 169.254.169.254.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although you can only access instance metadata and user data from within the instance itself, the data is not protected by authentication or cryptographic methods. Anyone who has direct access to the instance, and potentially any software running on the instance, can view its metadata. Therefore, you should not store sensitive data, such as passwords or long-lived encryption keys, as user data.</p>
+</div>
+<p>This cranberry was not a challenge, it was a more didattic exploring the IMDS API to have an idea about we could do in the next challenge.
+We choose to print every instruction because it could be useful as short recap in the future.</p>
+<div class="section" id="short-recap">
+<h2>Short recap<a class="headerlink" href="#short-recap" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://169.254.169.254
+$ curl http://169.254.169.254/latest
+$ curl http://169.254.169.254/latest/dynamic
+$ curl http://169.254.169.254/latest/dynamic/instance-identity/document | jq
+$ curl http://169.254.169.254/latest/meta-data
+$ curl http://169.254.169.254/latest/meta-data/public-hostname ; echo 
+$ curl http://169.254.169.254/latest/meta-data/iam/security-credentials; echo
+$ curl http://169.254.169.254/latest/meta-data/iam/security-credentials/elfu-deploy-role; echo
+$ cat gettoken.sh 
+$ source gettoken.sh 
+$ echo $TOKEN
+$ curl -H &quot;X-aws-ec2-metadata-token: $TOKEN&quot;  http://169.254.169.254/latest/meta-data/placement/region; echo
+</pre></div>
+</div>
+</div>
+<div class="section" id="imds1">
+<h2>IMDS1<a class="headerlink" href="#imds1" title="Permalink to this headline">¶</a></h2>
+<p>1- The Instance Metadata Service (IMDS) is a virtual server for cloud assets at the IP address 169.254.169.254. Send a couple ping packets to the server.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ping -c2 169.254.169.254
+</pre></div>
+</div>
+<p>2- Developers can automate actions using IMDS. We’ll interact with the server using the cURL tool. Run ‘curl http://169.254.169.254’ to access IMDS data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl http://169.254.169.254
+$ latest
+</pre></div>
+</div>
+<div class="section" id="latest">
+<h3>latest<a class="headerlink" href="#latest" title="Permalink to this headline">¶</a></h3>
+<p>3- Different providers will have different formats for IMDS data. We’re using an AWS-Compatible IMDS server that returns ‘latest’ as the default response. Access the ‘latest’ endpoint.
+Run ‘curl http://169.254.169.254/latest’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://169.254.169.254/latest
+dynamic
+meta-data
+</pre></div>
+</div>
+</div>
+<div class="section" id="dynamic">
+<h3>dynamic<a class="headerlink" href="#dynamic" title="Permalink to this headline">¶</a></h3>
+<p>4- IMDS returns two new endpoints: dynamic and meta-data. Let’s start with the dynamic endpoint, which provides information about the instance itself. Repeat the request
+to access the dynamic endpoint: ‘curl http://169.254.169.254/latest/dynamic’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://169.254.169.254/latest/dynamic
+fws/instance-monitoring
+instance-identity/document
+instance-identity/pkcs7
+instance-identity/signature
+</pre></div>
+</div>
+<p>5- The instance identity document can be used by developers to understand the instance details. Repeat the request, this time requesting the instance-identity/document resource:
+‘curl http://169.254.169.254/latest/dynamic/instance-identity/document’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">169.254.169.254</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">instance</span><span class="o">-</span><span class="n">identity</span><span class="o">/</span><span class="n">document</span><span class="p">{</span>
+        <span class="s2">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;PCRVQVHN4S0L4V2TE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;imageId&quot;</span><span class="p">:</span> <span class="s2">&quot;ami-0b69ea66ff7391e80&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;availabilityZone&quot;</span><span class="p">:</span> <span class="s2">&quot;np-north-1f&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ramdiskId&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;kernelId&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;devpayProductCodes&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;marketplaceProductCodes&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-09-30&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;privateIp&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.7.10&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;billingProducts&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;instanceId&quot;</span><span class="p">:</span> <span class="s2">&quot;i-1234567890abcdef0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pendingTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-12-01T07:02:24Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;architecture&quot;</span><span class="p">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;instanceType&quot;</span><span class="p">:</span> <span class="s2">&quot;m4.xlarge&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;np-north-1&quot;</span>
+</pre></div>
+</div>
+<p>6- Much of the data retrieved from IMDS will be returned in JavaScript Object Notation (JSON) format. Piping the output to ‘jq’ will make the content easier to read.
+Re-run the previous command, sending the output to JQ: ‘curl http://169.254.169.254/latest/dynamic/instance-identity/document | jq’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">169.254.169.254</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">instance</span><span class="o">-</span><span class="n">identity</span><span class="o">/</span><span class="n">document</span> <span class="o">|</span> <span class="n">jq</span>
+  <span class="o">%</span> <span class="n">Total</span>    <span class="o">%</span> <span class="n">Received</span> <span class="o">%</span> <span class="n">Xferd</span>  <span class="n">Average</span> <span class="n">Speed</span>   <span class="n">Time</span>    <span class="n">Time</span>     <span class="n">Time</span>  <span class="n">Current</span>
+                                 <span class="n">Dload</span>  <span class="n">Upload</span>   <span class="n">Total</span>   <span class="n">Spent</span>    <span class="n">Left</span>  <span class="n">Speed</span>
+<span class="mi">100</span>   <span class="mi">451</span>  <span class="mi">100</span>   <span class="mi">451</span>    <span class="mi">0</span>     <span class="mi">0</span>   <span class="mi">440</span><span class="n">k</span>      <span class="mi">0</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span>  <span class="mi">440</span><span class="n">k</span>
+<span class="p">{</span>
+  <span class="s2">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;PCRVQVHN4S0L4V2TE&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;imageId&quot;</span><span class="p">:</span> <span class="s2">&quot;ami-0b69ea66ff7391e80&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;availabilityZone&quot;</span><span class="p">:</span> <span class="s2">&quot;np-north-1f&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ramdiskId&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s2">&quot;kernelId&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s2">&quot;devpayProductCodes&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s2">&quot;marketplaceProductCodes&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-09-30&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;privateIp&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.7.10&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;billingProducts&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s2">&quot;instanceId&quot;</span><span class="p">:</span> <span class="s2">&quot;i-1234567890abcdef0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pendingTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-12-01T07:02:24Z&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;architecture&quot;</span><span class="p">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;instanceType&quot;</span><span class="p">:</span> <span class="s2">&quot;m4.xlarge&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;np-north-1&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="meta-data">
+<h3>meta-data<a class="headerlink" href="#meta-data" title="Permalink to this headline">¶</a></h3>
+<p>7- In addition to dynamic parameters set at launch, IMDS offers metadata about the instance as well. Examine the metadata elements available:
+‘curl http://169.254.169.254/latest/meta-data’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://169.254.169.254/latest/meta-data
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/ami
+block-device-mapping/ebs0
+block-device-mapping/ephemeral0
+block-device-mapping/root
+block-device-mapping/swap
+elastic-inference/associations
+elastic-inference/associations/eia-bfa21c7904f64a82a21b9f4540169ce1
+events/maintenance/scheduled
+events/recommendations/rebalance
+hostname
+iam/info
+iam/security-credentials
+iam/security-credentials/elfu-deploy-role
+instance-action
+instance-id
+(cutted here ...)
+</pre></div>
+</div>
+<p>8- By accessing the metadata elements, a developer can interrogate information about the
+system. Take a look at the public-hostname element:
+‘curl http://169.254.169.254/latest/meta-data/public-hostname’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://169.254.169.254/latest/meta-data/public-hostname
+Ec2-192-0-2-54.compute-1.amazonaws.comelfu@68583ae3961f:~$ 
+</pre></div>
+</div>
+<p>9- Many of the data elements returned won’t include a trailing newline, which causes the
+response to blend into the prompt. Re-run the prior command, adding ‘; echo’ to the end of
+the command. This will add a new line character to the response.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://169.254.169.254/latest/meta-data/public-hostname; echo
+ec2-192-0-2-54.compute-1.amazonaws.com
+elfu@68583ae3961f:~$ 
+</pre></div>
+</div>
+</div>
+<div class="section" id="meta-data-security-credentials">
+<h3>meta-data security credentials<a class="headerlink" href="#meta-data-security-credentials" title="Permalink to this headline">¶</a></h3>
+<p>10- There is a whole lot of information that can be retrieved from the IMDS server. Even AWS
+Identity and Access Management (IAM) credentials! Request the endpoint
+‘http://169.254.169.254/latest/meta-data/iam/security-credentials’ to see the instance IAM
+role.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://169.254.169.254/latest/meta-data/iam/security-credentials; echo 
+elfu-deploy-role
+</pre></div>
+</div>
+<p>11- Once you know the role name, you can request the AWS keys associated with the role. Request
+the endpoint ‘http://169.254.169.254/latest/meta-data/iam/security-credentials/elfu-deploy-
+role’ to get the instance AWS keys.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://169.254.169.254/latest/meta-data/iam/security-credentials/elfu-deploy-role; echo
+{
+        &quot;Code&quot;: &quot;Success&quot;,
+        &quot;LastUpdated&quot;: &quot;2021-12-02T18:50:40Z&quot;,
+        &quot;Type&quot;: &quot;AWS-HMAC&quot;,
+        &quot;AccessKeyId&quot;: &quot;AKIA5HMBSK1SYXYTOXX6&quot;,
+        &quot;SecretAccessKey&quot;: &quot;CGgQcSdERePvGgr058r3PObPq3+0CfraKcsLREpX&quot;,
+        &quot;Token&quot;: &quot;NR9Sz/7fzxwIgv7URgHRAckJK0JKbXoNBcy032XeVPqP8/tWiR/KVSdK8FTPfZWbxQ==&quot;,
+        &quot;Expiration&quot;: &quot;2026-12-02T18:50:40Z&quot;
+}
+</pre></div>
+</div>
+<p>12- So far, we’ve been interacting with the IMDS server using IMDSv1, which does not require
+authentication. Optionally, AWS users can turn on IMDSv2 that requires authentication. This
+is more secure, but not on by default.</p>
+</div>
+</div>
+<div class="section" id="imds2">
+<h2>IMDS2<a class="headerlink" href="#imds2" title="Permalink to this headline">¶</a></h2>
+<p>13- For IMDSv2 access, you must request a token from the IMDS server using the
+X-aws-ec2-metadata-token-ttl-seconds header to indicate how long you want the token to be
+used for (between 1 and 21,600 secods).
+Examine the contents of the ‘gettoken.sh’ script in the current directory using ‘cat’.</p>
+<div class="section" id="get-token">
+<h3>get token<a class="headerlink" href="#get-token" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat gettoken.sh 
+TOKEN=`curl -X PUT &quot;http://169.254.169.254/latest/api/token&quot; -H &quot;X-aws-ec2-metadata-token-ttl-seconds: 21600&quot;`
+</pre></div>
+</div>
+<p>14- This script will retrieve a token from the IMDS server and save it in the environment
+variable TOKEN. Import it into your environment by running ‘source gettoken.sh’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source gettoken.sh 
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    44  100    44    0     0  44000      0 --:--:-- --:--:-- --:--:-- 44000
+</pre></div>
+</div>
+<p>15- Now, the IMDS token value is stored in the environment variable TOKEN. Examine the contents
+of the token by running ‘echo $TOKEN’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ echo $TOKEN
+Uv38ByGCZU8WP18PmmIdcpVmx00QA3xNe7sEB9Hixkk=
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-token">
+<h3>use token<a class="headerlink" href="#use-token" title="Permalink to this headline">¶</a></h3>
+<p>16- With the IMDS token, you can make an IMDSv2 request by adding the X-aws-ec2-metadata-token
+header to the curl request. Access the metadata region information in an
+IMDSv2 request: ‘curl -H “X-aws-ec2-metadata-token: $TOKEN” http://169.254.169.254/latest/meta-data/placement/region’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -H &quot;X-aws-ec2-metadata-token: $TOKEN&quot; http://169.254.169.254/latest/meta-data/placement/region; echo 
+np-north-1
+</pre></div>
+</div>
+<p>Done!</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="objective10.html" title="previous page">10. Now Hiring!</a>
+    <a class='right-next' id="next-link" href="challenge10.html" title="next page">Frost Tower Challenge</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani & Max<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

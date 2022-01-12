@@ -1,0 +1,671 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Game &#8212; SANS Xmas Challenge 2021</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SQL Injection" href="challenge12.html" />
+    <link rel="prev" title="12. Frost Tower Website Checkup" href="objective12.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">SANS Xmas Challenge 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Christmas Challenge 2021 Report
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="objective1.html">
+   1. The Beginning
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective2.html">
+   2. Caramel Santaigo
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge2.html">
+     Exif Metadata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge2.html">
+     Track the Elf!
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective3.html">
+   3. Thaw Frost Tower’s Entrance
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge3.html">
+     Grepping for Gold
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge3.html">
+     WiFi &amp; Door Defrost
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective4.html">
+   4. Slot Machine Investigation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge4.html">
+     Logic Munchers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge4.html">
+     Slot Machine Hijack
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective5.html">
+   5. Strange USB Device
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge5.html">
+     IPv6 Sandbox
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge5.html">
+     Rubber Ducky
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective6.html">
+   6. Shellcode Primer
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge6.html">
+     Holiday Hero
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge6.html">
+     Assembly x86
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective7.html">
+   7. Printer Exploitation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge7.html">
+     Printer Exploitation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective8.html">
+   8. Kerberoasting
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge8.html">
+     HoHo… No (Fail2Ban)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge8.html">
+     Windows AD Exploit
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective9.html">
+   9. Splunk!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge9.html">
+     YARA Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge9.html">
+     Splunk
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective10.html">
+   10. Now Hiring!
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge10.html">
+     IMDS Exploration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge10.html">
+     Frost Tower Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective11.html">
+   11. Customer Complaint Analysis
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge11.html">
+     Strace Ltrace Retrace
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge11.html">
+     Wireshark
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="objective12.html">
+   12. Frost Tower Website Checkup
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Python Game
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge12.html">
+     SQL Injection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="objective13.html">
+   13. FPGA Programming
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="prechallenge13.html">
+     FPGA Programming - Prechallenge
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="challenge13.html">
+     FPGA Programming - Challenge
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/prechallenge12.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#levels">
+   Levels
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-0-done">
+     Level 0 - Done!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-1-move">
+     Level 1 - Move!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-2-pathfinding-moving">
+     Level 2 - Pathfinding Moving
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-3-a-danger-for-our-elf">
+     Level 3 - A Danger for our Elf!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-4-different-data-types">
+     Level 4 - Different Data Types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-5-operations">
+     Level 5 - Operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-6-ifs">
+     Level 6 - IFs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-7-loops">
+     Level 7 - Loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#level-8-the-maze-and-the-munchkin">
+     Level 8 - The Maze and the Munchkin
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="python-game">
+<span id="prech12"></span><h1>Python Game<a class="headerlink" href="#python-game" title="Permalink to this headline">¶</a></h1>
+<p>This terminal is a bit different from the others. It’s a videogame…but the controls are in Python! <br></p>
+<p>Everything you need to know about the game is already well-explained in the interface. Let’s begin with the various levels!</p>
+<div class="section" id="levels">
+<h2>Levels<a class="headerlink" href="#levels" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="level-0-done">
+<h3>Level 0 - Done!<a class="headerlink" href="#level-0-done" title="Permalink to this headline">¶</a></h3>
+<p>The first level is already completed. You can examine and edit the code to better understand the various functions.</p>
+</div>
+<div class="section" id="level-1-move">
+<h3>Level 1 - Move!<a class="headerlink" href="#level-1-move" title="Permalink to this headline">¶</a></h3>
+<p>It’s time to start writing code.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">elf</span><span class="o">,</span> <span class="nn">munchkins</span><span class="o">,</span> <span class="nn">levers</span><span class="o">,</span> <span class="nn">lollipops</span><span class="o">,</span> <span class="nn">yeeters</span><span class="o">,</span> <span class="nn">pits</span> <span class="c1">#Libraries used in the game</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveLeft</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#Moves the elf left by 10 boxes</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="c1">#Moves the elf up by 11 boxes</span>
+</pre></div>
+</div>
+<p>Well..yes, this is pretty self-explaining.</p>
+</div>
+<div class="section" id="level-2-pathfinding-moving">
+<h3>Level 2 - Pathfinding Moving<a class="headerlink" href="#level-2-pathfinding-moving" title="Permalink to this headline">¶</a></h3>
+<p>Instead of directly commanding the elf, we can tell him to move to the position of and object, if there are no obstacles in the path.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">elf</span><span class="o">,</span> <span class="nn">munchkins</span><span class="o">,</span> <span class="nn">levers</span><span class="o">,</span> <span class="nn">lollipops</span><span class="o">,</span> <span class="nn">yeeters</span><span class="o">,</span> <span class="nn">pits</span>
+<span class="n">lollipop1</span> <span class="o">=</span> <span class="n">lollipops</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#Get position of lollopop1 and store it in lollipop1 variable</span>
+<span class="n">lollipop0</span> <span class="o">=</span> <span class="n">lollipops</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#Get position of lollopop0 and store it in lollipop0 variable</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">lollipop1</span><span class="o">.</span><span class="n">position</span><span class="p">)</span> <span class="c1">#Move to lollipop1 position</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">lollipop0</span><span class="o">.</span><span class="n">position</span><span class="p">)</span> <span class="c1">#Move to lollipop0 position</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveTo</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span> <span class="c1">#Cartesian grid move</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-3-a-danger-for-our-elf">
+<h3>Level 3 - A Danger for our Elf!<a class="headerlink" href="#level-3-a-danger-for-our-elf" title="Permalink to this headline">¶</a></h3>
+<p>These levels are starting to get dangerous for our precious elf. We have to shut down that yeeter at any cost! <br>
+You can click on the lever in the objects list to see it’s requirements to be turned off.</p>
+<div class="highlight-Py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">elf</span><span class="o">,</span> <span class="nn">munchkins</span><span class="o">,</span> <span class="nn">levers</span><span class="o">,</span> <span class="nn">lollipops</span><span class="o">,</span> <span class="nn">yeeters</span><span class="o">,</span> <span class="nn">pits</span>
+<span class="n">lever0</span> <span class="o">=</span> <span class="n">levers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#Same thing as for lollipops, but with levers!</span>
+<span class="n">lollipop0</span> <span class="o">=</span> <span class="n">lollipops</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveLeft</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">lever0</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">lever0</span><span class="o">.</span><span class="n">data</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">#Add to to lever0.data(), and pull lever0</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveLeft</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-4-different-data-types">
+<h3>Level 4 - Different Data Types<a class="headerlink" href="#level-4-different-data-types" title="Permalink to this headline">¶</a></h3>
+<p>Don’t be afraid of all these levers! We can turn them off like we did with the last one. <br>
+We see each lever’s requirements in objects tab, and give them what they want. <br></p>
+<p>More info about each data type <a class="reference external" href="https://www.freecodecamp.org/news/the-python-guide-for-beginners/#types"><strong>here</strong></a>.</p>
+<div class="highlight-Py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">elf</span><span class="o">,</span> <span class="nn">munchkins</span><span class="o">,</span> <span class="nn">levers</span><span class="o">,</span> <span class="nn">lollipops</span><span class="o">,</span> <span class="nn">yeeters</span><span class="o">,</span> <span class="nn">pits</span>
+<span class="c1"># Complete the code below:</span>
+<span class="n">lever0</span><span class="p">,</span> <span class="n">lever1</span><span class="p">,</span> <span class="n">lever2</span><span class="p">,</span> <span class="n">lever3</span><span class="p">,</span> <span class="n">lever4</span> <span class="o">=</span> <span class="n">levers</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="c1"># Move onto lever4</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveLeft</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># This lever wants a str object:</span>
+<span class="n">lever4</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="s2">&quot;A String&quot;</span><span class="p">)</span>
+<span class="c1"># Need more code below:</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever3</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#Bool</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever2</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#Integer</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever1</span><span class="o">.</span><span class="n">pull</span><span class="p">([</span><span class="s2">&quot;obj1&quot;</span><span class="p">,</span> <span class="s2">&quot;obj2&quot;</span><span class="p">])</span> <span class="c1">#List</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever0</span><span class="o">.</span><span class="n">pull</span><span class="p">({</span><span class="s2">&quot;obj1&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;obj2&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span> <span class="c1">#Dictionary</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-5-operations">
+<h3>Level 5 - Operations<a class="headerlink" href="#level-5-operations" title="Permalink to this headline">¶</a></h3>
+<p>In this level we have to contatenate two strings, do a bool comparison, append a value and access a dictionary.</p>
+<div class="highlight-Py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">elf</span><span class="o">,</span> <span class="nn">munchkins</span><span class="o">,</span> <span class="nn">levers</span><span class="o">,</span> <span class="nn">lollipops</span><span class="o">,</span> <span class="nn">yeeters</span><span class="o">,</span> <span class="nn">pits</span>
+<span class="c1"># Fix/Complete Code below</span>
+<span class="n">lever0</span><span class="p">,</span> <span class="n">lever1</span><span class="p">,</span> <span class="n">lever2</span><span class="p">,</span> <span class="n">lever3</span><span class="p">,</span> <span class="n">lever4</span> <span class="o">=</span> <span class="n">levers</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="c1"># Solve for each lever, moving to the space</span>
+<span class="c1"># on the lever before calling leverN.pull()</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveLeft</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever4</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">lever4</span><span class="o">.</span><span class="n">data</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; concatenate&quot;</span><span class="p">)</span> <span class="c1">#Concatenate lever4.data() with &quot; concatenate&quot;</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever3</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="ow">not</span> <span class="n">lever3</span><span class="o">.</span><span class="n">data</span><span class="p">())</span> <span class="c1">#Boolean operator NOT. The reverse of lever3.data()</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever2</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">lever2</span><span class="o">.</span><span class="n">data</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#Add 1 to lever2.data()</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever1_answer</span> <span class="o">=</span> <span class="n">lever1</span><span class="o">.</span><span class="n">data</span><span class="p">()</span> <span class="c1">#Set lever1_answare to lever1.data()</span>
+<span class="n">lever1_answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#Append integer 1 to lever1_answer</span>
+<span class="n">lever1</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">lever1_answer</span><span class="p">)</span> <span class="c1">#Pass lever1_answer to lever1</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="n">lever0</span><span class="o">.</span><span class="n">data</span><span class="p">()</span> <span class="c1">#Set answare to lever0.data()</span>
+<span class="n">answer</span><span class="p">[</span><span class="s2">&quot;strkey&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;strvalue&quot;</span> <span class="c1">#Add a value &quot;strvalue&quot; under the key &quot;strkey&quot;. This is a dictionary</span>
+<span class="n">lever0</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="c1">#Pass nswer to lever0</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-6-ifs">
+<h3>Level 6 - IFs<a class="headerlink" href="#level-6-ifs" title="Permalink to this headline">¶</a></h3>
+<p>Now we have to compare two values using <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">statements</span></code>. We check for the type of the variable, which is given randomly by the game, and compare it with known types. If the type is met, do something.</p>
+<div class="highlight-Py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">elf</span><span class="o">,</span> <span class="nn">munchkins</span><span class="o">,</span> <span class="nn">levers</span><span class="o">,</span> <span class="nn">lollipops</span><span class="o">,</span> <span class="nn">yeeters</span><span class="o">,</span> <span class="nn">pits</span>
+<span class="c1"># Fix/Complete the below code</span>
+<span class="n">lever0</span> <span class="o">=</span> <span class="n">levers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">lever0</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">data</span>
+<span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>           <span class="c1">#Loop. For every element inside data</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">ele</span> <span class="o">+</span> <span class="mi">1</span>    
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="n">data</span>
+<span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">==</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+      
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">lever0</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-7-loops">
+<h3>Level 7 - Loops<a class="headerlink" href="#level-7-loops" title="Permalink to this headline">¶</a></h3>
+<p>Mhh…this seems like a long path. We have to use a <code class="docutils literal notranslate"><span class="pre">loop</span></code> if we want to stay within the line limit.</p>
+<div class="highlight-Py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">elf</span><span class="o">,</span> <span class="nn">munchkins</span><span class="o">,</span> <span class="nn">levers</span><span class="o">,</span> <span class="nn">lollipops</span><span class="o">,</span> <span class="nn">yeeters</span><span class="o">,</span> <span class="nn">pits</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="c1">#We repeat this three times</span>
+    <span class="n">elf</span><span class="o">.</span><span class="n">moveLeft</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">elf</span><span class="o">.</span><span class="n">moveLeft</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">elf</span><span class="o">.</span><span class="n">moveDown</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="level-8-the-maze-and-the-munchkin">
+<h3>Level 8 - The Maze and the Munchkin<a class="headerlink" href="#level-8-the-maze-and-the-munchkin" title="Permalink to this headline">¶</a></h3>
+<p>To solve this level we have to create a code that mixes everything we learned in the past levels.</p>
+<div class="highlight-Py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">elf</span><span class="o">,</span> <span class="nn">munchkins</span><span class="o">,</span> <span class="nn">levers</span><span class="o">,</span> <span class="nn">lollipops</span><span class="o">,</span> <span class="nn">yeeters</span><span class="o">,</span> <span class="nn">pits</span>
+<span class="n">lollipop0</span><span class="p">,</span> <span class="n">lollipop1</span><span class="p">,</span> <span class="n">lollipop2</span><span class="p">,</span> <span class="n">lollipop3</span> <span class="o">=</span> <span class="n">lollipops</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">munchkin</span> <span class="o">=</span> <span class="n">munchkins</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">lollipop0</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>  <span class="c1"># ---Elf Moving---</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">lollipop1</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">lollipop2</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">lollipop3</span><span class="o">.</span><span class="n">position</span><span class="p">)</span> 
+<span class="n">elf</span><span class="o">.</span><span class="n">moveTo</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>      <span class="c1"># ---End Elf Moving---</span>
+<span class="n">mydict</span> <span class="o">=</span> <span class="n">munchkin</span><span class="o">.</span><span class="n">ask</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="c1">#Declares the dictionary</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mydict</span><span class="p">:</span>             <span class="c1">#Retrives key from the value</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="s2">&quot;lollipop&quot;</span><span class="p">:</span> <span class="n">munchkin</span><span class="o">.</span><span class="n">answer</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="c1">#Answer if the value is lollipop</span>
+<span class="n">elf</span><span class="o">.</span><span class="n">moveUp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Wow, we won! The challenge is complete, but if you want, there are some bonus levels ready to be solved! Good Luck!</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="objective12.html" title="previous page">12. Frost Tower Website Checkup</a>
+    <a class='right-next' id="next-link" href="challenge12.html" title="next page">SQL Injection</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani & Max<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
