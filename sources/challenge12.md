@@ -7,7 +7,7 @@ SQL Injection
 
 Ribb Bonbowford gives us some important clues about the assessment required to the Jack Frost Web service running at [(https://staging.jackfrosttower.com)](https://staging.jackfrosttower.com). 
 It seems it is vulnerable to some SQL Injection.<br/>
-He gives us also some useful docs: 
+He also gives us some useful docs: 
 <br/>[(https://github.com/mysqljs/mysql)](https://github.com/mysqljs/mysql)
 <br/>[(https://www.npmjs.com/package/express-session)](https://www.npmjs.com/package/express-session)
 
@@ -61,10 +61,10 @@ post ('/testsite', function(req, res, next){
 
 ## Sessions
 
-It seems that trying to access those endpoints we receive always the request of a login. 
+It seems that by trying to access those endpoints we always receive the request of a login. 
 <br />First thing to do is to view how the login works then. 
 <br/>
-The entrypoint that get our attention is the /postcontact, let's have a look: 
+The entrypoint that got our attention is the /postcontact, let's have a look: 
 ```
 app.post('/postcontact', function(req, res, next){
     var fullname = xss( req.body.fullname );
@@ -94,7 +94,8 @@ app.post('/postcontact', function(req, res, next){
 
 .........
 ```
-it says that if we use (in the contact form) as email an email that was already inserted ... then 
+
+It says that if we use (in the contact form) as email an email that was already inserted ... then 
 we will obtain to populate the variabile `session.uniqueID` with that email string. This sounds good
 because sometimes `session.uniqueID` is the only session var that is evaluated and that gives you authorization
 access to further reserved pages (as you can notice in the code above). 
@@ -143,7 +144,7 @@ app.get('/detail/:id', function(req, res, next) {
 from the [(doc)](https://github.com/mysqljs/mysql#escaping-query-values)<br/>
 To generate objects with a toSqlString method, the mysql.raw() method can be used. This creates an object that will be left un-touched when using in a ? placeholder, useful for using functions as dynamic values:
 
-<b>Caution</b> The string provided to mysql.raw() will skip all escaping functions when used, so be careful when passing in unvalidated input.
+<b>Caution:</b> The string provided to mysql.raw() will skip all escaping functions when used, so be careful when passing an unvalidated input.
 
 ```
 
@@ -195,12 +196,12 @@ Invalid date
 
 ## First Contstraint
 
-this error was totally unexpected! ... A dateFormat error here?<br/> 
+This error was totally unexpected! ... A dateFormat error here?<br/> 
 Yes, because we need to extract exactly two Date as the 2 last columns. <br/>
 
 ## Second Contstraint
 
-by re-analyzing the piece of code, it turns out clearly a second constraint also:<br/>
+By re-analyzing the piece of code, it turns out clearly a second constraint also:<br/>
 we cannot use any comma in our UNION sql injection !!!!!!   =:-0<br/>
 
 Do you remember? Every comma in the url will mess up with the concatenation of the params in the sql query!
@@ -258,7 +259,7 @@ select * FROM ( SELECT null ) as q1
     join (SELECT date_created FROM uniquecontact WHERE id=33) as q6
     join (SELECT date_update FROM uniquecontact WHERE id=33) as q7 --
 ```
-you can use q1, q2,q3, q4 or q5 and execute whatever SELECT you can need. 
+You can use q1, q2,q3, q4 or q5 and execute whatever SELECT you can need. 
 <br/>You just cannot use q6 and q7 because they are reserved for displaying only datetime fields.
 
 And here the example of UNION of the table uniquecontact and users.<br/> 
@@ -272,5 +273,5 @@ we can imagine the resulting table like this
 +----+-----------+------------+---------+-----------------+----------------------+---------------------+
 
 ```
-in this case, the user's password appears in the field 'phone' because in an UNION the fields on the left table win and are the only name displayed. 
+In this case, the user's password appears in the field 'phone' because in an UNION the fields on the left table win and are the only name displayed. 
 <br/>

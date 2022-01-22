@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -440,14 +439,14 @@ So, <strong>ONE</strong> wave in <strong>ONE</strong> second is equal to <strong
 <img alt="SquareWave" src="images/square_wave.png" /> <br>
 This is <strong>1Hz</strong></p>
 </div>
-<p>So, to simulate <strong>1KHz</strong> or <strong>1000Hz</strong> we need a thousend things like this one, in one second.</p>
+<p>So, to simulate <strong>1KHz</strong> or <strong>1000Hz</strong> we need a thousand things like this one, in one second.</p>
 </div>
 <div class="section" id="the-interface">
 <h2>The Interface<a class="headerlink" href="#the-interface" title="Permalink to this headline">¶</a></h2>
 <p><img alt="FPGA_Introduction" src="images/fpga1.png" /></p>
 <br>
 <br>
-<p>To complete this challenge, we have a write a code in <code class="docutils literal notranslate"><span class="pre">Verilog</span></code>, an Hardware Description Language used to model electronic system <a class="reference external" href="https://en.wikipedia.org/wiki/Verilog">(Learn more)</a>. We are using <code class="docutils literal notranslate"><span class="pre">Verilog</span> <span class="pre">2005</span></code>.
+<p>To complete this challenge, we have to write a code in <code class="docutils literal notranslate"><span class="pre">Verilog</span></code>, an Hardware Description Language used to model electronic system <a class="reference external" href="https://en.wikipedia.org/wiki/Verilog">(Learn more)</a>. We are using <code class="docutils literal notranslate"><span class="pre">Verilog</span> <span class="pre">2005</span></code>.
 <br>
 The program needs to generate a square wave at <code class="docutils literal notranslate"><span class="pre">500Hz</span></code>, <code class="docutils literal notranslate"><span class="pre">1000Hz</span></code>, <code class="docutils literal notranslate"><span class="pre">2000Hz</span></code> and at a random frequency.</p>
 </div>
@@ -473,13 +472,13 @@ We start by defining half of the maximum clock value, because the wave is high o
 <span class="kt">reg</span> <span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">maxclock</span> <span class="o">=</span> <span class="p">(</span><span class="mh">125000000</span><span class="o">/</span><span class="mh">2</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>We divide freq by 100 because it is given to as as an integer (ex. 50050), while it is actually a float (ex. 500.50). <br>
+<p>We divide freq by 100 because it is given to as an integer (ex. 50050), while it is actually a float (ex. 500.50). <br>
 We then divide maxclock by it to get the intermediate value we compare to counter to get the final frequency.</p>
 <div class="highlight-Verilog notranslate"><div class="highlight"><pre><span></span><span class="kt">reg</span> <span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">eq_freq</span> <span class="o">=</span> <span class="p">(</span><span class="n">maxclock</span><span class="o">/</span><span class="p">(</span><span class="n">freq</span><span class="o">/</span><span class="mh">100</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>And now comes the tricky part. <br>
-This an instuction which happens every unit of clock while it is positive (<code class="docutils literal notranslate"><span class="pre">posedge</span></code>). So, it should theorically happen <em>62500000</em> times per second. <br>
+This is an instruction which happens every unit of clock while it is positive (<code class="docutils literal notranslate"><span class="pre">posedge</span></code>). So, it should theorically happen <em>62500000</em> times per second. <br>
 Let’s initialize <code class="docutils literal notranslate"><span class="pre">counter</span></code> to <code class="docutils literal notranslate"><span class="pre">-2</span></code>. <br>
 <em>Uhm… -2? Why exactly -2?</em> More on that later (?). <br>
 In the loop we then put an <code class="docutils literal notranslate"><span class="pre">if</span></code> condition. If <code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">==</span> <span class="pre">eq_freq</span></code> we set counter to 1, <code class="docutils literal notranslate"><span class="pre">else</span></code> we add 1 to counter.
@@ -496,7 +495,7 @@ We got these values after several attempts to fix the output..but unfortunately,
 </div>
 <p>Now it’s time to process the output. <br>
 Initialize the <code class="docutils literal notranslate"><span class="pre">speaker</span></code> variable (bool), which reverses if <code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">==</span> <span class="pre">eq_freq</span></code>. <br>
-Then we assign <code class="docutils literal notranslate"><span class="pre">speaker</span></code> to <code class="docutils literal notranslate"><span class="pre">wave_out</span></code>, our output device. <code class="docutils literal notranslate"><span class="pre">OR</span> <span class="pre">rst</span></code> is there to make to code compile. It’s a little trick. <br>
+Then we assign <code class="docutils literal notranslate"><span class="pre">speaker</span></code> to <code class="docutils literal notranslate"><span class="pre">wave_out</span></code>, our output device. <code class="docutils literal notranslate"><span class="pre">OR</span> <span class="pre">rst</span></code> is there to let code to compile. It’s a little trick. <br>
 <code class="docutils literal notranslate"><span class="pre">endmodule</span></code> is the ending of the code.</p>
 <div class="highlight-Verilog notranslate"><div class="highlight"><pre><span></span>    <span class="kt">reg</span> <span class="n">speaker</span><span class="p">;</span> <span class="c1">//Initialize &#39;speaker&#39;  </span>
     <span class="k">always</span> <span class="p">@(</span><span class="k">posedge</span> <span class="n">clk</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span><span class="n">counter</span><span class="o">==</span><span class="n">eq_freq</span><span class="p">)</span> <span class="n">speaker</span> <span class="o">&lt;=</span> <span class="o">~</span><span class="n">speaker</span><span class="p">;</span> <span class="c1">//Loop </span>

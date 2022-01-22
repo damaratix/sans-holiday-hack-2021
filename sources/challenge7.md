@@ -5,7 +5,7 @@ Printer Exploitation
 To complete this challenge we have to read the contents of /var/spool/printer.log
 
 ```{tip}
-To complete this particular challenge a linux computer is very useful.
+To complete this particular challenge a Linux computer is very useful.
 ```
 
 First of all, let's explore the website of this challenge, https://printer.kringlecastle.com <br>
@@ -20,7 +20,7 @@ The file we download is called `firmware-export.json`. Let's open it.
 {"firmware":"UEsDBBQAAAAIAEWlkFMWoKjwagkAAOBAAAAMABwAZmlybXdhcmUuYmluVVQJAAOipLthoqS7YXV4CwABBAAAAAAEAAAAAO1bX2wcRxmfvfPZ5zpen9OEOE7Al5JIDuTOl6R2HVo3Pttnr9HFMakd1FBns/aufUfvj3u3R+wAIuBSOBWXPlSoD+0LeUklkCh9gQfUBFuVKihKHioiQZEJqeRGoF5UiFJIvczszrfemdtrygvwsJ90+9vvm+83M/vN7HrWO9+3EslhnyAgED96FBFtPGTp/dR+5ojtgm29qAkfP4M+jeqxXufw4zHlYzFot2PxLlI7j7sRi4ID61BtORNgEYU2eQGHzuNbAotOntlemNo5TAksOnkkNusRS1/vY1Gi1znuY3k+yrtDeXf6WFwTWIR41tHfKq2PxyHEIsRw/F1dJed76fXw+AhiEXhfwrx69MkFwn2CtlcrLm0+FiGsXZn0dM+DXRk1kknnSguRhd6eSM+D0WI+esjsU4j6joxNmv5kfkFoSfk2aiPld8/+qPmtt/e8JAy1hAZfOyVWfvuX6xB3GDeEvm0e4Rqvar/Lftz1ke6HXexN+LfVxd5Rw/54jXpSNezkuh9w6xCO1wwJTw+aL+lFJMszC4o8m84pmfQ5DaukXC7qSkGXs0o6h0aSowOD8qHooWg3kkcnjsmqVtDm0kVdK0wcG8zkc9qEMp0hzLlsPkeZsuXq6kjER8fAh+MqmLGFeVBqTzcS+0Gqw/jDfI61Wljh7BVaQWc/awf92lELYSxB1hx2v8O+7rA7nysVhz3gsN9x2J3zv42234A2550nnnjiiSeeeOKJJ578v4m09Neg9GzgnS58+t1Lus+4Ii2tBlfscqP7Oi4y9t3Ax5aOfnxGdPI2gt5bM7Ds+znWZ58H/4N/Gy1fPS2Vr0tLNyrjE8nlwCm8DJeWmz8gjS33XSZ1bp/FnL+3dAyZpldI28uBHxM4ckffjrvzKO1Oo7HW0nGe1LtCEfsvmv7dBQL7N6TLG36pXJEurx+VhDekqxv6NlzBdlpB0FibNdsB/vm+I7gIlbompaW+21FSY/ldfYv0bF97F3krxVe0nsKHNwKtWBemVrj23/s6LpzEHBy4UPmbd6VyqYL79EsRk9c2DOMXxOnNFdzo02Y84l8eLf8+fnK0fDs+GS9/FMcR2Td/AKFJaTlC8LHkflJVcL2IydLlj/z6roN/aOlAyfI/k+XbQ+X348a2P0pLK4J05J3STTI2X5mKPxGfip+Oy7hPaAXGkBk1TzzxxBNPPPHEE0888cQTTzxhRUA+NJwuZM8qBS2cLoZnS5nMYrg0H9bzYVXRtT3EZ5f/4V5kfe+6+75hkDfb3RXD+AnGAxgnMLbeMoxVjI9gvIHxJYwHBOu7q9nOuRNIWAgJu7Y0BJ8XGkLETr7tX8H1fd7RH3d/hPZS/3nsHyYOYmhYbPtiS9PZ4Hl0tP3hzx3e+wDwyTfuFPYLOuol3CfwL4H7azrGxdAzvsHm+incAOV8A//GcfkUKR8QQz/0JcS25/wJMbxclxA7fxCQxNgz9ZLYu9QwIvZ/VeyNi7G42DkghgfENuw/IAbN75skDilcj/P7oyeeeOKJJ5544oknnnjiyX9L7P2Ujv3JTtwCjrS8maqrlLeT6rBPcxfV4R2rnSLs19zNlf9jw8ibOt18CXsqr1Ed9lLGqH4f1b9DsYliG8XtiBV7T2e/BbAHE/zhvbKB4g6KUoC1f7+O7fclio1cff8yrOsB1w2qpyjfoDrEt0L1U7T8Q6o796L+LwT2lfPSE2J12F87Mjj4hXDnkDadVnLh3ujhaCzSs986uWdbfhyNiy6bY/14tFZd7X50w9VeZ88j1h6w5w9rr7fnGWtvsMeDtQftcWTtjfb8YO332fOItTdtbnhm7FtQ2NXejPpd7aKdj8HaW+z7k7WHXDeL+1Grva+ftW9FZ1zt99v3O2vfZt/nrH2763zyo0/Z+7JZ+47NRBHG3obCrvadKOZqb6+yWXkbtwzeTp5zPhzP81w8RWr/GWffQ+0Vzv6Q2cZmf+A+HzbPq+OTpfXEuPFaNP2r4/xijf7Xuq4LZtlWpO7hS9z9XzWP91f189dmPdXj+Bvqz/fzT+axel7dMuupHt+fCiQO1fdFg0DyIUR0icYH4rlDcM97yJr26nlyWHDPq0gIpMm2qvnTSvx91fdRskY9T9J6+HYXavTze9je6muzn58gLxC74z6Fx8oFGocztD9T1P4rRNrdiXq5ep6i/vB8gP+lviZY/vz1vk79u2n9kDuySvvJ+1+pcV03hRp5JzMFvaiXZmejM2gzg0TWs/IMSQ0hiShqXp7L5KeVjKzq+UJRVkoLaCafnc9ouqZGHzp8qNvdiWSvpGWlUFAWZS2nFxbRbEHJarJaymYXMcWhydhTZ13p/7hxt2R5+ET8WEJOjA2RBBbWV0Xy0ONj8WOjg2yJme+CTSNjk3JCojVIQyeQPJI8PhBPyseHhx9LTMgT8YFkQob8mpliyez1x2bUkPyc/n4m/0ZTFV2pTtLhvGTiZfeMTcuR1WJeTik5laTsjB7HBWo6J5eKmursG7lArE8Xi7QaMxVIlnH/IDw183vYjCK2ayhaXMzqyjRGvWBhCs7SOVzTPIrm8roWjQ+MRnRljmpzuVJ0upTOqJG0ikwtpRRTKKou5nB9FuoFq+RrWqGYzucYRcZlBS2jEEd6Np/RSZP4MslpdC6PT3RtAR/NcYkW8maoo1qKzp+UWtjULKo1BSwGnOMWlGx6BpEarUasenAoURTP5iyedm63x38qZJ1NnoWwDKqVJwnCf3P4LGJzkvi8wDDnzy9vDnJ8WI8B7r0Hn3xXuY3XusCHdRsg8GH55PxmQ2QMWWt/4MP6DvAitUO+F/BhnX4SsbmAsA4EhPcLED5+p5G1lgc+rBcBRa7/Pg6fRNa7AeiwrgQM1+g/yDlkxRT4sP4EvMS1z1//05Q/QHVYpwKCH1F3uPCfQ86cSFSVNwvvUSD8+Jc5Pqx7beT8+fTcFzg+rI8B+XgFOXyZ48PfScCnuAHnl9kXOD6sEwAbOX/++l9B7P3L5w/zf0N5/qscv1Z+bi3+6xwf1vmAQe76+Xi+iaw5Dq9Pdr5uxN2fj//b+Nfi4MN6s/IJ+X9GbM6mnQ9N+ZAHXc/xYBzJOlpw8OE95FqXhZ33aP8mx7fXs/R1N3wP/gccH9aN4RjbT54P8iG1AR/WZ7GYuz///NqgNv7tHPi1/n440S2fdRwqrN+sJ4Kqnx+Njr4z/B5K5yrn+99ag3+y18IGjsDz/w1QSwECHgMUAAAACABFpZBTFqCo8GoJAADgQAAADAAYAAAAAAAAAAAA7YEAAAAAZmlybXdhcmUuYmluVVQFAAOipLthdXgLAAEEAAAAAAQAAAAAUEsFBgAAAAABAAEAUgAAALAJAAAAAA==","signature":"2bab052bf894ea1a255886fde202f451476faba7b941439df629fdeb1ff0dc97","secret_length":16,"algorithm":"SHA256"}
 ```
 There are 4 fields:
-1. **firmware:** this a a very long string probably base64-encoded. Strange, we were expecting a file, but a string can't be file. **Or can it?!**  We'll see that in a moment.
+1. **firmware:** this a a very long string probably base64-encoded. Strange, we were expecting a file, but a string can't be a file. **Or can it?!**  We'll see that in a moment.
 2. **signature:** this is the hash of the firmware. A security measure.
 3. **secret lenght:** the lenght of the secret used to hash. We'll need this later
 4. **algorithm:** well...now we know that the hash is a **SHA256**. We'll also need this later
@@ -39,7 +39,7 @@ Now we can use `base64 -d` to decode this file, and redirect the output in anoth
 ```Shell
 $ base64 -d original_firmware.b64 > original_firmware
 ```
-Now, if we try to print the contents of the decoded file with `cat` we see some strange characters, which mean that this is a binary file, and cannot be printed. <br>
+Now, if we try to print the contents of the decoded file with `cat` we see some strange characters, which means that this is a binary file, and cannot be printed. <br>
 We can try to use `file` to see the file type
 
 ```Shell
@@ -80,7 +80,7 @@ We can try to use the **Magic** (that's the actual name!) operation to know more
 
 In the output we can see that the **Magic** function suggests to **Unzip** it. Click on unzip. <br>
 <br>
-Yes! We found the actual *firmware executable*. As I said during the linux method, since it is compiled, we can't just read it, or decompile it, but we may be able to *replace* it!
+Yes! We found the actual *firmware executable*. As I said during the Linux method, since it is compiled, we can't just read it, or decompile it, but we may be able to *replace* it!
 
 ## Firmare: Edit it!
 
@@ -159,7 +159,7 @@ $ git clone https://github.com/iagox86/hash_extender.git
 $ cd hash_extender
 $ make
 ```
-We now have an executable called `hash_extender`. To work in a more ordered envirnment, you should copy it into the same directory of the two zipfiles.
+We now have an executable called `hash_extender`. To work in a more ordered environment, you should copy it into the same directory of the two zipfiles.
 
 Now that **hash_extender** is ready to work, we can start the hijacking process. This is what you will need.
 1. hash_extender script
@@ -167,8 +167,8 @@ Now that **hash_extender** is ready to work, we can start the hijacking process.
 3. Edited zipfile
 4. Original `firmware-export.json` file
 
-Hash Extender can be used to append a new string (or file!) to the original one. It is able to process the original signature, and generature a new one, which is still valid, even with our modified file appended! <br>
-We are very lucky, because the troll said the the printer only processes the last file inserted if more files in the same format are provided. It's perfect for our append!
+Hash Extender can be used to append a new string (or file!) to the original one. It is able to process the original signature, and to generate a new one, which is still valid, even with our modified file appended! <br>
+We are very lucky, because the troll said that the printer only processes the last file inserted if more files in the same format are provided. It's perfect for our append!
 
 Run `hash_extender` with these parameters
 * **--file firmware.zip** | This is the original firmware.zip
@@ -179,7 +179,7 @@ Run `hash_extender` with these parameters
 * **-f sha256** | Hash type
 
 ```{admonition} A Little Fun Fact
-When we starded this challenge in the morning, the `--appendfile` argument didn't exist! You could only append strings. We had to convert to hex, print and run the command for every attempt. In the evening, while we were trying to add our personal `--append-file` argument, we checked the git of the tool again, and the `--appendfile` argument was already there! Someone updated the code a few hours after we originally downloaded it :) <br>
+When we started this challenge in the morning, the `--appendfile` argument didn't exist! You could only append strings. We had to convert to hex, print and run the command for every attempt. In the evening, while we were trying to add our personal `--append-file` argument, we checked the git of the tool again, and the `--appendfile` argument was already there! Someone updated the code a few hours after we originally downloaded it :) <br>
 Now, back to the challenge!
 ```
 

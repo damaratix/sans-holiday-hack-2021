@@ -17,9 +17,9 @@ The game is pretty simple, there are 3 options:
 1. Investigate <br>
     You can use this button to get **3** hints from the game, which contains informations about the elf's location and/or the elf's name
 2. Visit InterRink <br>
-    In this form you can input the information you got about the elf, and it returns the name of the elf who most corrisponds to the description.
+    In this form you can input the information you got about the elf, and it returns the name of the elf who corrisponds the most to the description.
 3. Depart by Sleigh <br>
-    Using this button you can move on to the next stage of the game. It will show you three possibile destinations, and you have to guess which one is the most likely the elf went to.
+    Using this button you can move on to the next stage of the game. It will show you three possibile destinations, and you have to guess which one is the most likely place the elf went to.
 
 For example, you could get hints like these:
 > They were excited that their phone was going to work on the 1500 MHz LTE band <br>
@@ -66,7 +66,7 @@ We have an entry for *caramel.kringlecastle.com*, which is the domain where this
 By clicking on it you will find a cookie named **"Cookiepella"**, and it's corrisponding value is a strange long string..Mh.
 
 <br>
-If you completed the Pre-challenge Cranberry you will se an hint in your badge:
+If you completed the Pre-challenge Cranberry you will see an hint in your badge:
 <br> 
 
 > *While Flask cookies can't generally be forged without the secret, they can often be decoded and read.* (https://gist.github.com/chriselgee/b9f1861dd9b99a8c1ed30066b25ff80b)

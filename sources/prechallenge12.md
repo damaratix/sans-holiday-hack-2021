@@ -24,7 +24,7 @@ Well..yes, this is pretty self-explaining.
 
 ### Level 2 - Pathfinding Moving
 
-Instead of directly commanding the elf, we can tell him to move to the position of and object, if there are no obstacles in the path.
+Instead of directly commanding the elf, we can tell him to move to the position of an object, if there are no obstacles in the path.
 
 ```Python
 import elf, munchkins, levers, lollipops, yeeters, pits
@@ -79,7 +79,7 @@ elf.moveUp(2)
 
 ### Level 5 - Operations
 
-In this level we have to contatenate two strings, do a bool comparison, append a value and access a dictionary.
+In this level we have to concatenate two strings, do a bool comparison, append a value and access a dictionary.
 
 ```Py
 import elf, munchkins, levers, lollipops, yeeters, pits

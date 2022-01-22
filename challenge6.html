@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -529,7 +528,7 @@ To do that, we set <code class="docutils literal notranslate"><span class="pre">
 </div>
 <div class="section" id="level-7-get-rip">
 <h2>Level 7 - Get RIP<a class="headerlink" href="#level-7-get-rip" title="Permalink to this headline">¶</a></h2>
-<p>We can use the <code class="docutils literal notranslate"><span class="pre">call</span></code> function to skip certain parts of code, and the return address of the memory cell is stored on top of the stack. it can then be used to access certain values that can’t normally be reached.</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">call</span></code> function to skip certain parts of code, and the return address of the memory cell is stored on top of the stack. It can then be used to access certain values that can’t normally be reached.</p>
 <p>This is the solution.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="n">Remember</span><span class="p">,</span> <span class="n">this</span> <span class="n">call</span> <span class="n">pushes</span> <span class="n">the</span> <span class="k">return</span> <span class="n">address</span> <span class="n">to</span> <span class="n">the</span> <span class="n">stack</span>
 <span class="n">call</span> <span class="n">place_below_the_nop</span>
@@ -680,7 +679,7 @@ This means <strong>we have to set rdi to rax <ins>before</ins> setting rax to 0!
 <li><p><strong>rax</strong> = 60 (sys_call number)</p></li>
 <li><p><strong>rsi</strong> = 0 (error code; no specific value necessary, but since there are no errors, we shout put that equal to <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
 </ul>
-<p>We can now bake all of our syscalls in the final code</p>
+<p>We can now bake all of our syscalls into the final code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Get</span> <span class="n">a</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">this</span>
 <span class="n">call</span> <span class="n">skip</span>
 
@@ -732,7 +731,7 @@ This means <strong>we have to set rdi to rax <ins>before</ins> setting rax to 0!
 <blockquote>
 <div><p><em>Secret to KringleCon success: all of our speakers and organizers, providing the gift of cyber security knowledge, free to the community</em>.</p>
 </div></blockquote>
-<p>so… the magical phrase is <strong>cyber security knowledge</strong>. <br>
+<p>So… the magical phrase is <strong>cyber security knowledge</strong>. <br>
 <br>
 That’s all. Thank you for reading!</p>
 </div>

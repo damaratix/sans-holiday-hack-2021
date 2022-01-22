@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -427,20 +426,19 @@
                 
   <div class="section" id="holiday-hero">
 <span id="prech6"></span><h1>Holiday Hero<a class="headerlink" href="#holiday-hero" title="Permalink to this headline">¶</a></h1>
-<p>Location: (Netwar)</p>
-<p>Chimeny Scissor challenged us in playing with the Holiday Hero terminal. <br/>
-He said that playing with that we could full up Santa’s sleigh!<br />
+<p>Location: (Netwars)</p>
+<p>Chimney Scissor challenged us in playing with the Holiday Hero terminal. <br/>
+He said that by playing with it we could fill up Santa’s sleigh!<br />
 True or not, we accepted the challenge of course and it turned out it was a game to play with 2 players and getting you
 crazy in coordinating in order to win it.
 <br/><br/>
 Ooook, .. no worry, time to find the way for bypassing the 2 players requirement. <br>
-Chimeny suggested that it was possible to play in single mode just by changing 2 parameters, client-side parameters, this means
-that we have all it was needed inside our browser :). <br>
+Chimney suggested that it was possible to play in single mode just by changing 2 parameters, client-side parameters, this means that we have all it was needed inside our browser :). <br>
 <br>
 Chimney added that one of the 2 is sent to the server. <br>
 <br/>
 The challenge is located at: <a class="reference external" href="https://hero.kringlecastle.com">https://hero.kringlecastle.com</a>.
-In order to study the logic of the game, we choose to play directly on the server. <br>
+In order to study the logic of the game, we chose to play directly on the server. <br>
 Actually, the game is served by the “hero” server and just embedded inside the page of 2021.kringelcon.com by using a
 simple HTML iframe.
 This will arise some weird behaviour lately, but let’s see the logic of the game.
@@ -465,10 +463,10 @@ Alt-Svc: clear
 </div>
 <br/>
 <p>This endpoint is called when you create the room to play (in which to invite the second player). <br>
-Of course first thing to do is to set the value to “true” and see what happen in the game.</p>
+Of course first thing to do is to set the value to “true” and see what happens in the game.</p>
 <p>We are interested at the value of the HOHOHO Cookie.
 You can change it directly in your Browser looking in the “Inspect” Panel and searching for Storage -&gt; Cookie. <br>
-Apparently … nothing happens but let’s keep it and notice that this should be the parameter Chimeny Scissor talked about saying that there were rumors about 2 parameters, 1 of them sent to the server. <br>
+Apparently … nothing happens but let’s keep it and notice that this should be the parameter Chimney Scissor talked about saying that there were rumors about 2 parameters, 1 of them sent to the server. <br>
 Browser to work with session … send and receive Cookie at every requests they do.
 <br/></p>
 <p><img alt="before the script change" src="images/sleigh-before.png" /></p>
@@ -518,7 +516,7 @@ will raise an error in console log because the script, while loading, needs sing
 <br/>
 We have to find the correct place where to inject what we want to obtain.
 <br />
-By analyzing the file js it appears a function that evaluates if it’s required to enable the single player mode (and that’s just what we are looking for).
+By analyzing the js file it appears that a function which evaluates if it’s required to enable the single player mode (and that’s just what we are looking for).
 (line 77-78 javascript deminified)
 <br /></p>
 <div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="nx">spi</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>

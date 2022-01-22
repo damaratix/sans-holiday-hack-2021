@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -438,7 +437,7 @@ total 24
 drwxr-xr-x 1 root      root       4096 Dec  2 14:25 yara_rules
 </pre></div>
 </div>
-<p>and there are the configuration file for YARA in <code class="docutils literal notranslate"><span class="pre">yara_rule/rules.yar</span></code>.</p>
+<p>and there is the configuration file for YARA in <code class="docutils literal notranslate"><span class="pre">yara_rule/rules.yar</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>snowball2@8b0922e50660:~$ ls -l yara_rules/ 
 total 4000
 -rwxr-xr-x 1 root root 4094217 Nov 23 15:48 rules.yar
@@ -557,7 +556,7 @@ yara_rule_1732 ./the_critical_elf_app
 </div>
 <div class="section" id="change-file-size">
 <h2>Change file size<a class="headerlink" href="#change-file-size" title="Permalink to this headline">¶</a></h2>
-<p>this time seems more serious stuff</p>
+<p>this time it seems more serious stuff</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rule yara_rule_1732 {
    meta:
       description = &quot;binaries - alwayz_winter.exe&quot;
@@ -592,7 +591,7 @@ yara_rule_1732 ./the_critical_elf_app
 }
 </pre></div>
 </div>
-<p>There are 3 conditions in a logic AND so is it sufficient that only one of them returns false to escape the check.
+<p>There are 3 conditions in a logic AND so it is sufficient that only one of them returns false to escape the check.
 Let’s review the three conditions:</p>
 <ol class="simple">
 <li><p>Checks the header of the file for ELF extension (0x02464c45). ELF is an acronym for Executable and Linkable Format, is a common standard file extension used for executable,

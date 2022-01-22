@@ -3,7 +3,7 @@ WiFi & Door Defrost
 =======================
 Location: Frost Tower  (Door defrosting)
 
-Grimy McTrollkins asks help in getting access to the thermostat controlling the freezing status of the Frosty Tower Door.
+Grimy McTrollkins asks for help in getting access to the thermostat controlling the freezing status of the Frosty Tower Door.
 Fortunately, the thermostat was connected via WI-FI and actually, we got a WI-FI adapter while entering in the North Pole, so we can try to use it here. <br />
 
 By opening the WI-FI cli cranberry (Your badge --> Items) we accessed the challenge. <br />

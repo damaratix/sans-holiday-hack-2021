@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -455,8 +454,8 @@
   <div class="section" id="imds-exploration">
 <span id="prech10"></span><h1>IMDS Exploration<a class="headerlink" href="#imds-exploration" title="Permalink to this headline">¶</a></h1>
 <p>Location: Frost Tower  (Door defrosting)</p>
-<p>well … this time we land directly in the “executive restroom” where the name of the Troll doesn’t really seems a joke … !
-Anyway, in order to obtain some further hints for the next SSRF challenge we have to play a little bit with the cranberry
+<p>Well … this time we land directly in the “executive restroom” where the name of the Troll doesn’t really seem a joke … !
+Anyway, in order to obtain some further hints for the next SSRF challenge we have to play a little bit with the Cranberry
 in this beatiful location.</p>
 <p>Well, …. Ok. It’s the time to learn something about the IMDS
 you can find some useful info at <br/> <a class="reference external" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)</a></p>
@@ -522,7 +521,7 @@ instance-identity/signature
 </div>
 <p>5- The instance identity document can be used by developers to understand the instance details. Repeat the request, this time requesting the instance-identity/document resource:
 ‘curl http://169.254.169.254/latest/dynamic/instance-identity/document’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">169.254.169.254</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">instance</span><span class="o">-</span><span class="n">identity</span><span class="o">/</span><span class="n">document</span><span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">169.254</span><span class="o">.</span><span class="mf">169.254</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">instance</span><span class="o">-</span><span class="n">identity</span><span class="o">/</span><span class="n">document</span><span class="p">{</span>
         <span class="s2">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;PCRVQVHN4S0L4V2TE&quot;</span><span class="p">,</span>
         <span class="s2">&quot;imageId&quot;</span><span class="p">:</span> <span class="s2">&quot;ami-0b69ea66ff7391e80&quot;</span><span class="p">,</span>
         <span class="s2">&quot;availabilityZone&quot;</span><span class="p">:</span> <span class="s2">&quot;np-north-1f&quot;</span><span class="p">,</span>
@@ -542,7 +541,7 @@ instance-identity/signature
 </div>
 <p>6- Much of the data retrieved from IMDS will be returned in JavaScript Object Notation (JSON) format. Piping the output to ‘jq’ will make the content easier to read.
 Re-run the previous command, sending the output to JQ: ‘curl http://169.254.169.254/latest/dynamic/instance-identity/document | jq’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">169.254.169.254</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">instance</span><span class="o">-</span><span class="n">identity</span><span class="o">/</span><span class="n">document</span> <span class="o">|</span> <span class="n">jq</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">169.254</span><span class="o">.</span><span class="mf">169.254</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">instance</span><span class="o">-</span><span class="n">identity</span><span class="o">/</span><span class="n">document</span> <span class="o">|</span> <span class="n">jq</span>
   <span class="o">%</span> <span class="n">Total</span>    <span class="o">%</span> <span class="n">Received</span> <span class="o">%</span> <span class="n">Xferd</span>  <span class="n">Average</span> <span class="n">Speed</span>   <span class="n">Time</span>    <span class="n">Time</span>     <span class="n">Time</span>  <span class="n">Current</span>
                                  <span class="n">Dload</span>  <span class="n">Upload</span>   <span class="n">Total</span>   <span class="n">Spent</span>    <span class="n">Left</span>  <span class="n">Speed</span>
 <span class="mi">100</span>   <span class="mi">451</span>  <span class="mi">100</span>   <span class="mi">451</span>    <span class="mi">0</span>     <span class="mi">0</span>   <span class="mi">440</span><span class="n">k</span>      <span class="mi">0</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span>  <span class="mi">440</span><span class="n">k</span>

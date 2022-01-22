@@ -4,8 +4,8 @@ IPv6 Sandbox
 
 Location: Talks lobby
 
-we found here Jewel Logging offering to help us with some tricks in using Ducky Scripts if we help him in recovering his password
-that he left as sticky note exposed on one service in the network (what ????? =:-0 ).
+We found here Jewel Logging offering to help us with some tricks in using Ducky Scripts if we help him in recovering the password
+he left as sticky note exposed on one service in the network (what ????? =:-0 ).
 <br/>
 Ok, we will help you Jewel. Challenge accepted.  
 <br/>It all starts from here:  
@@ -14,7 +14,7 @@ Ok, we will help you Jewel. Challenge accepted.
 <br/>actually, you do not need anything else to solve this challenge ;)
 <br/>
 <br/>
-let's take note of our IPV6 so we can esclude it from the network scan we will do in few moments
+let's take note of our IPV6 so we can esclude it from the network scan we will do in a few moments
 ![ip1](images/ipv6-1.png)
 <br/>
 We are fe80::42:c0ff:fea8:a003%eth0.
@@ -34,7 +34,7 @@ the DUP in the ping response is usually caused by faulty networks but in our cas
 launching nmap against the second host
 ![ip3](images/ipv6-3.png)
 <br/><br/>
-revealed there was 2 services running on that machine an the call to snoop in port 9000 was absolutely the rigth one:  
+revealed there was 2 services running on that machine and the call to snoop in port 9000 was absolutely the rigth one:  
 ![ip4](images/ipv6-4.png)
 
 the password is: **PieceOnEarth** <br>

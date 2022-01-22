@@ -2,9 +2,9 @@
 Slot Machine Hijack
 ========================
 
-goto [https://slots.jackfrosttower.com](https://slots.jackfrosttower.com)
+Go to [https://slots.jackfrosttower.com](https://slots.jackfrosttower.com).
 
-Curiosly, there is a Cookie really intreaguing here, like:
+Curiously, there is a Cookie really intriguing here, like:
 
 ```
 XSRF-TOKEN: 

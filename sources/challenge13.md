@@ -26,7 +26,7 @@ A single square wave consists of a **LOW** part (0) and an **HIGH** part (1). <b
 ![SquareWave](images/square_wave.png) <br>
 This is **1Hz**
  ```
-So, to simulate **1KHz** or **1000Hz** we need a thousend things like this one, in one second.
+So, to simulate **1KHz** or **1000Hz** we need a thousand things like this one, in one second.
 
 ## The Interface
 
@@ -35,7 +35,7 @@ So, to simulate **1KHz** or **1000Hz** we need a thousend things like this one, 
 <br>
 <br>
 
-To complete this challenge, we have a write a code in `Verilog`, an Hardware Description Language used to model electronic system [(Learn more)](https://en.wikipedia.org/wiki/Verilog). We are using `Verilog 2005`.
+To complete this challenge, we have to write a code in `Verilog`, an Hardware Description Language used to model electronic system [(Learn more)](https://en.wikipedia.org/wiki/Verilog). We are using `Verilog 2005`.
 <br>
 The program needs to generate a square wave at `500Hz`, `1000Hz`, `2000Hz` and at a random frequency.
 
@@ -62,14 +62,14 @@ We start by defining half of the maximum clock value, because the wave is high o
 reg [31:0] maxclock = (125000000/2);
 ```
 
-We divide freq by 100 because it is given to as as an integer (ex. 50050), while it is actually a float (ex. 500.50). <br>
+We divide freq by 100 because it is given to as an integer (ex. 50050), while it is actually a float (ex. 500.50). <br>
 We then divide maxclock by it to get the intermediate value we compare to counter to get the final frequency.
     
 ```Verilog
 reg [31:0] eq_freq = (maxclock/(freq/100));
 ```
 And now comes the tricky part. <br>
-This an instuction which happens every unit of clock while it is positive (`posedge`). So, it should theorically happen *62500000* times per second. <br>
+This is an instruction which happens every unit of clock while it is positive (`posedge`). So, it should theorically happen *62500000* times per second. <br>
 Let's initialize `counter` to `-2`. <br>
 *Uhm... -2? Why exactly -2?* More on that later (?). <br>
 In the loop we then put an `if` condition. If `counter == eq_freq` we set counter to 1, `else` we add 1 to counter.
@@ -87,7 +87,7 @@ We got these values after several attempts to fix the output..but unfortunately,
 ```
 Now it's time to process the output. <br>
 Initialize the `speaker` variable (bool), which reverses if `counter == eq_freq`. <br>
-Then we assign `speaker` to `wave_out`, our output device. `OR rst` is there to make to code compile. It's a little trick. <br>
+Then we assign `speaker` to `wave_out`, our output device. `OR rst` is there to let code to compile. It's a little trick. <br>
 `endmodule` is the ending of the code.
 
 ```Verilog 

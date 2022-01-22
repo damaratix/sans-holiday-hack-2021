@@ -2,21 +2,20 @@
 Holiday Hero
 =======================
 
-Location: (Netwar)
+Location: (Netwars)
 
-Chimeny Scissor challenged us in playing with the Holiday Hero terminal. <br/>
-He said that playing with that we could full up Santa’s sleigh!<br />
+Chimney Scissor challenged us in playing with the Holiday Hero terminal. <br/>
+He said that by playing with it we could fill up Santa’s sleigh!<br />
 True or not, we accepted the challenge of course and it turned out it was a game to play with 2 players and getting you 
 crazy in coordinating in order to win it.
 <br/><br/>
 Ooook, .. no worry, time to find the way for bypassing the 2 players requirement. <br>
-Chimeny suggested that it was possible to play in single mode just by changing 2 parameters, client-side parameters, this means
-that we have all it was needed inside our browser :). <br>
+Chimney suggested that it was possible to play in single mode just by changing 2 parameters, client-side parameters, this means that we have all it was needed inside our browser :). <br>
 <br>
 Chimney added that one of the 2 is sent to the server. <br>
 <br/>
 The challenge is located at: [https://hero.kringlecastle.com](https://hero.kringlecastle.com).
-In order to study the logic of the game, we choose to play directly on the server. <br>
+In order to study the logic of the game, we chose to play directly on the server. <br>
 Actually, the game is served by the "hero" server and just embedded inside the page of 2021.kringelcon.com by using a 
 simple HTML iframe. 
 This will arise some weird behaviour lately, but let's see the logic of the game. 
@@ -44,11 +43,11 @@ Alt-Svc: clear
 <br/>
 
 This endpoint is called when you create the room to play (in which to invite the second player). <br>
-Of course first thing to do is to set the value to "true" and see what happen in the game. 
+Of course first thing to do is to set the value to "true" and see what happens in the game. 
 
 We are interested at the value of the HOHOHO Cookie.
 You can change it directly in your Browser looking in the "Inspect" Panel and searching for Storage -> Cookie. <br>
-Apparently ... nothing happens but let's keep it and notice that this should be the parameter Chimeny Scissor talked about saying that there were rumors about 2 parameters, 1 of them sent to the server. <br>
+Apparently ... nothing happens but let's keep it and notice that this should be the parameter Chimney Scissor talked about saying that there were rumors about 2 parameters, 1 of them sent to the server. <br>
 Browser to work with session ... send and receive Cookie at every requests they do. 
 <br/>
 
@@ -103,7 +102,7 @@ will raise an error in console log because the script, while loading, needs sing
 <br/>
 We have to find the correct place where to inject what we want to obtain. 
 <br />
-By analyzing the file js it appears a function that evaluates if it's required to enable the single player mode (and that's just what we are looking for).
+By analyzing the js file it appears that a function which evaluates if it's required to enable the single player mode (and that's just what we are looking for).
 (line 77-78 javascript deminified)
 <br />
 

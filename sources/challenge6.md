@@ -80,7 +80,7 @@ Here we learn how to make the program crash. Well...who knows? It might be usefu
 ## Level 7 - Get RIP
 
 
-We can use the `call` function to skip certain parts of code, and the return address of the memory cell is stored on top of the stack. it can then be used to access certain values that can't normally be reached.
+We can use the `call` function to skip certain parts of code, and the return address of the memory cell is stored on top of the stack. It can then be used to access certain values that can't normally be reached.
 
 This is the solution.
 ```
@@ -240,7 +240,7 @@ And then the last syscall, `sys_exit`
 * **rax** = 60 (sys_call number)
 * **rsi** = 0 (error code; no specific value necessary, but since there are no errors, we shout put that equal to `0`)
 
-We can now bake all of our syscalls in the final code
+We can now bake all of our syscalls into the final code
 
 ```
 ; TODO: Get a reference to this
@@ -293,7 +293,7 @@ syscall
 And if we execute and open the debug window, in the upper-left corner we see the standard output:
 > *Secret to KringleCon success: all of our speakers and organizers, providing the gift of cyber security knowledge, free to the community*. 
 
-so... the magical phrase is **cyber security knowledge**. <br>
+So... the magical phrase is **cyber security knowledge**. <br>
 <br>
 That's all. Thank you for reading!
 

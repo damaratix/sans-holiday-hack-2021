@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -435,7 +434,7 @@ the system calls executed by the program.</p>
 <div class="section" id="cotton-candy-machine">
 <h2>Cotton Candy Machine<a class="headerlink" href="#cotton-candy-machine" title="Permalink to this headline">¶</a></h2>
 <p><img alt="candymachine" src="images/candymachine.png" /></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ltrace ./make_the_candy
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ltrace ./make_the_candy
 fopen(&quot;registration.json&quot;, &quot;r&quot;)                           = 0
 puts(&quot;Unable to open configuration fil&quot;...Unable to open configuration file.
 )               = 35
@@ -447,14 +446,14 @@ puts(&quot;Unable to open configuration fil&quot;...Unable to open configuration
 </pre></div>
 </div>
 <p>relaunch</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ltrace</span> <span class="o">./</span><span class="n">make_the_candy</span>
-<span class="n">fopen</span><span class="p">(</span><span class="s2">&quot;registration.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>                           <span class="o">=</span> <span class="mh">0x556aaaead260</span>
-<span class="n">getline</span><span class="p">(</span><span class="mh">0x7fffff5e80e0</span><span class="p">,</span> <span class="mh">0x7fffff5e80e8</span><span class="p">,</span> <span class="mh">0x556aaaead260</span><span class="p">,</span> <span class="mh">0x7fffff5e80e8</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">strstr</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;Registration&quot;</span><span class="p">)</span>                            <span class="o">=</span> <span class="n">nil</span>
-<span class="n">getline</span><span class="p">(</span><span class="mh">0x7fffff5e80e0</span><span class="p">,</span> <span class="mh">0x7fffff5e80e8</span><span class="p">,</span> <span class="mh">0x556aaaead260</span><span class="p">,</span> <span class="mh">0x7fffff5e80e8</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">puts</span><span class="p">(</span><span class="s2">&quot;Unregistered - Exiting.&quot;</span><span class="n">Unregistered</span> <span class="o">-</span> <span class="n">Exiting</span><span class="o">.</span>
-<span class="p">)</span>                           <span class="o">=</span> <span class="mi">24</span>
-<span class="o">+++</span> <span class="n">exited</span> <span class="p">(</span><span class="n">status</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+++</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ltrace ./make_the_candy
+fopen(&quot;registration.json&quot;, &quot;r&quot;)                           = 0x556aaaead260
+getline(0x7fffff5e80e0, 0x7fffff5e80e8, 0x556aaaead260, 0x7fffff5e80e8) = 3
+strstr(&quot;{}\n&quot;, &quot;Registration&quot;)                            = nil
+getline(0x7fffff5e80e0, 0x7fffff5e80e8, 0x556aaaead260, 0x7fffff5e80e8) = -1
+puts(&quot;Unregistered - Exiting.&quot;Unregistered - Exiting.
+)                           = 24
++++ exited (status 1) +++
 </pre></div>
 </div>
 <p>mmmhh .. it complains that the Registration key in the json is not found. Let’s add it to our file</p>
@@ -462,15 +461,15 @@ puts(&quot;Unable to open configuration fil&quot;...Unable to open configuration
 </pre></div>
 </div>
 <p>and relaunch</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ltrace</span> <span class="o">./</span><span class="n">make_the_candy</span>
-<span class="n">fopen</span><span class="p">(</span><span class="s2">&quot;registration.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>                           <span class="o">=</span> <span class="mh">0x5622c89dd260</span>
-<span class="n">getline</span><span class="p">(</span><span class="mh">0x7ffc06416370</span><span class="p">,</span> <span class="mh">0x7ffc06416378</span><span class="p">,</span> <span class="mh">0x5622c89dd260</span><span class="p">,</span> <span class="mh">0x7ffc06416378</span><span class="p">)</span> <span class="o">=</span> <span class="mi">24</span>
-<span class="n">strstr</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="n">Registration</span><span class="s2">&quot;:&quot;</span><span class="n">test</span><span class="s2">&quot;}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;Registration&quot;</span><span class="p">)</span>       <span class="o">=</span> <span class="s2">&quot;Registration&quot;</span><span class="p">:</span><span class="s2">&quot;test&quot;</span><span class="p">}</span>\<span class="n">n</span><span class="s2">&quot;</span>
-<span class="n">strchr</span><span class="p">(</span><span class="s2">&quot;Registration&quot;</span><span class="p">:</span><span class="s2">&quot;test&quot;</span><span class="p">}</span>\<span class="n">n</span><span class="s2">&quot;, &#39;:&#39;)                    = &quot;</span><span class="p">:</span><span class="s2">&quot;test&quot;</span><span class="p">}</span>\<span class="n">n</span><span class="s2">&quot;</span>
-<span class="n">strstr</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="n">test</span><span class="s2">&quot;}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span><span class="p">)</span>                              <span class="o">=</span> <span class="n">nil</span>
-<span class="n">getline</span><span class="p">(</span><span class="mh">0x7ffc06416370</span><span class="p">,</span> <span class="mh">0x7ffc06416378</span><span class="p">,</span> <span class="mh">0x5622c89dd260</span><span class="p">,</span> <span class="mh">0x7ffc06416378</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">puts</span><span class="p">(</span><span class="s2">&quot;Unregistered - Exiting.&quot;</span><span class="n">Unregistered</span> <span class="o">-</span> <span class="n">Exiting</span><span class="o">.</span>
-<span class="p">)</span>                           <span class="o">=</span> <span class="mi">24</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ltrace ./make_the_candy
+fopen(&quot;registration.json&quot;, &quot;r&quot;)                           = 0x5622c89dd260
+getline(0x7ffc06416370, 0x7ffc06416378, 0x5622c89dd260, 0x7ffc06416378) = 24
+strstr(&quot;{&quot;Registration&quot;:&quot;test&quot;}\n&quot;, &quot;Registration&quot;)       = &quot;Registration&quot;:&quot;test&quot;}\n&quot;
+strchr(&quot;Registration&quot;:&quot;test&quot;}\n&quot;, &#39;:&#39;)                    = &quot;:&quot;test&quot;}\n&quot;
+strstr(&quot;:&quot;test&quot;}\n&quot;, &quot;True&quot;)                              = nil
+getline(0x7ffc06416370, 0x7ffc06416378, 0x5622c89dd260, 0x7ffc06416378) = -1
+puts(&quot;Unregistered - Exiting.&quot;Unregistered - Exiting.
+)                           = 24
 </pre></div>
 </div>
 <p>now, during execution it’s complaining that the value True wasn’t found for the “Registration” key. Add it</p>

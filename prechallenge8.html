@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -402,14 +401,14 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat /var/log/hohono.log | grep -ivE &quot;success|Valid&quot; &gt; badactions
 </pre></div>
 </div>
-<p>we extract all the “bad” action strings in badactions.log, and they are just 4:</p>
+<p>We extract all the “bad” action strings in badactions.log, and they are just 4:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Login</span> <span class="kn">from</span> <span class="o">&lt;</span><span class="n">HOST</span><span class="o">&gt;</span> <span class="n">rejected</span> <span class="n">due</span> <span class="n">to</span> <span class="n">unknown</span> <span class="n">user</span> <span class="n">name</span>
 <span class="n">Failed</span> <span class="n">login</span> <span class="kn">from</span> <span class="o">&lt;</span><span class="n">HOST</span><span class="o">&gt;</span> <span class="k">for</span> <span class="o">...</span>
 <span class="o">&lt;</span><span class="n">HOST</span><span class="o">&gt;</span> <span class="n">sent</span> <span class="n">a</span> <span class="n">malformed</span> <span class="n">request</span>
 <span class="n">Invalid</span> <span class="n">heartbeat</span> <span class="s1">&#39;...&#39;</span> <span class="kn">from</span> <span class="o">&lt;</span><span class="n">HOST</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>now, we have 3 configuration files to play with. First we setup the new rule:</p>
+<p>Now, we have 3 configuration files to play with. First we setup the new rule:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fail2ban</span><span class="o">/</span><span class="n">jail</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">jail</span><span class="o">.</span><span class="n">conf</span>
 <span class="p">[</span><span class="n">my</span><span class="o">-</span><span class="n">jail</span><span class="p">]</span>
 <span class="n">enabled</span> <span class="o">=</span> <span class="n">true</span>
@@ -421,7 +420,7 @@
 <span class="n">action</span> <span class="o">=</span> <span class="n">my</span><span class="o">-</span><span class="n">action</span>
 </pre></div>
 </div>
-<p>then we define <strong>when</strong> it must be triggered because of the matching with the string errors we considered as “bad” in our logs</p>
+<p>Then we define <strong>when</strong> it must be triggered because of the matching with the string errors we considered as “bad” in our logs</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fail2ban</span><span class="o">/</span><span class="nb">filter</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="nb">filter</span><span class="o">.</span><span class="n">conf</span>
 <span class="p">[</span><span class="n">Definition</span><span class="p">]</span>
 <span class="n">failregex</span> <span class="o">=</span> <span class="p">[</span><span class="n">Ll</span><span class="p">]</span><span class="n">ogin</span> <span class="kn">from</span> <span class="o">&lt;</span><span class="n">HOST</span><span class="o">&gt;</span> <span class="n">rejected</span> <span class="n">due</span> <span class="n">to</span> <span class="n">unknown</span> <span class="n">user</span> <span class="n">name</span>
@@ -430,7 +429,7 @@
             <span class="n">Invalid</span> <span class="n">heartbeat</span> <span class="s1">&#39;(.+)&#39;</span> <span class="kn">from</span> <span class="o">&lt;</span><span class="n">HOST</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>finally, once triggered <strong>what</strong> we ant to do</p>
+<p>Finally, once triggered <strong>what</strong> we want to do</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fail2ban</span><span class="o">/</span><span class="n">action</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">action</span><span class="o">.</span><span class="n">conf</span>
 <span class="p">[</span><span class="n">Definition</span><span class="p">]</span>
 <span class="n">actionban</span> <span class="o">=</span>  <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">naughtylist</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">ip</span><span class="o">&gt;</span>

@@ -2,7 +2,7 @@
 Splunk
 ====
 
-You can access this challenge's webpage [here](https://hhc21.bossworkshops.io/it-IT/app/SA-hhc/santadocs). <br>
+You can access this challenge's webpage [here](https://hhc21.bossworkshops.io/app/SA-hhc/santadocs). <br>
 <br>
 There are 8 tasks to complete
 
@@ -124,7 +124,7 @@ We used the same query of the previous task.
 index=main sourcetype=journald source=Journald:Microsoft-Windows-Sysmon/Operational EventCode=1 ParentProcessId=6788
 ```
 
-Go on the box that contains the malicious command, and click on the time field. Set `minus 1 second`. We will see every event that happend in the second before the malicious command execution.
+Go on the box that contains the malicious command, and click on the time field. Set `minus 1 second`. We will see every event that happened in the second before the malicious command execution.
 
 ![Splunk8](images/ch9_splunk8.png)
 
@@ -134,7 +134,7 @@ index=main sourcetype=journald source=Journald:Microsoft-Windows-Sysmon/Operatio
 ```
 
 Now we are seeing the events in the second before. The event at *11/24/21
-2:16:23.653 PM* executes a bash script called `preinstall.sh`. That's exectly what we needed. <br>
+2:16:23.653 PM* executes a bash script called `preinstall.sh`. That's exactly what we needed. <br>
 +++
 After inserting every answer in the Splunk page, Santa calls us **whiz**. <br>
 The challenge is over. Bye!

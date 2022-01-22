@@ -9,13 +9,13 @@ In the meanwhile, some pink things called *Trollogs* will roam in the map, chang
 
 ## Types of Expressions
 
-There are four types of expressions
+There are four types of expressions:
 1. Boolean Logic
 2. Arithmetic Expressions
 3. Number Conversions
 4. Bitwise Operations
 
-The **potpourri** combines them all.
+The **potpourri** method combines them all.
 
 ### Boolean Logic
 These are plain boolean logic. <br>

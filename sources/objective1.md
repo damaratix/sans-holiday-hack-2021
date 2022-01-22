@@ -11,9 +11,9 @@ Sometimes you will find things like this.
 
 ![Cranberry](images/cranberry.png)
 
-These are **Cranberries**, linux terminals. If you click on them, a windows containing a linux shell will pop up. <br>
+These are **Cranberries**, Linux terminals. If you click on them, a windows containing a Linux shell will pop up. <br>
 
-During your visit at the North Pole, you will meet some strange characters who need your help with some tasks, and most of the time these tasks are linux problems. After you solve them, you will be told a few hints about the real challenge, to save the Holiday Season! <br>
+During your visit at the North Pole, you will meet some strange characters who need your help with some tasks, and most of the time these tasks are Linux problems. After you solve them, you will be told a few hints about the real challenge, to save the Holiday Season! <br>
 
 If you are ready, you can start with [Objective 2](obj2), 
 

@@ -3,7 +3,7 @@ Rubber Ducky
 ===
 *Evaluate the USB data in /mnt/USBDEVICE/*
 
-First of all, let's see what does `/mnt/USBDEVICE` contain.
+First of all, let's see what `/mnt/USBDEVICE` contains:
 
 ```Shell
 $ ls -l /mnt/USBDEVICE

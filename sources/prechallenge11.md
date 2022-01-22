@@ -30,7 +30,7 @@ The cranberry this time was focused in particular on two commands really useful 
 ![candymachine](images/candymachine.png)
 
 ```
-$ ltrace ./make_the_candy
+$ltrace ./make_the_candy
 fopen("registration.json", "r")                           = 0
 puts("Unable to open configuration fil"...Unable to open configuration file.
 )               = 35
@@ -43,7 +43,7 @@ $echo "{}" > registration.json
 ```
 relaunch
 ```
-ltrace ./make_the_candy
+$ltrace ./make_the_candy
 fopen("registration.json", "r")                           = 0x556aaaead260
 getline(0x7fffff5e80e0, 0x7fffff5e80e8, 0x556aaaead260, 0x7fffff5e80e8) = 3
 strstr("{}\n", "Registration")                            = nil
@@ -59,7 +59,7 @@ $echo "{\"Registration\":\"test\"}"> registration.json
 and relaunch
 
 ```
-ltrace ./make_the_candy
+$ltrace ./make_the_candy
 fopen("registration.json", "r")                           = 0x5622c89dd260
 getline(0x7ffc06416370, 0x7ffc06416378, 0x5622c89dd260, 0x7ffc06416378) = 24
 strstr("{"Registration":"test"}\n", "Registration")       = "Registration":"test"}\n"

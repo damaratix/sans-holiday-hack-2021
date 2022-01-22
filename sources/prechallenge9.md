@@ -26,7 +26,7 @@ total 24
 drwxr-xr-x 1 root      root       4096 Dec  2 14:25 yara_rules
 ```
 
-and there are the configuration file for YARA in `yara_rule/rules.yar`.
+and there is the configuration file for YARA in `yara_rule/rules.yar`.
 ```
 snowball2@8b0922e50660:~$ ls -l yara_rules/ 
 total 4000
@@ -156,7 +156,7 @@ yara_rule_1732 ./the_critical_elf_app
 ```
 
 ## Change file size
-this time seems more serious stuff
+this time it seems more serious stuff
 ```
 rule yara_rule_1732 {
    meta:
@@ -192,7 +192,7 @@ rule yara_rule_1732 {
 }
 ```
 
-There are 3 conditions in a logic AND so is it sufficient that only one of them returns false to escape the check.
+There are 3 conditions in a logic AND so it is sufficient that only one of them returns false to escape the check.
 Let's review the three conditions: 
 
 1. Checks the header of the file for ELF extension (0x02464c45). ELF is an acronym for Executable and Linkable Format, is a common standard file extension used for executable, 

@@ -3,8 +3,8 @@ IMDS Exploration
 =======================
 Location: Frost Tower  (Door defrosting)
 
-well ... this time we land directly in the "executive restroom" where the name of the Troll doesn't really seems a joke ... !
-Anyway, in order to obtain some further hints for the next SSRF challenge we have to play a little bit with the cranberry
+Well ... this time we land directly in the "executive restroom" where the name of the Troll doesn't really seem a joke ... !
+Anyway, in order to obtain some further hints for the next SSRF challenge we have to play a little bit with the Cranberry
 in this beatiful location. 
 
 
